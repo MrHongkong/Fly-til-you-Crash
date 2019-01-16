@@ -34,3 +34,12 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# TestScenes
+Oscar.*
+Jocke.*
+Sebastian.*
+Filip.*
+Patrik.*
+Adam.*
+
