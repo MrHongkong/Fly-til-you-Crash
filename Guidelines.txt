@@ -1,0 +1,20 @@
+Kommentera namn i början av script på dom som jobbat med den. 
+För att det ska vara enkelt att få tag på personen som skrivit den för svar på eventuella frågor
+
+
+Vid start av en Funktion eller script beskriv kort vad den gör. 
+Så att det skall vara lätt att förstå vad den gör utan att behöva läsa igenom
+
+
+
+
+PÅ fredagar kommer jag (Patrik) kolla igenom mappar och "städa2"
+För att uppehålla ordning i projektet
+
+Map struktur. Skapa en submap för
+Ordning och reda 
+
+
+Vi börjar dagen kl 10:00 
+Hör av dig om du inte kommer . 
+
