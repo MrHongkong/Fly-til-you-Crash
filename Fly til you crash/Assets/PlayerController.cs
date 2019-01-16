@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float yAxis;
     float enginePower = 1f;
     Rigidbody rb;
 
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
         rb.AddTorque(Input.GetAxis("Horizontal") * transform.forward);
 
         //Pitch controls, turning the nose up and down
-        rb.AddTorque(Input.GetAxis("Vertical") * transform.right);
+        rb.AddTorque(Input.GetAxis("Vertical") * transform.right * yAxis);
         
         //Set drag and angular drag according relative to speed
         //rb.drag = 0.001f * rb.velocity.magnitude;
