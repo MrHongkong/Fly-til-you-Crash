@@ -2,6 +2,7 @@
 
 public class Acceleration : MonoBehaviour
 {
+    //Made by Philip Åkerblom GP18 Yrgo
 
     public float maxSpeed = 1000f;
     public float timeZeroToMax = 1000f;
