@@ -4,7 +4,7 @@ public class Acceleration : MonoBehaviour
 {
 
     public float maxSpeed = 1000f;
-    public float timeZeroToMax = 50f;
+    public float timeZeroToMax = 1000f;
     float accelRatePerSec;
     float forwardVelocity;
 
@@ -15,7 +15,7 @@ public class Acceleration : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         accelRatePerSec = maxSpeed / timeZeroToMax;
-        forwardVelocity = 0f;
+        forwardVelocity = 10f;
     }
 
     // Update is called once per frame
@@ -23,6 +23,7 @@ public class Acceleration : MonoBehaviour
     {
         forwardVelocity += accelRatePerSec * Time.deltaTime;
         forwardVelocity = Mathf.Min (forwardVelocity, maxSpeed);
+        Debug.Log("Acceleration: " + forwardVelocity);
     }
 
     void LateUpdate()
