@@ -4,10 +4,10 @@ public class Acceleration : MonoBehaviour
 {
     //Made by Philip Åkerblom GP18 Yrgo
 
-    public float maxSpeed = 1000f;
-    public float timeZeroToMax = 1000f;
-    float accelRatePerSec;
-    float forwardVelocity;
+    private float maxSpeed = 1000f;
+    private float timeZeroToMax = 2000f;
+    private float accelRatePerSec;
+    private float forwardVelocity;
 
     Rigidbody rb;
 
