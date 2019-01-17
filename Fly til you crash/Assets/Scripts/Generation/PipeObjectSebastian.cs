@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PipeObjectSebastian : MonoBehaviour
 {
-    [SerializeField]private Vector3 startPosition;
     [SerializeField]internal Vector3[] endPositions;
     [SerializeField] private Transform[] endTransforms;
+    internal enum PipeType {straight, smallCurve, bigCurve, split};
+    [SerializeField]internal PipeType typeOfPipe;
     private void Start()
     {
         GenerateEndPositions();
