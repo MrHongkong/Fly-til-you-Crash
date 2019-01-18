@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script creators: Oscar Oders
+
 public class TunnelGenarator : MonoBehaviour
 {
     [SerializeField] private GameObject[] tunnelPrefabs;
