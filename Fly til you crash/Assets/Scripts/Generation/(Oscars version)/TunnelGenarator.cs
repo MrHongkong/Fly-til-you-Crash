@@ -11,13 +11,15 @@ public class TunnelGenarator : MonoBehaviour
     TunnelPieces currentObject, previousObject;
 
     Vector3 startOrigin = new Vector3(0, 0, 0);
+    Vector3[] tunnelVectors;
     int numberOfTunnelObjects = 10;
     int arrayIndex;
 
 
     private void Start() {
         tunnelPieces = new GameObject[numberOfTunnelObjects];
-        
+        tunnelVectors = new Vector3[numberOfTunnelObjects];
+
         tunnelPieces[0] = Instantiate(tunnelPrefabs[0], startOrigin, tunnelPrefabs[0].transform.rotation);
 
         for (int i = 1; i < numberOfTunnelObjects; i++) {
@@ -25,29 +27,40 @@ public class TunnelGenarator : MonoBehaviour
             tunnelPieces[i] = Instantiate(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.position, tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.rotation);
             currentObject = tunnelPieces[i].GetComponent<TunnelPieces>();
 
-
-            //endpoint - startpoint = vector between points.
-
-
+            SaveTunnelVectors(i);
         }  
     }
 
     private void Update() {
 
+        if (Input.GetKey(KeyCode.A) || Input.GetKeyDown(KeyCode.S)) {
+            GenerateNewTunnelPiece();
+        }
+    }
+
+    // Generates a new tunnel piece at the end of the current tunnel.
+    void GenerateNewTunnelPiece() {
+
         previousObject = currentObject;
         Destroy(tunnelPieces[arrayIndex]);
-        
+
         if (arrayIndex == 0) {
-            currentObject = tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>();
             tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>().endPoint.position, tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>().endPoint.rotation);
         } else {
             tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], previousObject.endPoint.position, previousObject.endPoint.rotation);
             currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
         }
 
+        SaveTunnelVectors(arrayIndex);
         arrayIndex = (arrayIndex < numberOfTunnelObjects - 1) ? arrayIndex + 1 : 0;
     }
 
+    //Calculates the vector between currentObjects start and end point and saves it in the tunnelVectors array
+    void SaveTunnelVectors(int i) {
+        Vector3 directionVector = currentObject.endPoint.position - currentObject.startPoint.position;
+        tunnelVectors[i] = currentObject.startPoint.position + (directionVector.magnitude * directionVector);
+        Debug.Log("vectors: " + tunnelVectors[i]);
+    }
 }
 
 

@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class TunnelPieces : MonoBehaviour{
 
-    Transform startPoint;
+    [HideInInspector]
+    public Transform startPoint;
+
     public Transform endPoint;
 
     private void Awake() {
