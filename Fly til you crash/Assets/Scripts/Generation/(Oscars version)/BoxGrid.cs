@@ -5,9 +5,9 @@ using UnityEngine;
 //Script creators: Oscar Oders
 
 //Class BoxGrid: to use as a tracking of where there alreadu has been generated objects.
-public class BoxGrid : MonoBehaviour
+public class BoxGrid
 {
-    const float gridSize = 2f;
+    public const float gridSize = 2f;
     Vector3 cellCenter;
     BoxFace boxFace;
 
