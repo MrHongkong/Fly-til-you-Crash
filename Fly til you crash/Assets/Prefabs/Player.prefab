@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAxis: 1
+  KeyDownDrag: 5
+  KeyUpDrag: 7
 --- !u!114 &67571162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab20fbc386007c4b921a2cb9e7d96b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1000
-  timeZeroToMax: 1000
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0

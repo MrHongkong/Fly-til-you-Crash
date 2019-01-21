@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Code by Adam
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
@@ -9,21 +10,26 @@ public class PlayerController : MonoBehaviour
     float enginePower = 1f;
     Rigidbody rb;
 
-    // Start is called before the first frame update
+    public float KeyDownDrag;
+    public float KeyUpDrag;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        Vector2 joystick = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (joystick.magnitude < 0.1f)
+            rb.angularDrag = KeyUpDrag;
+        else
+            rb.angularDrag = KeyDownDrag;
+
         //Banking controls, turning turning left and right on Z axis
         rb.AddTorque(Input.GetAxis("Horizontal") * transform.forward * -0.5f);
 
         //Pitch controls, turning the nose up and down
         rb.AddTorque(Input.GetAxis("Vertical") * transform.right * yAxis);
-
-        rb.velocity *= 0.9f;
     }
 }
