@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Script creators: Oscar Oders
+//Script creator: Oscar Oders
+//Adjustments: 
 
 public class TunnelGenarator : MonoBehaviour
 {
@@ -81,13 +82,16 @@ public class TunnelGenarator : MonoBehaviour
 
     // Generates a boxgrid - To generate grid all position values in tunnelprefabs need to be devideble by 2. (is this possible to fix?)
     void GenerateBoxGrid(int index) {
-        float numberOfXGrid = NumberOfGrids(currentObject, 'x');
-        float numberOfYGrid = NumberOfGrids(currentObject, 'y');
-        float numberOfZGrid = NumberOfGrids(currentObject, 'z');
+        int numberOfXGrid = (int)NumberOfGrids(currentObject, 'x');
+        int numberOfYGrid = (int)NumberOfGrids(currentObject, 'y');
+        int numberOfZGrid = (int)NumberOfGrids(currentObject, 'z');
 
-        int currentTempGridArraySize = (int)(numberOfXGrid * numberOfYGrid * numberOfZGrid);
+        int currentTempGridArraySize = (numberOfXGrid * numberOfYGrid * numberOfZGrid);
         BoxGrid[] tempGridArray = new BoxGrid[currentTempGridArraySize];
         Debug.Log("arraySize: " + currentTempGridArraySize);
+        Debug.Log("xGrids: " + numberOfXGrid);
+        Debug.Log("yGrids: " + numberOfYGrid);
+        Debug.Log("zGrids: " + numberOfZGrid);
 
         gridArraySizeForRemovingBoxGridsFromList[index] = currentTempGridArraySize;
 
@@ -97,6 +101,7 @@ public class TunnelGenarator : MonoBehaviour
             for(int j = 0; j < numberOfYGrid; j++) {
                 for(int k = 0; k < numberOfZGrid; k++) {
                     Debug.Log("l: " + l);
+ 
                     tempGridArray[l] = new BoxGrid(new Vector3((currentObject.startPoint.position.x + BoxAdjustment(numberOfXGrid)) + i * BoxGrid.gridSize,
                                                                (currentObject.startPoint.position.y + BoxAdjustment(numberOfYGrid)) + j * BoxGrid.gridSize,
                                                                (currentObject.startPoint.position.z + BoxAdjustment(numberOfZGrid)) + k * BoxGrid.gridSize));
@@ -142,62 +147,11 @@ public class TunnelGenarator : MonoBehaviour
     //Displays boxgrid as red cubes in sceneview
     void OnDrawGizmos() {
 
-        foreach (BoxGrid cell in boxGrid) {
-            Gizmos.color = new Color(1, 0, 0, 0.5f);
-            Gizmos.DrawCube(cell.cellCenter, new Vector3(2, 2, 2));
-        }
+        if(boxGrid != null) {
+            foreach (BoxGrid cell in boxGrid) {
+                Gizmos.color = new Color(1, 0, 0, 0.5f);
+                Gizmos.DrawCube(cell.cellCenter, new Vector3(2, 2, 2));
+            }
+        }   
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Vector3 levelOrigin;
-//public GameObject[] tunnelPrefabs;
-//TunnelPieces[] tunnelPieces;
-//int numberOfSpawnedPeices = 10;
-//int arrayIndex;
-
-//// Start is called before the first frame update
-//void Start() {
-//    levelOrigin = new Vector3(0, 0, 0);
-//    tunnelPieces = new TunnelPieces[numberOfSpawnedPeices];
-//    tunnelPieces[arrayIndex] = new TunnelPieces(tunnelPrefabs[0], levelOrigin);
-//    arrayIndex++;
-
-//    //fills the tunnelPices array with tunnelPrefab objects.
-//    for (int i = arrayIndex; i < numberOfSpawnedPeices; i++) {
-//        tunnelPieces[i] = new TunnelPieces(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], PrevoiusEnd(i));
-
-//    }
-//}
-
-//// Update is called once per frame
-//void Update() {
-
-//}
-
-////returns the end point of previous tunnelpiece in the tunnelPieces array as an Vector3
-//Vector3 PrevoiusEnd(int i) {
-//    Vector3 previousEnd = tunnelPieces[i - 1].CalculateEnd();
-//    return previousEnd;
-//}

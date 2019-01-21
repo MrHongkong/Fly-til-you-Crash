@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Script creators: Oscar Oders
+//Script creator: Oscar Oders
+//Adjustments: 
 
 //Class BoxGrid: to use as a tracking of where there already has been generated objects.
 public class BoxGrid
