@@ -8,13 +8,12 @@ public class PipeGenerationSebastian : MonoBehaviour
     private List<PipeObjectSebastian> pipes = new List<PipeObjectSebastian>();
     private GameObject bannedPipe;
     private Vector3 startPos = new Vector3(0, 0, 0);
-    int index = 0;
+    int index = 0, totalPipes = 0;
     void Start()
     {
         for (int i = 0; i < 10; i++)
         {
             GeneratePipe();
-            //Debug.Log(startPos);
         }
     }
     void Update()
@@ -27,42 +26,36 @@ public class PipeGenerationSebastian : MonoBehaviour
                 DestroyPipe();
             }
         }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Pipe: " + totalPipes + "/n" + "Rotation: " + pipes[pipes.Count - 1].transform.rotation);
+        }
     }
     void GeneratePipe()
     {
+        totalPipes++;
         index = (int)Random.Range(0, pipePrefabs.Length);
         if(pipes.Count > 0)
             startPos -= pipes[pipes.Count - 1].GetEndPosition();
         pipes.Add(Instantiate<GameObject>(pipePrefabs[index], startPos, pipePrefabs[index].transform.rotation).GetComponent<PipeObjectSebastian>());
-        if (pipes[pipes.Count - 1].typeOfPipe == PipeObjectSebastian.PipeType.smallCurve || pipes[pipes.Count - 1].typeOfPipe == PipeObjectSebastian.PipeType.bigCurve)
-        {
-            CurveRotation();
-        }
         if (pipes.Count >= 2)
         {
-            Vector3 rotation2 = pipes[pipes.Count - 2].transform.rotation.eulerAngles;
-            if (pipes[pipes.Count - 2].typeOfPipe == PipeObjectSebastian.PipeType.bigCurve)
-            {
-                rotation2 += new Vector3(-90, 0, 0);
-                pipes[pipes.Count - 1].transform.Rotate(rotation2);
-            }
-            else
-            {
-                pipes[pipes.Count - 1].transform.Rotate(rotation2);
-            }
+            pipes[pipes.Count - 1].transform.rotation = pipes[pipes.Count - 2].endTransforms[0].rotation;
+        }
+        if (pipes.Count >= 2 && pipes[pipes.Count - 1].typeOfPipe == PipeObjectSebastian.PipeType.curve)
+        {
+            CurveRotation();
         }
     }
     void CurveRotation()
     {
-        Vector3 rotation1 = pipes[pipes.Count - 1].transform.rotation.eulerAngles;
-        rotation1.y = Random.Range(0, 45);
-        //rotation1.x *= Mathf.Sign(Random.Range(-10, 10));
-        //Debug.Log(rotation1.x);
-        pipes[pipes.Count - 1].transform.rotation = Quaternion.Euler(rotation1);
+        Vector3 rotation1 = new Vector3();
+        Vector3 rotationAxis = pipes[pipes.Count - 2].endTransforms[0].position - pipes[pipes.Count - 2].midPoint.position;
+
+        pipes[pipes.Count - 1].transform.RotateAroundLocal(rotationAxis, Random.Range(0, 360));
     }
     void DestroyPipe()
     {
-        //Debug.Log("Remove");
         GameObject.Destroy(pipes[0].gameObject);
         pipes.RemoveAt(0);
     }
