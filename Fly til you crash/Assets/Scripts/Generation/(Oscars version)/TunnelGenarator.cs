@@ -28,7 +28,7 @@ public class TunnelGenarator : MonoBehaviour
 
         for (int i = 1; i < numberOfTunnelObjects; i++) {
             
-            tunnelPieces[i] = Instantiate(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.position, tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.rotation);
+            tunnelPieces[i] = Instantiate(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.position, tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.localRotation);
             currentObject = tunnelPieces[i].GetComponent<TunnelPieces>();
 
             SaveTunnelVectors(i);
@@ -50,9 +50,10 @@ public class TunnelGenarator : MonoBehaviour
         Destroy(tunnelPieces[arrayIndex]);
 
         if (arrayIndex == 0) {
-            tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[Randomizer()], tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>().endPoint.position, tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>().endPoint.rotation);
+            tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[Randomizer()], tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>().endPoint.position, tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>().endPoint.localRotation);
+            currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
         } else {
-            tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[Randomizer()], previousObject.endPoint.position, previousObject.endPoint.rotation);
+            tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[Randomizer()], previousObject.endPoint.position, previousObject.endPoint.localRotation);
             currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
         }
 
@@ -74,33 +75,19 @@ public class TunnelGenarator : MonoBehaviour
     //Calculates the vector between currentObjects start and end point and saves it in the tunnelVectors array
     void SaveTunnelVectors(int i) {
         Vector3 directionVector = currentObject.endPoint.position - currentObject.startPoint.position;
-        tunnelVectors[i] = currentObject.startPoint.position + (directionVector.magnitude * directionVector);
+        tunnelVectors[i] = currentObject.startPoint.position + (directionVector.magnitude * directionVector.normalized);
     }
 
 
-    // Generates a imagenary boxgrid...?
+    // Generates a boxgrid - To generate grid all position values in tunnelprefabs need to be devideble by 2. (is this possible to fix?)
     void GenerateBoxGrid(int index) {
-        float numberOfXGrid = 1;
-        float numberOfYGrid = 1;
-        float numberOfZGrid = 1;
-
-        float xDistance = Mathf.Abs(currentObject.endPoint.position.x - currentObject.startPoint.position.x);
-        if (xDistance > 1) {
-            numberOfXGrid = (xDistance) / BoxGrid.gridSize;
-        }
-
-        float yDistance = Mathf.Abs(currentObject.endPoint.position.y - currentObject.startPoint.position.y);
-        if (yDistance > 1) {
-            numberOfYGrid = (yDistance) / BoxGrid.gridSize;
-        }
-
-        float zDistance = Mathf.Abs(currentObject.endPoint.position.z - currentObject.startPoint.position.z);
-        if (zDistance > 1) {
-            numberOfZGrid = (zDistance) / BoxGrid.gridSize;
-        }
+        float numberOfXGrid = NumberOfGrids(currentObject, 'x');
+        float numberOfYGrid = NumberOfGrids(currentObject, 'y');
+        float numberOfZGrid = NumberOfGrids(currentObject, 'z');
 
         int currentTempGridArraySize = (int)(numberOfXGrid * numberOfYGrid * numberOfZGrid);
         BoxGrid[] tempGridArray = new BoxGrid[currentTempGridArraySize];
+        Debug.Log("arraySize: " + currentTempGridArraySize);
 
         gridArraySizeForRemovingBoxGridsFromList[index] = currentTempGridArraySize;
 
@@ -109,10 +96,10 @@ public class TunnelGenarator : MonoBehaviour
         for (int i = 0; i < numberOfXGrid; i++) {
             for(int j = 0; j < numberOfYGrid; j++) {
                 for(int k = 0; k < numberOfZGrid; k++) {
-
-                    tempGridArray[l] = new BoxGrid(new Vector3((currentObject.startPoint.position.x + BoxGrid.gridSize / 2) + i * BoxGrid.gridSize,
-                                                        (currentObject.startPoint.position.y + BoxGrid.gridSize / 2) + j * BoxGrid.gridSize,
-                                                        (currentObject.startPoint.position.z + BoxGrid.gridSize / 2) + k * BoxGrid.gridSize));
+                    Debug.Log("l: " + l);
+                    tempGridArray[l] = new BoxGrid(new Vector3((currentObject.startPoint.position.x + BoxAdjustment(numberOfXGrid)) + i * BoxGrid.gridSize,
+                                                               (currentObject.startPoint.position.y + BoxAdjustment(numberOfYGrid)) + j * BoxGrid.gridSize,
+                                                               (currentObject.startPoint.position.z + BoxAdjustment(numberOfZGrid)) + k * BoxGrid.gridSize));
 
                     l++;
                 }
@@ -125,9 +112,40 @@ public class TunnelGenarator : MonoBehaviour
         boxGrid.RemoveRange(0, sizeOfFirstInListTempGridArraySize);
 
         boxGrid.AddRange(tempGridArray);
+    }
 
-        Debug.Log(boxGrid.Count);
-        
+    //Caluculates the number of boxes eatch object has, by axis.
+    float NumberOfGrids(TunnelPieces currentObject, char axis) {
+        float distance = 1; 
+        if (axis == 'x')
+            distance = Mathf.Abs(currentObject.endPoint.position.x - currentObject.startPoint.position.x);
+
+        if (axis == 'y')
+            distance = Mathf.Abs(currentObject.endPoint.position.y - currentObject.startPoint.position.y);
+
+        if (axis == 'z')
+            distance = Mathf.Abs(currentObject.endPoint.position.z - currentObject.startPoint.position.z);
+
+        if (!(distance < BoxGrid.gridSize + 1)) {
+            return (distance / BoxGrid.gridSize) + 1;
+        } else {
+            return 1;
+        }
+    }
+
+    //Adjust the position of the box
+    float BoxAdjustment(float numberOfGrids) {
+        float temp = (numberOfGrids < 2) ? 0 : 0; //BoxGrid.gridSize / 2; <- to use if boxes is not allowed to be outside the tunnel ends.
+        return temp;
+    }
+
+    //Displays boxgrid as red cubes in sceneview
+    void OnDrawGizmos() {
+
+        foreach (BoxGrid cell in boxGrid) {
+            Gizmos.color = new Color(1, 0, 0, 0.5f);
+            Gizmos.DrawCube(cell.cellCenter, new Vector3(2, 2, 2));
+        }
     }
 }
 
