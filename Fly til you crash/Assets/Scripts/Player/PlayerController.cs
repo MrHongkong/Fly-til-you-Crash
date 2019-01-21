@@ -24,6 +24,6 @@ public class PlayerController : MonoBehaviour
         //Pitch controls, turning the nose up and down
         rb.AddTorque(Input.GetAxis("Vertical") * transform.right * yAxis);
 
-        rb.velocity *= 0.9f;
+        rb.velocity *= 0.5f;
     }
 }

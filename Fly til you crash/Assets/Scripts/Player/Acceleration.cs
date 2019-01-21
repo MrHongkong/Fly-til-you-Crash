@@ -7,7 +7,7 @@ public class Acceleration : MonoBehaviour
     private float maxSpeed = 1000f;
     private float timeZeroToMax = 2000f;
     private float accelRatePerSec;
-    private float forwardVelocity;
+    public float forwardVelocity;
 
     Rigidbody rb;
 
@@ -24,7 +24,7 @@ public class Acceleration : MonoBehaviour
     {
         forwardVelocity += accelRatePerSec * Time.deltaTime;
         forwardVelocity = Mathf.Min (forwardVelocity, maxSpeed);
-        Debug.Log("Acceleration: " + forwardVelocity);
+        //Debug.Log("Acceleration: " + forwardVelocity);
     }
 
     void LateUpdate()
