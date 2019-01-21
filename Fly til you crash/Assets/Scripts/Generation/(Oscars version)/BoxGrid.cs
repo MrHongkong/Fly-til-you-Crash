@@ -4,11 +4,11 @@ using UnityEngine;
 
 //Script creators: Oscar Oders
 
-//Class BoxGrid: to use as a tracking of where there alreadu has been generated objects.
+//Class BoxGrid: to use as a tracking of where there already has been generated objects.
 public class BoxGrid
 {
     public const float gridSize = 2f;
-    Vector3 cellCenter;
+    public Vector3 cellCenter;
     BoxFace boxFace;
 
     public BoxGrid(Vector3 _cellCenter) {
