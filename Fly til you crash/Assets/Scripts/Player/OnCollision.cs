@@ -24,7 +24,7 @@ public class OnCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Object" && isDead != true)
         {
-            StartCoroutine(FindObjectOfType<CameraShake>().Shake(.15f, .4f));
+            StartCoroutine(FindObjectOfType<CameraShake>().Shake(.1f, .1f));
 
             //GetComponent<MeshRenderer>().enabled = false;
             waitForDestruction -= Time.deltaTime;         
