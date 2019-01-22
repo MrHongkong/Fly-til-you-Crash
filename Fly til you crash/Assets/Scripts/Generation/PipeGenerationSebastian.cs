@@ -2,57 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Created by Sebastian Nilsson
+/// </summary>
+
 public class PipeGenerationSebastian : MonoBehaviour
 {
     [SerializeField] private GameObject[] pipePrefabs;
+    [SerializeField] private GameObject startPrefabPiece;
     private List<PipeObjectSebastian> pipes = new List<PipeObjectSebastian>();
-    private GameObject bannedPipe;
-    private Vector3 startPos = new Vector3(0, 0, 0);
-    int index = 0, totalPipes = 0;
+    int prefabIndex = 0;
     void Start()
     {
-        for (int i = 0; i < 10; i++)
+        Vector3 startPos = new Vector3(0, 0, 0);
+        for (int i = 0; i < 1; i++)
         {
-            GeneratePipe();
+            pipes.Add(Instantiate<GameObject>(pipePrefabs[0], startPos, pipePrefabs[0].transform.rotation).GetComponent<PipeObjectSebastian>());
+            startPos = pipes[pipes.Count - 1].endTransPos.position;
         }
     }
-    void Update()
+    internal void GeneratePipe(Transform startTransform)
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        prefabIndex = (int)Random.Range(0, pipePrefabs.Length);
+        pipes.Add(Instantiate<GameObject>(pipePrefabs[prefabIndex], startTransform.position, pipePrefabs[prefabIndex].transform.rotation).GetComponent<PipeObjectSebastian>());
+        pipes[pipes.Count - 1].transform.rotation = startTransform.rotation;
+        if (pipes[pipes.Count - 1].typeOfPipe != PipeObjectSebastian.PipeType.straight)
         {
-            GeneratePipe();
-            if (pipes.Count > 10)
-            {
-                DestroyPipe();
-            }
+            PipeRotation();
         }
-        if(Input.GetKeyDown(KeyCode.R))
+        if (pipes.Count > 10)
         {
-            Debug.Log("Pipe: " + totalPipes + "/n" + "Rotation: " + pipes[pipes.Count - 1].transform.rotation);
+            DestroyPipe();
         }
     }
-    void GeneratePipe()
+    void PipeRotation()
     {
-        totalPipes++;
-        index = (int)Random.Range(0, pipePrefabs.Length);
-        if(pipes.Count > 0)
-            startPos -= pipes[pipes.Count - 1].GetEndPosition();
-        pipes.Add(Instantiate<GameObject>(pipePrefabs[index], startPos, pipePrefabs[index].transform.rotation).GetComponent<PipeObjectSebastian>());
-        if (pipes.Count >= 2)
-        {
-            pipes[pipes.Count - 1].transform.rotation = pipes[pipes.Count - 2].endTransforms[0].rotation;
-        }
-        if (pipes.Count >= 2 && pipes[pipes.Count - 1].typeOfPipe == PipeObjectSebastian.PipeType.curve)
-        {
-            CurveRotation();
-        }
-    }
-    void CurveRotation()
-    {
-        Vector3 rotation1 = new Vector3();
-        Vector3 rotationAxis = pipes[pipes.Count - 2].endTransforms[0].position - pipes[pipes.Count - 2].midPoint.position;
-
-        pipes[pipes.Count - 1].transform.RotateAroundLocal(rotationAxis, Random.Range(0, 360));
+        Vector3 rotationAxis = pipes[pipes.Count - 1].transform.position - pipes[pipes.Count - 1].midPoint.position;
+        pipes[pipes.Count - 1].transform.Rotate(rotationAxis, Random.Range(0, 360), Space.World);
     }
     void DestroyPipe()
     {
