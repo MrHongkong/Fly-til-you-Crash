@@ -15,6 +15,7 @@ public class OnCollision : MonoBehaviour
 
     public void Start()
     {
+        //GameOverUI.SetActive(false);
         //rgb = GetComponent<Rigidbody>();
         speed = FindObjectOfType<Acceleration>();
 
@@ -39,8 +40,8 @@ public class OnCollision : MonoBehaviour
 
                 if (isDead == true)
                 {
+                    //GameOverUI.SetActive(true);
                     reloadScene = true;
-
                     ReloadGame();
                 }
 
