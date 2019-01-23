@@ -8,14 +8,15 @@ using UnityEngine;
 
 public class PipeTrigger : MonoBehaviour
 {
-    private PipeGenerationSebastian generation;
+    private bool hasTrigged;
+    internal PipeGenerationSebastian generation;
     [SerializeField]private Transform endPoint;
-    private void Start()
-    {
-        generation = GameObject.Find("PipeGenerator").GetComponent<PipeGenerationSebastian>();
-    }
     private void OnTriggerEnter(Collider other)
     {
-        generation.GeneratePipe(endPoint);
+        if (!hasTrigged)
+        {
+            generation.GeneratePipe(endPoint);
+            hasTrigged = true;
+        }
     }
 }
