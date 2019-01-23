@@ -3,32 +3,33 @@
 public class Acceleration : MonoBehaviour
 {
     //Made by Philip Åkerblom GP18 Yrgo
-
-    private float maxSpeed = 1000f;
-    private float timeZeroToMax = 2000f;
-    private float accelRatePerSec;
     public float forwardVelocity;
-
+    public float secondsToNextSpeedIncrease = 60;
+    float nextSpeedIncrease;
     Rigidbody rb;
 
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        accelRatePerSec = maxSpeed / timeZeroToMax;
-        //forwardVelocity = 20f;
+        nextSpeedIncrease = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        forwardVelocity += accelRatePerSec * Time.deltaTime;
-        forwardVelocity = Mathf.Min (forwardVelocity, maxSpeed);
-        //Debug.Log("Acceleration: " + forwardVelocity);
+        SpeedIncrease();
+        rb.velocity = transform.forward * forwardVelocity;
+        Debug.Log(rb.velocity);
     }
 
-    void LateUpdate()
+    void SpeedIncrease()
     {
-        rb.velocity = transform.forward * forwardVelocity;   
+        if (Time.time > nextSpeedIncrease)
+        {
+            forwardVelocity += 10;
+            nextSpeedIncrease = Time.time + secondsToNextSpeedIncrease;
+            Debug.Log(nextSpeedIncrease);
+        }
     }
 }

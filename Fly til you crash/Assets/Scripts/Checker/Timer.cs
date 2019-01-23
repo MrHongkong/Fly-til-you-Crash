@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour
 
     void UpdateSpeedCount()
     {
-        speedCount.text = "Speed: " + accelerationCount.ToString("f0");
+        speedCount.text = "Score: " + accelerationCount.ToString("f0");
         //Debug.Log("Speed: " + accelerationCount);
     }
 }

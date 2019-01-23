@@ -8898,6 +8898,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 67571162, guid: 55d02729b68b00a42a72dbcde3ed61c4, type: 3}
+      propertyPath: forwardVelocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 67571162, guid: 55d02729b68b00a42a72dbcde3ed61c4, type: 3}
+      propertyPath: secondsToNextSpeedIncrease
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55d02729b68b00a42a72dbcde3ed61c4, type: 3}
 --- !u!20 &1268001458 stripped
@@ -9072,7 +9080,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Speed:'
+  m_Text: 'Score:'
 --- !u!222 &1481158763
 CanvasRenderer:
   m_ObjectHideFlags: 0
