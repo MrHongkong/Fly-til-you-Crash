@@ -19,13 +19,15 @@ public class PipeGenerationSebastian : MonoBehaviour
         {
             pipes.Add(Instantiate<GameObject>(pipePrefabs[0], startPos, pipePrefabs[0].transform.rotation).GetComponent<PipeObjectSebastian>());
             startPos = pipes[pipes.Count - 1].endTransPos.position;
+            pipes[pipes.Count - 1].GetComponentInChildren<PipeTrigger>().generation = GetComponent<PipeGenerationSebastian>();
         }
     }
     internal void GeneratePipe(Transform startTransform)
     {
         prefabIndex = (int)Random.Range(0, pipePrefabs.Length);
-        pipes.Add(Instantiate<GameObject>(pipePrefabs[prefabIndex], startTransform.position, startTransform.rotation).GetComponent<PipeObjectSebastian>());
-        //pipes[pipes.Count - 1].transform.rotation = startTransform.rotation;
+        pipes.Add(Instantiate<GameObject>(pipePrefabs[prefabIndex], startTransform.position, 
+            startTransform.rotation).GetComponent<PipeObjectSebastian>());
+        pipes[pipes.Count - 1].GetComponentInChildren<PipeTrigger>().generation = GetComponent<PipeGenerationSebastian>();
         if (pipes[pipes.Count - 1].typeOfPipe != PipeObjectSebastian.PipeType.straight)
         {
             PipeRotation();
