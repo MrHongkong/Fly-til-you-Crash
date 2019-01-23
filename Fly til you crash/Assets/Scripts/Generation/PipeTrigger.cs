@@ -9,12 +9,13 @@ using UnityEngine;
 public class PipeTrigger : MonoBehaviour
 {
     private PipeGenerationSebastian generation;
+    [SerializeField]private Transform endPoint;
     private void Start()
     {
         generation = GameObject.Find("PipeGenerator").GetComponent<PipeGenerationSebastian>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        generation.GeneratePipe(transform);
+        generation.GeneratePipe(endPoint);
     }
 }

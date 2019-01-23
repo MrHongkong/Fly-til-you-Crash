@@ -16,7 +16,7 @@ public class Acceleration : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         accelRatePerSec = maxSpeed / timeZeroToMax;
-        forwardVelocity = 20f;
+        //forwardVelocity = 20f;
     }
 
     // Update is called once per frame
