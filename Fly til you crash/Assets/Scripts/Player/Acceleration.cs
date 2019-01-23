@@ -4,6 +4,7 @@ public class Acceleration : MonoBehaviour
 {
     //Made by Philip Åkerblom GP18 Yrgo
     public float forwardVelocity;
+    public float speedIncrease;
     public float secondsToNextSpeedIncrease;
     float nextSpeedIncrease;
     Rigidbody rb;
@@ -26,7 +27,7 @@ public class Acceleration : MonoBehaviour
     {
         if (Time.time > nextSpeedIncrease)
         {
-            forwardVelocity += 10;
+            forwardVelocity += speedIncrease;
             nextSpeedIncrease = Time.time + secondsToNextSpeedIncrease;
         }
     }
