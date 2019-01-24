@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Script creator:   Oscar Oders - Last Updated: 2019-01-24
-//Adjustments: 
-
-//Known problems:   There is a problem with the way that the boxGrid centerPoints are calculated, 
-//                  in that: if a curved object is spawned the rotation of it might make it go outside the box grid.
-//                  a soulution may be to define where the outer most point of the curve is 
-//                  and build between startPoint and endPoint via the outer most point of the curve.
+/// <summary>
+/// Script creator:   Oscar Oders - Last Updated: 2019-01-24
+/// Adjustments:      Sebastian Nilsson 2019-01-24
+///
+/// Known problems:   There is a problem with the way that the boxGrid centerPoints are calculated, 
+///                  in that: if a curved object is spawned the rotation of it might make it go outside the box grid.
+///                  a soulution may be to define where the outer most point of the curve is 
+///                  and build between startPoint and endPoint via the outer most point of the curve.
+///                  BoxGrid problem causes Randomizer() to return the curved object number when a curved object is already the previous object.
+/// </summary>
 
 public class TunnelGenarator : MonoBehaviour {
 
+    [SerializeField] private GameObject startTunnelPrefab;
     [SerializeField] private GameObject[] tunnelPrefabs;
     private GameObject[] tunnelPieces;
     private List<BoxGrid> boxGrid;
     private TunnelPieces currentObject, previousObject;
     private Vector3 startOrigin = new Vector3(0, 0, 0);
-    private Vector3[] tunnelVectors;
     private int[] gridArraySizeForRemovingBoxGridsFromList;
     private int numberOfTunnelObjects = 6;
     private int arrayIndex, previousRandomNumber;
@@ -26,16 +29,16 @@ public class TunnelGenarator : MonoBehaviour {
     private void Start() {
 
         tunnelPieces = new GameObject[numberOfTunnelObjects];
-        tunnelVectors = new Vector3[numberOfTunnelObjects];
         gridArraySizeForRemovingBoxGridsFromList = new int[numberOfTunnelObjects];
         boxGrid = new List<BoxGrid>();
 
-        tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[arrayIndex], startOrigin, tunnelPrefabs[0].transform.rotation);
+        tunnelPieces[arrayIndex] = Instantiate(startTunnelPrefab, startOrigin, startTunnelPrefab.transform.rotation);
 
         for (int i = 1; i < numberOfTunnelObjects; i++) {
 
             tunnelPieces[i] = Instantiate(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.position, RotationOfTunnel(tunnelPieces[i - 1].GetComponent<TunnelPieces>()));
             currentObject = tunnelPieces[i].GetComponent<TunnelPieces>();
+            currentObject.GetComponentInChildren<SpawnOnTrigger>().generator = GetComponent<TunnelGenarator>();
 
             GenerateBoxGrid(i);
         }  
@@ -43,11 +46,11 @@ public class TunnelGenarator : MonoBehaviour {
 
     private void Update() {
         
-        if (Input.GetKey(KeyCode.A) || Input.GetKeyDown(KeyCode.S)) {
+        if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
 
-            GenerateNewTunnelPiece(arrayIndex);
-            GenerateBoxGrid(arrayIndex);
-            IncrementArrayIndex(numberOfTunnelObjects);
+            GenerateNewTunnelPiece();
+            //GenerateBoxGrid(arrayIndex);
+            //IncrementArrayIndex(numberOfTunnelObjects);
         }
     }
 
@@ -58,7 +61,7 @@ public class TunnelGenarator : MonoBehaviour {
     }
 
     // Generates a new tunnel piece at the end of the current tunnel.
-    private void GenerateNewTunnelPiece(int arrayIndex) {
+    internal void GenerateNewTunnelPiece() {
 
         previousObject = currentObject;
 
@@ -78,6 +81,9 @@ public class TunnelGenarator : MonoBehaviour {
                 wayIsClear = (i == boxGrid.Count - 1) ? true : false;
             }
         } while (!wayIsClear);
+
+        GenerateBoxGrid(arrayIndex);
+        IncrementArrayIndex(numberOfTunnelObjects);
     }
 
     //Instantiate new tunnelPices
@@ -90,6 +96,8 @@ public class TunnelGenarator : MonoBehaviour {
         previousObject = (arrayIndex != 0) ? previousObject : tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>();
         tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[randomNumber], previousObject.endPoint.position, RotationOfTunnel(previousObject));
         currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
+        //Try and find a better solution for this GetComponent fiesta!
+        currentObject.GetComponentInChildren<SpawnOnTrigger>().generator = GetComponent<TunnelGenarator>();
     }
 
     //Returns a random value between 0 and the passed in length. 
@@ -98,9 +106,9 @@ public class TunnelGenarator : MonoBehaviour {
 
         int randomNumber = Random.Range(0, length);
         randomNumber = (randomNumber == previousRandomNumber) ? 0 : randomNumber;
-        randomNumber = (previousRandomNumber == 0) ? Random.Range(0, length) : randomNumber;
+        randomNumber = (previousRandomNumber == 0) ? Random.Range(1, length) : randomNumber;
         previousRandomNumber = randomNumber;
-
+        Debug.Log("PrefabIndex: " + randomNumber);
         return randomNumber;
     }
 

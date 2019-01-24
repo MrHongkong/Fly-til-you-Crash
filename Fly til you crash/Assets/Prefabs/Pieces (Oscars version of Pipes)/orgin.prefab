@@ -43,7 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd078fce48ba36439488b1c8b3133fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTunnelPrefab: {fileID: 4019975653026349171, guid: 516bd3a29f7dfca40943b113a2ee34c3,
+    type: 3}
   tunnelPrefabs:
-  - {fileID: 4427485413413858460, guid: e9badb37b76f11b41873f321d4b03849, type: 3}
-  - {fileID: 6733475749749865512, guid: 66dc323ae27342740ae99fdfe6da97c4, type: 3}
-  - {fileID: 4272859713861756405, guid: 5bfffd6097c52d74681b2767e959db12, type: 3}
+  - {fileID: 687968912203331612, guid: c5e6e8decfeecb14fa08b233aecb729e, type: 3}
+  - {fileID: 6849440160933717280, guid: 3e0fe51a1c6752b47906031b82e387a1, type: 3}
+  - {fileID: 8780951418629932476, guid: 5dbed078c8d3de744bf98178b2366dc6, type: 3}
+  - {fileID: 7995207328356551317, guid: 358b129fad31c5046a7e74f90d92cdfa, type: 3}
