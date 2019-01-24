@@ -10,11 +10,10 @@ public class Timer : MonoBehaviour
 
     float timePassed;
     float currentTime;
-    float accelerationCount = 0.0f;
     float speed = 1;
     float theTime;
     public Text timeCount;
-    public Text speedCount;
+    public Text scoreCount;
     private Acceleration accelerationSpeed;
 
     // Start is called before the first frame update
@@ -32,24 +31,20 @@ public class Timer : MonoBehaviour
     {
         currentTime += Time.deltaTime * speed;
         UpdateTime();
-
-        accelerationCount += accelerationSpeed.forwardVelocity;
-        UpdateSpeedCount();
-
+        UpdateScoreCount(20);
     }
 
     void UpdateTime()
     {
-        string minutes = ((currentTime % 3600) / 60).ToString("00");
+        string minutes = Mathf.Floor((currentTime % 3600) / 60).ToString("00");
         string seconds = (currentTime % 60).ToString("00");
         timeCount.text = "Time: " + minutes + ":" + seconds;
-        //timeCount.text = "Time: " + currentTime.ToString("f1");
-        //Debug.Log("Time: " + currentTime);
     }
 
-    void UpdateSpeedCount()
+    void UpdateScoreCount(float scoreMultiplier)
     {
-        speedCount.text = "Score: " + accelerationCount.ToString("f0");
-        //Debug.Log("Speed: " + accelerationCount);
+        float timePlayed = Time.time;
+        float score = timePlayed * scoreMultiplier;
+        scoreCount.text = "Score: " + score.ToString("f0");
     }
 }

@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 67571157}
   - component: {fileID: 67571158}
   - component: {fileID: 67571162}
-  - component: {fileID: 242028479}
   - component: {fileID: 242028480}
   m_Layer: 0
   m_Name: Player
@@ -129,6 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAxis: 1
+  bankingTorqueAmp: 0.8
+  pitchingTorqueAmp: 0.8
+  dragOnHold: 8
+  dragOffHold: 8
+  exhaustFire: {fileID: 1667278986}
 --- !u!114 &67571162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,19 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardVelocity: 0
---- !u!135 &242028479
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67571155}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.8
-  m_Center: {x: 0, y: 0, z: 0}
+  speedIncrease: 0
+  secondsToNextSpeedIncrease: 0
 --- !u!114 &242028480
 MonoBehaviour:
   m_ObjectHideFlags: 0

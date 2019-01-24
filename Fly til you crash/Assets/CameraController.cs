@@ -33,5 +33,6 @@ public class CameraController : MonoBehaviour
 
         attention = (attention * cameraAttentionBias) + ((player.position + 25f * player.forward) * (1f - cameraAttentionBias));
         Camera.main.transform.LookAt(attention);
+        Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, player.transform.rotation, 2f);
     }
 }
