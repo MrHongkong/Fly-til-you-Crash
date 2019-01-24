@@ -40,11 +40,12 @@ public class Timer : MonoBehaviour
 
     void UpdateTime()
     {
-        string minutes = ((currentTime % 3600) / 60).ToString("00");
+        string minutes = Mathf.Floor((currentTime % 3600)/60).ToString("00");
         string seconds = (currentTime % 60).ToString("00");
         timeCount.text = "Time: " + minutes + ":" + seconds;
         //timeCount.text = "Time: " + currentTime.ToString("f1");
         //Debug.Log("Time: " + currentTime);
+
     }
 
     void UpdateSpeedCount()
