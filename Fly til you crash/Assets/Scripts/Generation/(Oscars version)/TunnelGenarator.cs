@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Script creator: Oscar Oders - Last Updated: 2019-01-24
+//Script creator:   Oscar Oders - Last Updated: 2019-01-24
 //Adjustments: 
+
+//Known problems:   There is a problem with the way that the boxGrid centerPoints are calculated, 
+//                  in that: if a curved object is spawned the rotation of it might make it go outside the box grid.
+//                  a soulution may be to define where the outer most point of the curve is 
+//                  and build between startPoint and endPoint via the outer most point of the curve.
 
 public class TunnelGenarator : MonoBehaviour {
 
@@ -14,7 +19,7 @@ public class TunnelGenarator : MonoBehaviour {
     private Vector3 startOrigin = new Vector3(0, 0, 0);
     private Vector3[] tunnelVectors;
     private int[] gridArraySizeForRemovingBoxGridsFromList;
-    private int numberOfTunnelObjects = 4;
+    private int numberOfTunnelObjects = 6;
     private int arrayIndex, previousRandomNumber;
 
 

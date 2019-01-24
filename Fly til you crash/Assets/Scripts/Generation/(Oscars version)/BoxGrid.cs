@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Script creator: Oscar Oders - Last Updated: 2019-01-24
+//Script creator:   Oscar Oders - Last Updated: 2019-01-24
 //Adjustments: 
+
+//Known problems:   the BoxGridIntersection method sometimes returns true, even if cellCenter is no way near. 
 
 //Class BoxGrid: to use as a tracking of where there already has been generated objects.
 public class BoxGrid {
 
-    internal const float gridSize = 5f;
+    internal const float gridSize = 150f;
     internal Vector3 cellCenter;
     internal BoxFace boxFace;
 
