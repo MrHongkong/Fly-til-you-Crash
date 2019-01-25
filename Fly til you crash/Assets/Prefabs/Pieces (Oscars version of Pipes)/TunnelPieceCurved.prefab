@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8563682759763978643}
   m_Layer: 0
   m_Name: Arch (1)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -3177,7 +3177,7 @@ GameObject:
   - component: {fileID: 1259224300238795490}
   m_Layer: 0
   m_Name: Trigger
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3237,7 +3237,7 @@ GameObject:
   - component: {fileID: 4971596651965508338}
   m_Layer: 0
   m_Name: Arch
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -6396,7 +6396,7 @@ GameObject:
   - component: {fileID: 2008605091146400439}
   m_Layer: 0
   m_Name: End
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6426,7 +6426,7 @@ GameObject:
   - component: {fileID: 2794103244833965859}
   m_Layer: 0
   m_Name: Mid
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6461,7 +6461,7 @@ GameObject:
   - component: {fileID: 617556772532104871}
   m_Layer: 0
   m_Name: Arch (4)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -9625,7 +9625,7 @@ GameObject:
   - component: {fileID: 5496863610329525329}
   m_Layer: 0
   m_Name: Arch (5)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -12789,7 +12789,7 @@ GameObject:
   - component: {fileID: 7774135493193528080}
   m_Layer: 0
   m_Name: Arch (6)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -15953,7 +15953,7 @@ GameObject:
   - component: {fileID: 9103619779358162038}
   m_Layer: 0
   m_Name: Arch (2)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -19113,7 +19113,7 @@ GameObject:
   - component: {fileID: 8832738701992621459}
   m_Layer: 0
   m_Name: TunnelPieceCurved
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19127,7 +19127,7 @@ Transform:
   m_GameObject: {fileID: 7995207328356551317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2818220718812522261}
   - {fileID: 2389628274260275180}
@@ -19172,7 +19172,7 @@ GameObject:
   - component: {fileID: 2621048172477757990}
   m_Layer: 0
   m_Name: Arch (3)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127

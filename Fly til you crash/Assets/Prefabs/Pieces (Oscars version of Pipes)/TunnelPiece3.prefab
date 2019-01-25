@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6394803835706954047}
   m_Layer: 0
   m_Name: Mid
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4701506174872301474}
   m_Layer: 0
   m_Name: OptimizedTree
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 7659233480628155700}
   m_Layer: 0
   m_Name: Arch
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -3320,7 +3320,7 @@ GameObject:
   - component: {fileID: 700641574732054417}
   m_Layer: 0
   m_Name: End
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3351,7 +3351,7 @@ GameObject:
   - component: {fileID: 7042514056993343309}
   m_Layer: 0
   m_Name: TunnelPiece3
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3365,7 +3365,7 @@ Transform:
   m_GameObject: {fileID: 8780951418629932476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4766767588226841031}
   - {fileID: 6789849586803953119}
