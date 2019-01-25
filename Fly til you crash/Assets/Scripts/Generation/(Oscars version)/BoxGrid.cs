@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Script creator:   Oscar Oders - Last Updated: 2019-01-24
-//Adjustments: 
-
-//Known problems:   the BoxGridIntersection method sometimes returns true, even if cellCenter is no way near. 
+/// <summary>
+/// 
+/// Script creator:   Oscar Oders - Last Updated: 2019-01-24
+/// Adjustments:
+/// 
+/// Known problems:   the BoxGridIntersection method sometimes returns true, even if cellCenter is no way near.
+/// 
+/// </summary>
 
 //Class BoxGrid: to use as a tracking of where there already has been generated objects.
 public class BoxGrid {
@@ -21,19 +25,33 @@ public class BoxGrid {
     }
 
     //Checks if the a tunnelpiece is in risk of intersect with the boxGrid.
-    internal bool BoxGridIntersection(TunnelPieces currentObject, Vector3 lineDirection) {
+    internal bool BoxGridIntersection(TunnelPieces currentObject, Line line) {
 
         Vector3 lineOrigo = currentObject.endPoint.position;
 
         float xIntersectMin, xIntersectMax, yIntersectMin, yIntersectMax, zIntersectMin, zIntersectMax;
 
-        xIntersectMin = (this.boxFace.left.x - lineOrigo.x) / lineDirection.x;
-        xIntersectMax = (this.boxFace.right.x - lineOrigo.x) / lineDirection.x;
+        if (line.inverseDirection.x >= 0) { 
 
-        yIntersectMin = (this.boxFace.down.y - lineOrigo.y) / lineDirection.y;
-        yIntersectMax = (this.boxFace.up.y - lineOrigo.y) / lineDirection.y;
+            xIntersectMin = (this.boxFace.left.x - lineOrigo.x) / line.inverseDirection.x;
+            xIntersectMax = (this.boxFace.right.x - lineOrigo.x) / line.inverseDirection.x;
+        } else {
 
-        if (xIntersectMin > yIntersectMax || yIntersectMin > xIntersectMax)
+            xIntersectMin = (this.boxFace.right.x - lineOrigo.x) / line.inverseDirection.x;
+            xIntersectMax = (this.boxFace.left.x - lineOrigo.x) / line.inverseDirection.x;
+        }
+
+        if (line.inverseDirection.y >= 0) {
+
+            yIntersectMin = (this.boxFace.down.y - lineOrigo.y) / line.inverseDirection.y;
+            yIntersectMax = (this.boxFace.up.y - lineOrigo.y) / line.inverseDirection.y;
+        } else {
+
+            yIntersectMin = (this.boxFace.up.y - lineOrigo.y) / line.inverseDirection.y;
+            yIntersectMax = (this.boxFace.down.y - lineOrigo.y) / line.inverseDirection.y;
+        }
+
+        if (xIntersectMin > yIntersectMax || yIntersectMin > xIntersectMax) 
             return false;
 
         if (yIntersectMin > xIntersectMin)
@@ -42,10 +60,17 @@ public class BoxGrid {
         if (yIntersectMax < xIntersectMax)
             xIntersectMax = yIntersectMax;
 
-        zIntersectMin = (this.boxFace.back.z - lineOrigo.z) / lineDirection.z;
-        zIntersectMax = (this.boxFace.forward.z - lineOrigo.z) / lineDirection.z;
+        if (line.inverseDirection.z >= 0) {
 
-        if (xIntersectMin > zIntersectMax || zIntersectMin > xIntersectMax)
+            zIntersectMin = (this.boxFace.back.z - lineOrigo.z) / line.inverseDirection.z;
+            zIntersectMax = (this.boxFace.forward.z - lineOrigo.z) / line.inverseDirection.z;
+        } else {
+
+            zIntersectMin = (this.boxFace.forward.z - lineOrigo.z) / line.inverseDirection.z;
+            zIntersectMax = (this.boxFace.back.z - lineOrigo.z) / line.inverseDirection.z;
+        }
+
+        if (xIntersectMin > zIntersectMax || zIntersectMin > xIntersectMax) 
             return false;
 
         if (zIntersectMin > xIntersectMin)
@@ -53,6 +78,13 @@ public class BoxGrid {
 
         if (zIntersectMax < xIntersectMax)
             xIntersectMax = zIntersectMax;
+
+        float t = xIntersectMin;
+
+        if (t < 0) {
+            t = xIntersectMax;
+            if (t < 0) return false;
+        } 
 
         return true;
     }

@@ -6,6 +6,7 @@ public class Acceleration : MonoBehaviour
     public float forwardVelocity;
     public float speedIncrease;
     public float secondsToNextSpeedIncrease;
+    float fov;
     float nextSpeedIncrease;
     Rigidbody rb;
 
@@ -14,6 +15,7 @@ public class Acceleration : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         nextSpeedIncrease = 0;
+        fov = 60;
     }
 
     // Update is called once per frame
@@ -29,6 +31,12 @@ public class Acceleration : MonoBehaviour
         {
             forwardVelocity += speedIncrease;
             nextSpeedIncrease = Time.time + secondsToNextSpeedIncrease;
+            if(fov < 130)
+            {
+                fov = fov + 10;    
+                Camera.main.fieldOfView = fov;
+                Debug.Log(fov);
+            }
         }
     }
 }
