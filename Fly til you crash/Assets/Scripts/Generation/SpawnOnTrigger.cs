@@ -4,8 +4,14 @@ using UnityEngine;
 
 
 /// <summary>
+/// 
 /// Script creator: Sebastian Nilsson, Oscar Oders 2019-01-24
+/// Adjustments:  
+/// 
+/// Known problems: 
+/// 
 /// </summary>
+
 public class SpawnOnTrigger : MonoBehaviour
 {
     internal TunnelGenarator generator;

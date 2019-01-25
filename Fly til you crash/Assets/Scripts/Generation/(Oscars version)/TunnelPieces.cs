@@ -3,8 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Script creator: Oscar Oders - Last Updated: 2019-01-23
-//Adjustments: 
+/// <summary>
+/// 
+/// Script creator:     Oscar Oders - Last Updated: 2019-01-23
+/// Adjustments:  
+/// 
+/// Known problems: 
+/// 
+/// </summary>
 
 public class TunnelPieces : MonoBehaviour {
 
