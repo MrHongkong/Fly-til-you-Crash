@@ -15,6 +15,7 @@ public class Timer : MonoBehaviour
     public Text timeCount;
     public Text scoreCount;
     private Acceleration accelerationSpeed;
+    public float score;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +50,7 @@ public class Timer : MonoBehaviour
     void UpdateScoreCount(float scoreMultiplier)
     {
         float timePlayed = Time.time;
-        float score = timePlayed * scoreMultiplier;
+        score = timePlayed * scoreMultiplier;
         scoreCount.text = "Score: " + score.ToString("f0");
     }
 }
