@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class DisplayHighscores : MonoBehaviour {
 
+    //Made by Philip Åkerblom GP18 Yrgo
+    //Code from Sebastian Lague
 	public Text[] highscoreFields;
 	Highscores highscoresManager;
 

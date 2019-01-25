@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Highscores : MonoBehaviour {
 
-	const string privateCode = "gP34t5uH1kWaGuTw8kx51gOmQ-8rdCakyNOmII9cX8rg";
+    //Made by Philip Åkerblom GP18 Yrgo
+    //Code from Sebastian Lague
+    const string privateCode = "gP34t5uH1kWaGuTw8kx51gOmQ-8rdCakyNOmII9cX8rg";
 	const string publicCode = "5c4ac7d4b6397e0c24a5d87c";
 	const string webURL = "http://dreamlo.com/lb/";
 

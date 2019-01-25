@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Username : MonoBehaviour
 {
+    //Made by Philip Åkerblom GP18 Yrgo
     public string username = "";
     public float score;
     public GameObject HighscoreUI;
