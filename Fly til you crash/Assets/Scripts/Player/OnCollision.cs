@@ -11,19 +11,18 @@ public class OnCollision : MonoBehaviour
     public bool hasStartedCoroutine = false;
     public float waitForDestruction = 2.0f;
     public bool reloadScene = false;
-    private Acceleration speed;
     Username user;
+    public SpeedController speedController;
 
     public void Start()
     {
-        speed = FindObjectOfType<Acceleration>();
         user = FindObjectOfType<Username>();
         user.transform.parent.gameObject.SetActive(false);
-
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log(other);
         if (other.gameObject.tag == "Object" && isDead != true)
         {
             if (hasStartedCoroutine == false)
@@ -46,7 +45,7 @@ public class OnCollision : MonoBehaviour
         {
             waitForDestruction -= Time.deltaTime;
             StartCoroutine(FindObjectOfType<CameraShake>().Shake(.1f, .1f));
-            speed.forwardVelocity = 0;
+
             Debug.Log("SHAKING");
             yield return null;
         }
@@ -57,7 +56,8 @@ public class OnCollision : MonoBehaviour
 
             if (isDead == true)
             {
-
+                Debug.Log(isDead);
+                speedController.SetSpeed(Vector3.zero);
                 Time.timeScale = 0;
 
                 if (user == null)
