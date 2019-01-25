@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Script creator:   Oscar Oders - Last Updated: 2019-01-24
+/// 
+/// Script creator:   Oscar Oders - Last Updated: 2019-01-25
 /// Adjustments:      Sebastian Nilsson 2019-01-24
 ///
 /// Known problems:   There is a problem with the way that the boxGrid centerPoints are calculated, 
-///                  in that: if a curved object is spawned the rotation of it might make it go outside the box grid.
-///                  a soulution may be to define where the outer most point of the curve is 
-///                  and build between startPoint and endPoint via the outer most point of the curve.
-///                  BoxGrid problem causes Randomizer() to return the curved object number when a curved object is already the previous object.
+///                   in that: if a curved object is spawned the rotation of it might make it go outside the box grid.
+///                   a soulution may be to define where the outer most point of the curve is 
+///                   and build between startPoint and endPoint via the outer most point of the curve.
+///                   BoxGrid problem causes Randomizer() to return the curved object number when a curved object is already the previous object.
+///                   
 /// </summary>
 
 public class TunnelGenarator : MonoBehaviour {
@@ -18,17 +20,19 @@ public class TunnelGenarator : MonoBehaviour {
     [SerializeField] private GameObject startTunnelPrefab;
     [SerializeField] private GameObject[] tunnelPrefabs;
     private GameObject[] tunnelPieces;
+    private GameObject[] debugPieces;
     private List<BoxGrid> boxGrid;
     private TunnelPieces currentObject, previousObject;
     private Vector3 startOrigin = new Vector3(0, 0, 0);
     private int[] gridArraySizeForRemovingBoxGridsFromList;
-    private int numberOfTunnelObjects = 6;
+    private int numberOfTunnelObjects = 20;
     private int arrayIndex, previousRandomNumber;
 
 
     private void Start() {
 
         tunnelPieces = new GameObject[numberOfTunnelObjects];
+        debugPieces = new GameObject[numberOfTunnelObjects];
         gridArraySizeForRemovingBoxGridsFromList = new int[numberOfTunnelObjects];
         boxGrid = new List<BoxGrid>();
 
@@ -64,7 +68,7 @@ public class TunnelGenarator : MonoBehaviour {
     internal void GenerateNewTunnelPiece() {
 
         previousObject = currentObject;
-
+        Destroy(tunnelPieces[arrayIndex]);
         TunnelPieceInstatiation();
 
         bool wayIsClear = false;
@@ -72,7 +76,7 @@ public class TunnelGenarator : MonoBehaviour {
 
             for (int i = 0; i < boxGrid.Count; i++) {
 
-                if (boxGrid[i].BoxGridIntersection(currentObject, TunnelsDirection(currentObject))) {
+                if (boxGrid[i].BoxGridIntersection(currentObject, new Line(TunnelsDirection(currentObject)))) {
 
                     TunnelPieceInstatiation();
                     break;
@@ -91,7 +95,7 @@ public class TunnelGenarator : MonoBehaviour {
 
         int randomNumber = Randomizer(tunnelPrefabs.Length);
 
-        Destroy(tunnelPieces[arrayIndex]);
+        //Destroy(tunnelPieces[arrayIndex]);
 
         previousObject = (arrayIndex != 0) ? previousObject : tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>();
         tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[randomNumber], previousObject.endPoint.position, RotationOfTunnel(previousObject));
@@ -108,7 +112,7 @@ public class TunnelGenarator : MonoBehaviour {
         randomNumber = (randomNumber == previousRandomNumber) ? 0 : randomNumber;
         randomNumber = (previousRandomNumber == 0) ? Random.Range(1, length) : randomNumber;
         previousRandomNumber = randomNumber;
-        Debug.Log("PrefabIndex: " + randomNumber);
+        
         return randomNumber;
     }
 
@@ -197,5 +201,16 @@ public class TunnelGenarator : MonoBehaviour {
                 Gizmos.DrawCube(cell.cellCenter, new Vector3(BoxGrid.gridSize, BoxGrid.gridSize, BoxGrid.gridSize));
             }
         }   
+    }
+}
+
+public class Line {
+
+    internal Vector3 direction, inverseDirection;
+
+    public Line(Vector3 _direction) {
+
+        direction = _direction;
+        inverseDirection = new Vector3(1 / _direction.x, 1 / _direction.y, 1 / _direction.z);
     }
 }
