@@ -38,12 +38,11 @@ public class TunnelGenarator : MonoBehaviour {
 
         tunnelPieces[arrayIndex] = Instantiate(startTunnelPrefab, startOrigin, startTunnelPrefab.transform.rotation);
 
+        SpawnOnTrigger.generator = GetComponent<TunnelGenarator>();
         for (int i = 1; i < numberOfTunnelObjects; i++) {
 
             tunnelPieces[i] = Instantiate(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.position, RotationOfTunnel(tunnelPieces[i - 1].GetComponent<TunnelPieces>()));
             currentObject = tunnelPieces[i].GetComponent<TunnelPieces>();
-            currentObject.GetComponentInChildren<SpawnOnTrigger>().generator = GetComponent<TunnelGenarator>();
-
             GenerateBoxGrid(i);
         }  
     }
@@ -53,8 +52,6 @@ public class TunnelGenarator : MonoBehaviour {
         if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
 
             GenerateNewTunnelPiece();
-            //GenerateBoxGrid(arrayIndex);
-            //IncrementArrayIndex(numberOfTunnelObjects);
         }
     }
 
@@ -100,8 +97,6 @@ public class TunnelGenarator : MonoBehaviour {
         previousObject = (arrayIndex != 0) ? previousObject : tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>();
         tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[randomNumber], previousObject.endPoint.position, RotationOfTunnel(previousObject));
         currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
-        //Try and find a better solution for this GetComponent fiesta!
-        currentObject.GetComponentInChildren<SpawnOnTrigger>().generator = GetComponent<TunnelGenarator>();
     }
 
     //Returns a random value between 0 and the passed in length. 
