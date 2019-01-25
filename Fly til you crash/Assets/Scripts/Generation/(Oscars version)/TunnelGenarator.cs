@@ -65,7 +65,7 @@ public class TunnelGenarator : MonoBehaviour {
     internal void GenerateNewTunnelPiece() {
 
         previousObject = currentObject;
-        Destroy(tunnelPieces[arrayIndex]);
+
         TunnelPieceInstatiation();
 
         bool wayIsClear = false;
@@ -92,7 +92,7 @@ public class TunnelGenarator : MonoBehaviour {
 
         int randomNumber = Randomizer(tunnelPrefabs.Length);
 
-        //Destroy(tunnelPieces[arrayIndex]);
+        Destroy(tunnelPieces[arrayIndex]);
 
         previousObject = (arrayIndex != 0) ? previousObject : tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>();
         tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[randomNumber], previousObject.endPoint.position, RotationOfTunnel(previousObject));
