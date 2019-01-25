@@ -11,16 +11,12 @@ public class CameraFollow : MonoBehaviour {
 
     [SerializeField]
     private Space offsetPositionSpace = Space.Self;
+    float nextInc;
 
-    float fov;
     
-    private void Start()
-    {
-        fov = 60;
-    }
+
     private void LateUpdate()
     {
-        FakeSpeed();
         Refresh();
     }
 
@@ -34,24 +30,7 @@ public class CameraFollow : MonoBehaviour {
         }
         transform.position = target.TransformPoint(offsetPosition);
         Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 5f * Time.deltaTime);
-        
-    }
+        //Camera.main.transform.LookAt(target, target.up);
 
-    public void FakeSpeed()
-    {
-        float nextInc = 0;
-        Debug.Log("FoV " + fov + " nextInc " + nextInc + " Time " + Time.time);
-        Debug.Log(Camera.main.fieldOfView);
-        if (Time.time < nextInc)
-        {
-            nextInc = Time.time + 3;
-            if (fov < 120 && Time.time < nextInc)
-            {
-                Camera.main.fieldOfView = fov;
-                fov++;
-                Debug.Log(Camera.main.fieldOfView);
-            }
-        
-        } 
     }
 }

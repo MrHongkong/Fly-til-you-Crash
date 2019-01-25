@@ -383,11 +383,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
         type: 3}
+      propertyPath: speedCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
       propertyPath: MaxSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999505504855034381, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[0].value
+      value: 0.0038146973
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eab92d79ae13cd47b4de58bfd35c34a, type: 3}
+--- !u!1 &1706663290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3743981960364822946, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 2102942330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1706663291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706663290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ef9825ae241bb44b6e0003e74c31e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1332147502}
+  offsetPosition: {x: 0, y: 1.5, z: -3}
+  offsetPositionSpace: 1
 --- !u!1001 &1945446837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -589,5 +660,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1332147502}
+    - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7cfae0b0001c4e439fe6e6e974de4ea, type: 3}

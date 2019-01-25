@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class SpeedController : MonoBehaviour
 {
-    float constSpeed = 20;
-    float AccelerationSpeed = 0.02f;
-    float secondsToSpeedIncrease;
-    float e = 2.7182818284590452353602874713527f;
-    float speed;
+    [SerializeField]
+    AnimationCurve speedCurve;
     Rigidbody rb;
 
     void Start()
@@ -18,13 +15,10 @@ public class SpeedController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Time.time > secondsToSpeedIncrease && Time.time < 300)
-        {
-            secondsToSpeedIncrease = Time.time + 1;
-            speed = Mathf.Pow((AccelerationSpeed * Time.time), e);
-        }
-        float float_velocity = constSpeed + speed;
-        Camera.main.fieldOfView = Mathf.Clamp(float_velocity, 80f, 120f);
+        float float_velocity = speedCurve.Evaluate(Time.time);
         rb.velocity = float_velocity * transform.forward;
     }
 }
+        
+        
+

@@ -8,6 +8,5 @@ public class AirFlowParticels : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
     }
 }
