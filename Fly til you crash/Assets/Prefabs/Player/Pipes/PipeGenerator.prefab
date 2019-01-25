@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1865106706554045569}
   m_Layer: 0
   m_Name: PipeGenerator
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,3 +46,4 @@ MonoBehaviour:
   pipePrefabs:
   - {fileID: 8057605486402547132, guid: 3ad9136b67a1daf41a82d78f3f0a07c5, type: 3}
   - {fileID: 5888430746388583901, guid: 8b9a3d8b240611e45a80637e94203322, type: 3}
+  startPrefabPiece: {fileID: 0}

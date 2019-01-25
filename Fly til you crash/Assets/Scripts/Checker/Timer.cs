@@ -11,7 +11,9 @@ public class Timer : MonoBehaviour
     float timePassed;
     float currentTime;
     float speed = 1;
-    float theTime;
+    public float theTime;
+    public float scoreMultiplier;
+    public float timePlayed;
     public Text timeCount;
     public Text scoreCount;
     private Acceleration accelerationSpeed;
@@ -49,7 +51,7 @@ public class Timer : MonoBehaviour
 
     void UpdateScoreCount(float scoreMultiplier)
     {
-        float timePlayed = Time.time;
+        timePlayed = Time.time;
         score = timePlayed * scoreMultiplier;
         scoreCount.text = "Score: " + score.ToString("f0");
     }

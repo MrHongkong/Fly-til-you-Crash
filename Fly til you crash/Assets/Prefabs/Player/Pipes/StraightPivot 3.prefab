@@ -3233,8 +3233,8 @@ GameObject:
   - component: {fileID: 4636718909097415227}
   - component: {fileID: 5763175642811544742}
   m_Layer: 0
-  m_Name: StraightPivot
-  m_TagString: Untagged
+  m_Name: StraightPivot 3
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

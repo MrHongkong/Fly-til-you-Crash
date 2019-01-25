@@ -7,23 +7,44 @@ public class Username : MonoBehaviour
 {
     public string username = "";
     public float score;
+    public GameObject HighscoreUI;
+    public GameObject UserInputUI;
     Timer timer;
+    OnCollision collision;
 
     void Start()
     {
+        HighscoreUI.SetActive(false);
+        UserInputUI.SetActive(true);
         timer = FindObjectOfType<Timer>();
+        collision = FindObjectOfType<OnCollision>();
+
     }
 
     void Update()
     {
         score = timer.score;
+
     }
 
     public void OnClick()
     {
         username = GetComponent<InputField>().text;
-        Debug.Log("" + username);
+        HighscoreUI.SetActive(true);
+        UserInputUI.SetActive(false);
         Highscores.AddNewHighscore(username, (int)score);
+    }
+
+    public void OnClickRestart()
+    {
+        collision.ReloadGame();
+        HighscoreUI.SetActive(false);
+        UserInputUI.SetActive(false);
+        score = timer.score = 0;
+        score = timer.timePlayed = 0;
+        score = timer.scoreMultiplier = 0;
+        score = timer.theTime = 0;
+        Time.timeScale = 1;
     }
 
 }

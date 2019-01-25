@@ -7,53 +7,83 @@ public class OnCollision : MonoBehaviour
 {
     //Made by Philip Åkerblom GP18 Yrgo
 
-    bool isDead = false;
-    float waitForDestruction = 2.0f;
-    bool reloadScene = false;
+    public bool isDead = false;
+    public bool hasStartedCoroutine = false;
+    public float waitForDestruction = 2.0f;
+    public bool reloadScene = false;
     private Acceleration speed;
-    //Rigidbody rgb;
+    Username user;
 
     public void Start()
     {
-        //GameOverUI.SetActive(false);
-        //rgb = GetComponent<Rigidbody>();
         speed = FindObjectOfType<Acceleration>();
+        user = FindObjectOfType<Username>();
+        user.transform.parent.gameObject.SetActive(false);
 
     }
 
-    private void OnCollisionStay(Collision other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Object" && isDead != true)
         {
-            StartCoroutine(FindObjectOfType<CameraShake>().Shake(.1f, .1f));
-
-            //GetComponent<MeshRenderer>().enabled = false;
-            waitForDestruction -= Time.deltaTime;         
-            Debug.Log("CountDown: " + waitForDestruction);
-
-
-            speed.forwardVelocity = 0;
-
-            if (waitForDestruction <= 0.0f)
+            if (hasStartedCoroutine == false)
             {
-                isDead = true;
+                StartCoroutine(WaitForDeath());
+                hasStartedCoroutine = true;    
+            }
+            else
+            {
+                
+            }
 
-                if (isDead == true)
+        }
+
+    }
+
+    public IEnumerator WaitForDeath()
+    {
+        while(waitForDestruction > 0.0f)
+        {
+            waitForDestruction -= Time.deltaTime;
+            StartCoroutine(FindObjectOfType<CameraShake>().Shake(.1f, .1f));
+            speed.forwardVelocity = 0;
+            Debug.Log("SHAKING");
+            yield return null;
+        }
+
+        if (waitForDestruction <= 0.0f)
+        {
+            isDead = true;
+
+            if (isDead == true)
+            {
+
+                Time.timeScale = 0;
+
+                if (user == null)
                 {
-                    //GameOverUI.SetActive(true);
-                    reloadScene = true;
-                    ReloadGame();
+                    Debug.LogError("ERROR: user is null");
                 }
-
+                else if (user.UserInputUI == null)
+                {
+                    Debug.LogError("ERROR: user.UserInputUI is null");
+                }
                 else
                 {
-                    Debug.Log("CountDown: " + waitForDestruction);
-                    Debug.Log("Dead? " + isDead);
-                    reloadScene = false;
-                    isDead = false;
-                    waitForDestruction = 2.0f;
+                    user.UserInputUI.SetActive(true);
                 }
+                reloadScene = true;
             }
+            else
+            {
+
+                Debug.Log("CountDown: " + waitForDestruction);
+                Debug.Log("Dead? " + isDead);
+                reloadScene = false;
+                isDead = false;
+                waitForDestruction = 2.0f;
+            }
+
         }
 
     }
@@ -61,7 +91,8 @@ public class OnCollision : MonoBehaviour
     public void ReloadGame()
     {
         if (reloadScene == true)
-        {     
+        {
+
             SceneManager.LoadScene("Level 1");
         }
     }
