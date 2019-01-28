@@ -110,5 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   fov: 0
+  distanceInfrontOfPlayer: 10
+  distanceBehindPlayer: 4
+  distanceAbovePlayer: 4
   cameraBias: 0.96
   cameraAttentionBias: 0.94

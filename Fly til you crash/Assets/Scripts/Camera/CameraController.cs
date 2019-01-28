@@ -8,12 +8,9 @@ public class CameraController : MonoBehaviour
     public Transform player;
     public float fov;
     
-    [HideInInspector]
-    public float distanceInfrontOfPlayer = 5;
-    [HideInInspector]
-    public float distanceBehindPlayer = 10;
-    [HideInInspector]
-    public float distanceAbovePlayer = 3;
+    public float distanceInfrontOfPlayer;
+    public float distanceBehindPlayer;
+    public float distanceAbovePlayer;
 
     [Range(0.01f, 0.99f)]
     public float cameraBias;
