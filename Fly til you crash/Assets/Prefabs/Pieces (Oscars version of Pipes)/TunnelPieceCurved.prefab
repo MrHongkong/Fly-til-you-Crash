@@ -6426,7 +6426,7 @@ GameObject:
   - component: {fileID: 2794103244833965859}
   m_Layer: 0
   m_Name: Mid
-  m_TagString: Object
+  m_TagString: midPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19113,7 +19113,7 @@ GameObject:
   - component: {fileID: 8832738701992621459}
   m_Layer: 0
   m_Name: TunnelPieceCurved
-  m_TagString: Object
+  m_TagString: EndPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
