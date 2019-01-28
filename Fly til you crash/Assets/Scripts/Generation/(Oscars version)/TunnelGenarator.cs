@@ -152,7 +152,8 @@ public class TunnelGenarator : MonoBehaviour {
 
         List<Transform> taggedChildren = new List<Transform>();
 
-        foreach (Transform child in parent) {
+        for(int i=0; i < parent.childCount; i++) {
+            Transform child = parent.GetChild(i);
 
             if (child.parent.CompareTag(tagName)) {
 
