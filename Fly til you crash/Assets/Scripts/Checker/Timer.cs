@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
 
     void UpdateScoreCount(float scoreMultiplier)
     {
-        timePlayed = Time.time;
+        timePlayed = Time.timeSinceLevelLoad;
         score = timePlayed * scoreMultiplier;
         scoreCount.text = "Score: " + score.ToString("f0");
     }
