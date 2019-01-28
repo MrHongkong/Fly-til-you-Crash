@@ -312,7 +312,7 @@ PrefabInstance:
     - target: {fileID: 5829188408936804654, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5829188408936804654, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
         type: 3}
@@ -509,6 +509,11 @@ PrefabInstance:
       propertyPath: speedCurve.m_Curve.Array.data[5].value
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 5829188408936804652, guid: 0eab92d79ae13cd47b4de58bfd35c34a,
+        type: 3}
+      propertyPath: pitchingTorqueAmp
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eab92d79ae13cd47b4de58bfd35c34a, type: 3}
 --- !u!1 &1807422700
@@ -682,6 +687,16 @@ PrefabInstance:
       propertyPath: UserInputUI
       value: 
       objectReference: {fileID: 1863849295}
+    - target: {fileID: 4789604269612498038, guid: 7bd1c6e8a341347499768f2d79e0d598,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 356925384758188788, guid: 7bd1c6e8a341347499768f2d79e0d598,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5992554654620087241, guid: 7bd1c6e8a341347499768f2d79e0d598,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -792,11 +807,6 @@ PrefabInstance:
       propertyPath: scoreCount
       value: 
       objectReference: {fileID: 734205527}
-    - target: {fileID: 4789604269612498038, guid: 7bd1c6e8a341347499768f2d79e0d598,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9077620374093397200, guid: 7bd1c6e8a341347499768f2d79e0d598,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -917,20 +927,15 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 356925384758188788, guid: 7bd1c6e8a341347499768f2d79e0d598,
+    - target: {fileID: 8481422791050521048, guid: 7bd1c6e8a341347499768f2d79e0d598,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_CharacterLimit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7220137089646376567, guid: 7bd1c6e8a341347499768f2d79e0d598,
         type: 3}
       propertyPath: m_Name
       value: Restart
-      objectReference: {fileID: 0}
-    - target: {fileID: 8481422791050521048, guid: 7bd1c6e8a341347499768f2d79e0d598,
-        type: 3}
-      propertyPath: m_CharacterLimit
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6919070888260997025, guid: 7bd1c6e8a341347499768f2d79e0d598,
         type: 3}
