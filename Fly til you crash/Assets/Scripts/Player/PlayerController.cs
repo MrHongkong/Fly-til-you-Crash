@@ -33,16 +33,16 @@ public class PlayerController : MonoBehaviour
             rb.angularDrag = dragOffHold;
 
         //Banking controls, turning turning left and right on Z axis
-        rb.AddTorque(Input.GetAxis("Horizontal") * transform.forward * -0.5f * bankingTorqueAmp);
+        rb.AddTorque(Input.GetAxisRaw("Yaw") * transform.forward * -0.5f * bankingTorqueAmp);
 
         //Pitch controls, turning the nose up and down
         rb.AddTorque(Input.GetAxis("Vertical") * transform.right * yAxis * pitchingTorqueAmp);
 
         rb.velocity *= 0.6f;
 
-        if (Mathf.Abs(Input.GetAxisRaw("Yaw")) > 0.1f)
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.1f)
         {
-            rb.AddTorque(transform.up * Input.GetAxisRaw("Yaw") * 75f * Time.deltaTime);
+            rb.AddTorque(transform.up * Input.GetAxisRaw("Horizontal") * 75f * Time.deltaTime);
         }
     }
 
