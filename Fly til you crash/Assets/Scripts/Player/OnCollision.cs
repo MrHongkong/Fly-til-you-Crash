@@ -90,7 +90,7 @@ public class OnCollision : MonoBehaviour
         if (reloadScene == true)
         {
 
-            SceneManager.LoadScene("Level 1");
+            SceneManager.LoadScene("MVP");
         }
     }
 
