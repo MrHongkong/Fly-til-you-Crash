@@ -65,7 +65,6 @@ public class BoxGrid {
             if (t < 0) return false;
         }
 
-        Debug.Log("intersects");
         return true;
     }
 
