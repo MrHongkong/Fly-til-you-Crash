@@ -18,7 +18,7 @@ public class SpeedController : MonoBehaviour
     {
         if (!onCollision.isDead)
         {
-            float float_velocity = speedCurve.Evaluate(Time.time);
+            float float_velocity = speedCurve.Evaluate(Time.timeSinceLevelLoad);
             rb.velocity = float_velocity * transform.forward;
         }
         
