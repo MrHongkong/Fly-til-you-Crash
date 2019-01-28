@@ -38,13 +38,11 @@ public class PlayerController : MonoBehaviour
         //Pitch controls, turning the nose up and down
         rb.AddTorque(Input.GetAxis("Vertical") * transform.right * yAxis * pitchingTorqueAmp);
 
-        rb.velocity *= 0.5f;
+        rb.velocity *= 0.6f;
 
         if (Mathf.Abs(Input.GetAxisRaw("Yaw")) > 0.1f)
         {
-            Vector3 eulerAngles = transform.eulerAngles;
-            eulerAngles.y += Input.GetAxisRaw("Yaw") * 150f * Time.deltaTime;
-            transform.eulerAngles = eulerAngles;
+            rb.AddTorque(transform.up * Input.GetAxisRaw("Yaw") * 75f * Time.deltaTime);
         }
     }
 
