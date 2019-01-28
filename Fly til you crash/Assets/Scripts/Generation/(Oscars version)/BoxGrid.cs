@@ -31,25 +31,11 @@ public class BoxGrid {
 
         float xIntersectMin, xIntersectMax, yIntersectMin, yIntersectMax, zIntersectMin, zIntersectMax;
 
-        if (line.inverseDirection.x >= 0) { 
+        xIntersectMin = (this.boxFace.left.x - lineOrigo.x) / line.inverseDirection.x;
+        xIntersectMax = (this.boxFace.right.x - lineOrigo.x) / line.inverseDirection.x;
 
-            xIntersectMin = (this.boxFace.left.x - lineOrigo.x) / line.inverseDirection.x;
-            xIntersectMax = (this.boxFace.right.x - lineOrigo.x) / line.inverseDirection.x;
-        } else {
-
-            xIntersectMin = (this.boxFace.right.x - lineOrigo.x) / line.inverseDirection.x;
-            xIntersectMax = (this.boxFace.left.x - lineOrigo.x) / line.inverseDirection.x;
-        }
-
-        if (line.inverseDirection.y >= 0) {
-
-            yIntersectMin = (this.boxFace.down.y - lineOrigo.y) / line.inverseDirection.y;
-            yIntersectMax = (this.boxFace.up.y - lineOrigo.y) / line.inverseDirection.y;
-        } else {
-
-            yIntersectMin = (this.boxFace.up.y - lineOrigo.y) / line.inverseDirection.y;
-            yIntersectMax = (this.boxFace.down.y - lineOrigo.y) / line.inverseDirection.y;
-        }
+        yIntersectMin = (this.boxFace.down.y - lineOrigo.y) / line.inverseDirection.y;
+        yIntersectMax = (this.boxFace.up.y - lineOrigo.y) / line.inverseDirection.y;
 
         if (xIntersectMin > yIntersectMax || yIntersectMin > xIntersectMax) 
             return false;
@@ -60,15 +46,8 @@ public class BoxGrid {
         if (yIntersectMax < xIntersectMax)
             xIntersectMax = yIntersectMax;
 
-        if (line.inverseDirection.z >= 0) {
-
-            zIntersectMin = (this.boxFace.back.z - lineOrigo.z) / line.inverseDirection.z;
-            zIntersectMax = (this.boxFace.forward.z - lineOrigo.z) / line.inverseDirection.z;
-        } else {
-
-            zIntersectMin = (this.boxFace.forward.z - lineOrigo.z) / line.inverseDirection.z;
-            zIntersectMax = (this.boxFace.back.z - lineOrigo.z) / line.inverseDirection.z;
-        }
+        zIntersectMin = (this.boxFace.back.z - lineOrigo.z) / line.inverseDirection.z;
+        zIntersectMax = (this.boxFace.forward.z - lineOrigo.z) / line.inverseDirection.z;
 
         if (xIntersectMin > zIntersectMax || zIntersectMin > xIntersectMax) 
             return false;
@@ -84,8 +63,9 @@ public class BoxGrid {
         if (t < 0) {
             t = xIntersectMax;
             if (t < 0) return false;
-        } 
+        }
 
+        Debug.Log("intersects");
         return true;
     }
 

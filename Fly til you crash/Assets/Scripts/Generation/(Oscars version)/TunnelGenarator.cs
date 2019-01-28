@@ -20,19 +20,17 @@ public class TunnelGenarator : MonoBehaviour {
     [SerializeField] private GameObject startTunnelPrefab;
     [SerializeField] private GameObject[] tunnelPrefabs;
     private GameObject[] tunnelPieces;
-    private GameObject[] debugPieces;
     private List<BoxGrid> boxGrid;
     private TunnelPieces currentObject, previousObject;
     private Vector3 startOrigin = new Vector3(0, 0, 0);
     private int[] gridArraySizeForRemovingBoxGridsFromList;
-    private int numberOfTunnelObjects = 20;
+    private int numberOfTunnelObjects = 10;
     private int arrayIndex, previousRandomNumber;
 
 
     private void Start() {
 
         tunnelPieces = new GameObject[numberOfTunnelObjects];
-        debugPieces = new GameObject[numberOfTunnelObjects];
         gridArraySizeForRemovingBoxGridsFromList = new int[numberOfTunnelObjects];
         boxGrid = new List<BoxGrid>();
 
