@@ -9,7 +9,9 @@ using UnityEngine;
 ///
 /// Known problems:   BoxGrid problem causes Randomizer() to return the curved object number when a curved object is already the previous object?? - does this still apply?
 ///                   
-///                   break out the code thats generates the boxgrid into a seperate script. and work on abstraction levels!
+///                   TODO: break out the code thats generates the boxgrid into a seperate script. and work on abstraction levels!
+///                   
+///                   make so that "collision" is checked when builden  the first pieces.
 ///                   
 /// </summary>
 
@@ -174,10 +176,10 @@ public class TunnelGenarator : MonoBehaviour {
         BoxGrid[] tempGridArray = new BoxGrid[currentTempGridArraySize];
 
         if (generatorIndex == previousGeneratorIndex) {
-            Debug.Log("same");
+
             gridArraySizeForRemovingBoxGridsFromList[generatorIndex] = gridArraySizeForRemovingBoxGridsFromList[generatorIndex] + currentTempGridArraySize;
         } else {
-            Debug.Log("not same");
+
             gridArraySizeForRemovingBoxGridsFromList[generatorIndex] = currentTempGridArraySize;
         }
 
