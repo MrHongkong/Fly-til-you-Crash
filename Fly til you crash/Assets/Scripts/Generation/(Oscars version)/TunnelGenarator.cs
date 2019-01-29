@@ -32,14 +32,15 @@ public class TunnelGenarator : MonoBehaviour {
     private void Awake() {
 
         tunnelPieces = new GameObject[numberOfTunnelObjects];
-        gridArraySizeForRemovingBoxGridsFromList = new int[numberOfTunnelObjects];
+        gridArraySizeForRemovingBoxGridsFromList = new int[numberOfTunnelObjects + 1];
         boxGrid = new List<BoxGrid>();
     }
 
     private void Start() {
-        
+
         tunnelPieces[arrayIndex] = Instantiate(startTunnelPrefab, startOrigin, startTunnelPrefab.transform.rotation);
         currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
+        SetUpBoxGrid(currentObject, arrayIndex);
 
         SpawnOnTrigger.generator = GetComponent<TunnelGenarator>();
         for (int i = 1; i < numberOfTunnelObjects; i++) {
@@ -175,7 +176,7 @@ public class TunnelGenarator : MonoBehaviour {
     // Generates a boxgrid 
     private void GenerateBoxGrid(Transform startPoint, Transform endPoint, int index) {
 
-        int generatorIndex = index;
+        int generatorIndex = index + 1;
 
         int numberOfXGrid = (int)NumberOfGrids(startPoint, endPoint, 'x');
         int numberOfYGrid = (int)NumberOfGrids(startPoint, endPoint, 'y');
@@ -209,12 +210,11 @@ public class TunnelGenarator : MonoBehaviour {
             }
         }
 
-        generatorIndex = (generatorIndex == numberOfTunnelObjects - 1) ? -1 : generatorIndex;
-
-        int sizeOfFirstInListTempGridArraySize = gridArraySizeForRemovingBoxGridsFromList[generatorIndex + 1];
-        boxGrid.RemoveRange(0, sizeOfFirstInListTempGridArraySize);
+        generatorIndex = (generatorIndex == numberOfTunnelObjects) ? -1 : generatorIndex;
 
         boxGrid.AddRange(tempGridArray);
+
+        boxGrid.RemoveRange(0, gridArraySizeForRemovingBoxGridsFromList[generatorIndex + 1]);
 
         previousGeneratorIndex = generatorIndex;
     }
