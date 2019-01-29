@@ -6,12 +6,12 @@ public class SpeedController : MonoBehaviour
 {
     [SerializeField]
     AnimationCurve speedCurve;
-    Rigidbody rb;
+    public Rigidbody rb;
     public OnCollision onCollision;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()

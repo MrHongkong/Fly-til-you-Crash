@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public float yAxis;
@@ -15,13 +14,35 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem exhaustFire;
 
     float enginePower = 1f;
+    public Transform movable;
     Rigidbody rb;
 
+    Vector3 turnAcceleration = Vector3.zero;
+    Vector3 angles;
+    float shipAngle = 0f;
+
+    bool exhaust = true;
+
+    bool slowmotion = false;
+    float slowmotionTimer = 2f;
+    public float slowTimeScale;
+
+    bool fastmotion = false;
+    float fastmotionTimer = 40f;
+    public float fastTimeScale;
+
+    public static PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = movable.GetComponent<Rigidbody>();
+        angles = movable.localEulerAngles;
+
+        if (playerController == null)
+            playerController = this;
+        else
+            Destroy(this);
     }
 
     // Update is called once per frame
@@ -32,27 +53,83 @@ public class PlayerController : MonoBehaviour
         else
             rb.angularDrag = dragOffHold;
 
-        //Banking controls, turning turning left and right on Z axis
-        rb.AddTorque(Input.GetAxisRaw("Yaw") * transform.forward * -0.5f * bankingTorqueAmp);
+        if (slowmotion ^ Input.GetKey(KeyCode.Joystick1Button0))
+        {
+            slowmotion = Input.GetKey(KeyCode.Joystick1Button0);
+        }
+
+        if (fastmotion ^ Input.GetKey(KeyCode.Joystick1Button1))
+        {
+            fastmotion = Input.GetKey(KeyCode.Joystick1Button1);
+        }
+
+        if ((slowmotion && slowmotionTimer > 0f) || (fastmotion && fastmotionTimer > 0f))
+        {
+            if (slowmotion && slowmotionTimer > 0f)
+            {
+                slowmotionTimer -= Time.deltaTime * 10f * slowTimeScale;
+                Time.timeScale = slowTimeScale;
+            }
+            else
+            {
+                fastmotionTimer -= Time.deltaTime;
+                Time.timeScale = fastTimeScale;
+            }
+        }
+        else
+        {
+            if (slowmotionTimer < 2f)
+                slowmotionTimer += Time.deltaTime * slowTimeScale;
+            if (fastmotionTimer < 40f)
+                fastmotionTimer += Time.deltaTime;
+            Time.timeScale = 1f;
+        }
 
         //Pitch controls, turning the nose up and down
-        rb.AddTorque(Input.GetAxis("Vertical") * transform.right * yAxis * pitchingTorqueAmp);
 
         rb.velocity *= 0.6f;
-
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.1f)
-        {
-            rb.AddTorque(transform.up * Input.GetAxisRaw("Horizontal") * 75f * Time.deltaTime);
-        }
     }
-
+    
     void FixedUpdate()
     {
-        var emission = exhaustFire.emission;
-        var rate = emission.rate;
+        turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 100f, 3f);
+        turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 100f, 3f);
+        turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f, 3f);
 
-        rate.constantMax = rb.velocity.magnitude * 0.75f;
-        emission.rate = rate;
+        movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime, 0f, 0f);
+        movable.localRotation *= Quaternion.Euler(0f, turnAcceleration.y * Time.deltaTime, 0f);
+        movable.localRotation *= Quaternion.Euler(0f, 0f, -turnAcceleration.z * Time.deltaTime);
+
+        
+       //angles.x += turnAcceleration.x * Time.deltaTime;
+       //angles.y += turnAcceleration.y * Time.deltaTime;
+       //movable.localEulerAngles = angles;
+
+       shipAngle = Mathf.Lerp(shipAngle, Input.GetAxisRaw("Horizontal") * 45f, 0.02f);
+
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, -shipAngle);
+
+        var emission = exhaustFire.emission;
+        var rate = emission.rateOverTime;
+
+        if (exhaust)
+        {
+            if (IsSlowMotion())
+                rate.constantMax = rb.velocity.magnitude * 5000f;
+            else if (IsFastMotion())
+                rate.constantMax = rb.velocity.magnitude * 50f;
+            else
+                rate.constantMax = rb.velocity.magnitude * 0.75f;
+        }
+        else
+            rate.constantMax = 0f;
+        emission.rateOverTime = rate;
     }
+
+    public void EnableExhaust() { exhaust = true; }
+    public void DisableExhaust() { exhaust = false; }
+
+    public bool IsSlowMotion() { return slowmotion && slowmotionTimer > 0f; }
+    public bool IsFastMotion() { return fastmotion && fastmotionTimer > 0f; }
 
 }

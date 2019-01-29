@@ -20,7 +20,7 @@ public class OnCollision : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void CollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Object" && isDead != true)
         {
