@@ -4,21 +4,23 @@ using UnityEngine;
 
 /// <summary>
 /// 
-/// Script creator:   Oscar Oders - Last Updated: 2019-01-28
+/// Script creator:   Oscar Oders - Last Updated: 2019-01-29
 /// Adjustments:      Sebastian Nilsson 2019-01-24
 ///
 /// Known problems:   BoxGrid problem causes Randomizer() to return the curved object number when a curved object is already the previous object?? - does this still apply?
 ///                   
 ///                   TODO: break out the code thats generates the boxgrid into a seperate script. and work on abstraction levels!
 ///                   
-///                   make so that "collision" is checked when builden  the first pieces.
-///                   
 /// </summary>
 
 public class TunnelGenarator : MonoBehaviour {
 
+    [Header("---Start tunnel piece---")] 
     [SerializeField] private GameObject startTunnelPrefab;
+    [Space]
+
     [SerializeField] private GameObject[] tunnelPrefabs;
+
     private GameObject[] tunnelPieces;
     private List<BoxGrid> boxGrid;
     private TunnelPieces currentObject, previousObject;
@@ -27,29 +29,30 @@ public class TunnelGenarator : MonoBehaviour {
     private int numberOfTunnelObjects = 10;
     private int arrayIndex, previousRandomNumber, previousGeneratorIndex;
 
-
-    private void Start() {
+    private void Awake() {
 
         tunnelPieces = new GameObject[numberOfTunnelObjects];
         gridArraySizeForRemovingBoxGridsFromList = new int[numberOfTunnelObjects];
         boxGrid = new List<BoxGrid>();
+    }
 
+    private void Start() {
+        
         tunnelPieces[arrayIndex] = Instantiate(startTunnelPrefab, startOrigin, startTunnelPrefab.transform.rotation);
+        currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
 
         SpawnOnTrigger.generator = GetComponent<TunnelGenarator>();
         for (int i = 1; i < numberOfTunnelObjects; i++) {
 
-            tunnelPieces[i] = Instantiate(tunnelPrefabs[Random.Range(0, tunnelPrefabs.Length)], tunnelPieces[i - 1].GetComponent<TunnelPieces>().endPoint.position, RotationOfTunnel(tunnelPieces[i - 1].GetComponent<TunnelPieces>()));
-            currentObject = tunnelPieces[i].GetComponent<TunnelPieces>();
-            SetUpBoxGrid(currentObject, i);
-        }  
+            GenerateNewTunnelPiece(i, false);
+        }
     }
 
     private void Update() {
         
         if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
 
-            GenerateNewTunnelPiece();
+            GenerateNewTunnelPiece(arrayIndex, true);
         }
     }
 
@@ -60,11 +63,11 @@ public class TunnelGenarator : MonoBehaviour {
     }
 
     // Generates a new tunnel piece at the end of the current tunnel.
-    internal void GenerateNewTunnelPiece() {
+    internal void GenerateNewTunnelPiece(int arrayIndex, bool isStartTunnelSetup) {
 
         previousObject = currentObject;
 
-        TunnelPieceInstatiation();
+        TunnelPieceInstatiation(arrayIndex);
 
         bool wayIsClear = false;
         do {
@@ -73,20 +76,25 @@ public class TunnelGenarator : MonoBehaviour {
 
                 if (boxGrid[i].BoxGridIntersection(currentObject, new Line(TunnelsDirection(currentObject)))) {
 
-                    TunnelPieceInstatiation();
+                    TunnelPieceInstatiation(arrayIndex);
                     break;
                 }
 
                 wayIsClear = (i == boxGrid.Count - 1) ? true : false;
             }
+
+            wayIsClear = (boxGrid.Count == 0) ? true : wayIsClear;
         } while (!wayIsClear);
 
         SetUpBoxGrid(currentObject, arrayIndex);
-        IncrementArrayIndex(numberOfTunnelObjects);
+
+        if (isStartTunnelSetup) {
+            IncrementArrayIndex(numberOfTunnelObjects);
+        }
     }
 
     //Instantiate new tunnelPices
-    private void TunnelPieceInstatiation() {
+    private void TunnelPieceInstatiation(int arrayIndex) {
 
         int randomNumber = Randomizer(tunnelPrefabs.Length);
 
@@ -232,6 +240,10 @@ public class TunnelGenarator : MonoBehaviour {
             return 1;
         }
     } 
+
+    internal int GetArrayIndex() {
+        return arrayIndex;
+    }
 
     //Displays boxgrid as red cubes in sceneview
     private void OnDrawGizmos() {
