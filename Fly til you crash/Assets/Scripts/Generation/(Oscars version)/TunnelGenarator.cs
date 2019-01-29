@@ -7,12 +7,11 @@ using UnityEngine;
 /// Script creator:   Oscar Oders - Last Updated: 2019-01-29
 /// Adjustments:      Sebastian Nilsson 2019-01-24
 ///
-/// Known problems:   BoxGrid problem causes Randomizer() to return the curved object number when a curved object is already the previous object?? - does this still apply?
-///                   
-///                   TODO: break out the code thats generates the boxgrid into a seperate script. and work on abstraction levels!
+/// Known problems:   
 ///                   
 /// </summary>
 
+[RequireComponent(typeof(BoxGridGenerator))]
 public class TunnelGenarator : MonoBehaviour {
 
     [Header("---Start tunnel piece---")] 
@@ -21,18 +20,18 @@ public class TunnelGenarator : MonoBehaviour {
 
     [SerializeField] private GameObject[] tunnelPrefabs;
 
+    private BoxGridGenerator boxGridGenerator;
     private GameObject[] tunnelPieces;
     private List<BoxGrid> boxGrid;
     private TunnelPieces currentObject, previousObject;
     private Vector3 startOrigin = new Vector3(0, 0, 0);
-    private int[] gridArraySizeForRemovingBoxGridsFromList;
     private int numberOfTunnelObjects = 10;
-    private int arrayIndex, previousRandomNumber, previousGeneratorIndex;
+    private int arrayIndex, previousRandomNumber;
 
     private void Awake() {
 
+        boxGridGenerator = GetComponent<BoxGridGenerator>();
         tunnelPieces = new GameObject[numberOfTunnelObjects];
-        gridArraySizeForRemovingBoxGridsFromList = new int[numberOfTunnelObjects + 1];
         boxGrid = new List<BoxGrid>();
     }
 
@@ -40,7 +39,7 @@ public class TunnelGenarator : MonoBehaviour {
 
         tunnelPieces[arrayIndex] = Instantiate(startTunnelPrefab, startOrigin, startTunnelPrefab.transform.rotation);
         currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
-        SetUpBoxGrid(currentObject, arrayIndex);
+        boxGridGenerator.SetUpBoxGrid(currentObject, arrayIndex, ref boxGrid);
 
         SpawnOnTrigger.generator = GetComponent<TunnelGenarator>();
         for (int i = 1; i < numberOfTunnelObjects; i++) {
@@ -49,13 +48,13 @@ public class TunnelGenarator : MonoBehaviour {
         }
     }
 
-    private void Update() {
+    //private void Update() {
         
-        if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
+    //    if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
 
-            GenerateNewTunnelPiece(arrayIndex, true);
-        }
-    }
+    //        GenerateNewTunnelPiece(arrayIndex, true);
+    //    }
+    //}
 
     //Increments the arrayIndex variable by 1. If last object in array arrayIndex sets to 0;
     private void IncrementArrayIndex(int arrayLength) {
@@ -87,7 +86,7 @@ public class TunnelGenarator : MonoBehaviour {
             wayIsClear = (boxGrid.Count == 0) ? true : wayIsClear;
         } while (!wayIsClear);
 
-        SetUpBoxGrid(currentObject, arrayIndex);
+        boxGridGenerator.SetUpBoxGrid(currentObject, arrayIndex, ref boxGrid);
 
         if (isStartTunnelSetup) {
             IncrementArrayIndex(numberOfTunnelObjects);
@@ -133,130 +132,26 @@ public class TunnelGenarator : MonoBehaviour {
         return directionVector.normalized;
     }
 
-    //Checks if there are any mid points set up in the object and calles generateBoxGrid.
-    private void SetUpBoxGrid(TunnelPieces currentObject, int index) { 
-
-        List<Transform> midPoints = GetChildrenWithTag(currentObject.transform, "midPoint");
-
-        if (midPoints.Count != 0) {
-            
-            GenerateBoxGrid(currentObject.startPoint, midPoints[0], index);
-
-            for (int i = 0; i < midPoints.Count; i++) {
-                if(i != midPoints.Count - 1) {
-
-                    GenerateBoxGrid(midPoints[i], midPoints[i + 1], index);
-                } 
-            }
-
-            GenerateBoxGrid(midPoints[midPoints.Count - 1], currentObject.endPoint, index);
-        } else {
-            
-            GenerateBoxGrid(currentObject.startPoint, currentObject.endPoint, index);
-        }
+    internal int GetNumberOfTunnelObjects() {
+        return numberOfTunnelObjects;
     }
-
-    //Returns a list of Transforms of the children tagged with tagName, of a parent GameObject.
-    private List<Transform> GetChildrenWithTag(Transform parent, string tagName) {
-
-        List<Transform> taggedChildren = new List<Transform>();
-
-        for(int i=0; i < parent.childCount; i++) {
-            Transform child = parent.GetChild(i);
-
-            if (child.parent.CompareTag(tagName)) {
-
-                taggedChildren.Add(child.parent);
-            }
-        }
-
-        return taggedChildren;
-    }
-
-    // Generates a boxgrid 
-    private void GenerateBoxGrid(Transform startPoint, Transform endPoint, int index) {
-
-        int generatorIndex = index + 1;
-
-        int numberOfXGrid = (int)NumberOfGrids(startPoint, endPoint, 'x');
-        int numberOfYGrid = (int)NumberOfGrids(startPoint, endPoint, 'y');
-        int numberOfZGrid = (int)NumberOfGrids(startPoint, endPoint, 'z');
-
-        int currentTempGridArraySize = (numberOfXGrid * numberOfYGrid * numberOfZGrid);
-        BoxGrid[] tempGridArray = new BoxGrid[currentTempGridArraySize];
-
-        if (generatorIndex == previousGeneratorIndex) {
-
-            gridArraySizeForRemovingBoxGridsFromList[generatorIndex] = gridArraySizeForRemovingBoxGridsFromList[generatorIndex] + currentTempGridArraySize;
-        } else {
-
-            gridArraySizeForRemovingBoxGridsFromList[generatorIndex] = currentTempGridArraySize;
-        }
-
-        int l = 0;
-
-        for (int i = 0; i < numberOfXGrid; i++) {
-
-            for(int j = 0; j < numberOfYGrid; j++) {
-
-                for(int k = 0; k < numberOfZGrid; k++) {
- 
-                    tempGridArray[l] = new BoxGrid(new Vector3((startPoint.position.x) + i * BoxGrid.gridSize * Mathf.Sign(endPoint.position.x - startPoint.position.x),
-                                                               (startPoint.position.y) + j * BoxGrid.gridSize * Mathf.Sign(endPoint.position.y - startPoint.position.y),
-                                                               (startPoint.position.z) + k * BoxGrid.gridSize * Mathf.Sign(endPoint.position.z - startPoint.position.z)));
-
-                    l++;
-                }
-            }
-        }
-
-        generatorIndex = (generatorIndex == numberOfTunnelObjects) ? -1 : generatorIndex;
-
-        boxGrid.AddRange(tempGridArray);
-
-        boxGrid.RemoveRange(0, gridArraySizeForRemovingBoxGridsFromList[generatorIndex + 1]);
-
-        previousGeneratorIndex = generatorIndex;
-    }
-
-    //Caluculates the number of boxes eatch object has, by axis.
-    private float NumberOfGrids(Transform startPoint, Transform endPoint, char axis) {
-
-        float distance = 1; 
-        if (axis == 'x')
-            distance = Mathf.Abs(endPoint.position.x - startPoint.position.x);
-
-        if (axis == 'y')
-            distance = Mathf.Abs(endPoint.position.y - startPoint.position.y);
-
-        if (axis == 'z')
-            distance = Mathf.Abs(endPoint.position.z - startPoint.position.z);
-
-        if (distance > BoxGrid.gridSize / 2) {  
-
-            return (distance / BoxGrid.gridSize) + 2; // +2 is because the BoxGrid is shifted .5 in each end of a tunnelPice, and because the angles to small will make some pices go outeside the box area.
-        } else {    
-
-            return 1;
-        }
-    } 
 
     internal int GetArrayIndex() {
         return arrayIndex;
     }
 
-    //Displays boxgrid as red cubes in sceneview
-    private void OnDrawGizmos() {
+    ////Displays boxgrid as red cubes in sceneview
+    //private void OnDrawGizmos() {
 
-        if(boxGrid != null) {
+    //    if (boxGrid != null) {
 
-            foreach (BoxGrid cell in boxGrid) {
+    //        foreach (BoxGrid cell in boxGrid) {
 
-                Gizmos.color = new Color(1, 0, 0, 0.5f);
-                Gizmos.DrawCube(cell.cellCenter, new Vector3(BoxGrid.gridSize, BoxGrid.gridSize, BoxGrid.gridSize));
-            }
-        }   
-    }
+    //            Gizmos.color = new Color(1, 0, 0, 0.5f);
+    //            Gizmos.DrawCube(cell.cellCenter, new Vector3(BoxGrid.gridSize, BoxGrid.gridSize, BoxGrid.gridSize));
+    //        }
+    //    }
+    //}
 }
 
 public class Line {

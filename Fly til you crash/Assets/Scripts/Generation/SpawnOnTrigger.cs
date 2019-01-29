@@ -15,6 +15,7 @@ using UnityEngine;
 public class SpawnOnTrigger : MonoBehaviour
 {
     internal static TunnelGenarator generator;
+
     private void OnTriggerEnter(Collider other)
     {
         generator.GenerateNewTunnelPiece(generator.GetArrayIndex(), true);
