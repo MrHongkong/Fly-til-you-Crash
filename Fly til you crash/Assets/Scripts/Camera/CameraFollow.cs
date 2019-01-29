@@ -9,11 +9,6 @@ public class CameraFollow : MonoBehaviour {
     [SerializeField]
     private Vector3 offsetPosition;
 
-    [SerializeField]
-    private Space offsetPositionSpace = Space.Self;
-    float nextInc;
-
-    
 
     private void LateUpdate()
     {
@@ -29,8 +24,7 @@ public class CameraFollow : MonoBehaviour {
             return;
         }
         transform.position = target.TransformPoint(offsetPosition);
-        Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 5f * Time.deltaTime);
-        //Camera.main.transform.LookAt(target, target.up);
-
+        Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 3f * Time.deltaTime);
+        //Camera.main.transform.LookAt(target.transform, target.up);
     }
 }
