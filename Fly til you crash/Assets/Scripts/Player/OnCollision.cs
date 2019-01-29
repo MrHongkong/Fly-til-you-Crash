@@ -44,7 +44,6 @@ public class OnCollision : MonoBehaviour
         {
             waitForDestruction -= Time.deltaTime;
             StartCoroutine(FindObjectOfType<CameraShake>().Shake(.1f, .1f));
-            Debug.Log("SHAKING");
             yield return null;
         }
 

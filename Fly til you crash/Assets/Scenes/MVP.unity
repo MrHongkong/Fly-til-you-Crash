@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ef9825ae241bb44b6e0003e74c31e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1332147502}
-  offsetPosition: {x: 0, y: 1.3, z: -10}
+  target: {fileID: 1412737365}
+  offsetPosition: {x: 0, y: 1.3, z: -8}
 --- !u!114 &734205527 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5992554654861484488, guid: 7bd1c6e8a341347499768f2d79e0d598,
@@ -327,7 +327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412737364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.67, y: 0, z: -68.83}
+  m_LocalPosition: {x: 0, y: 0, z: -68.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5829188409792966048}
@@ -1134,7 +1134,7 @@ PrefabInstance:
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
