@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,8 +27,22 @@ public class Username : MonoBehaviour
     void Update()
     {
         score = timer.score;
+        
 
     }
+
+    string GetUniqueID()
+    {
+       string[] split = System.Guid.NewGuid().ToString().Split(new Char[] { ':', '.' });
+       string id = "";
+       for (int i = 0; i < split.Length; i++)
+       {
+           id += split[i];
+       }
+        Debug.Log("ID: " + id);
+       return id;
+    }
+   
 
     public void OnClick()
     {

@@ -11,7 +11,8 @@ public class Highscores : MonoBehaviour {
 
 	DisplayHighscores highscoreDisplay;
 	public Highscore[] highscoresList;
-	static Highscores instance;
+    //public Usernames[] usernameList;
+    static Highscores instance;
 	
 	void Awake() {
 		highscoreDisplay = GetComponent<DisplayHighscores> ();
@@ -49,7 +50,8 @@ public class Highscores : MonoBehaviour {
 		
 		if (string.IsNullOrEmpty (www.error)) {
 			FormatHighscores (www.text);
-			highscoreDisplay.OnHighscoresDownloaded(highscoresList);
+            //FormatUsernames(www.text);
+            highscoreDisplay.OnHighscoresDownloaded(highscoresList);
 		}
 		else {
 			print ("Error Downloading: " + www.error);
@@ -68,6 +70,20 @@ public class Highscores : MonoBehaviour {
 		}
 	}
 
+    //void FormatUsernames(string textStream)
+    //{
+    //    string[] entries = textStream.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+    //    usernameList = new Usernames[entries.Length];
+
+    //    for (int i = 0; i < entries.Length; i++)
+    //    {
+    //        string[] entryInfo = entries[i].Split(new char[] { '|' });
+    //        string username = entryInfo[0];
+    //        int score = int.Parse(entryInfo[1]);
+    //        usernameList[i] = new Usernames(username, score);
+    //    }
+    //}
+
 }
 
 public struct Highscore {
@@ -79,4 +95,17 @@ public struct Highscore {
 		score = _score;
 	}
 
+
 }
+
+//public struct Usernames
+//{
+//    public string username;
+//    public int score;
+
+//    public Usernames(string _username, int _score)
+//    {
+//        username = _username;
+//        score = _score;
+//    }
+//}
