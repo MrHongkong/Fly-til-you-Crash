@@ -8,7 +8,7 @@ public class Username : MonoBehaviour
 {
     //Made by Philip Åkerblom GP18 Yrgo
 
-    public string username = "";
+    public string username;
     public float score;
     public GameObject HighscoreUI;
     public GameObject UserInputUI;
@@ -27,27 +27,24 @@ public class Username : MonoBehaviour
     void Update()
     {
         score = timer.score;
-        
-
     }
 
-    string GetUniqueID()
+    String GetUniqueID(String username)
     {
        string[] split = System.Guid.NewGuid().ToString().Split(new Char[] { ':', '.' });
        string id = "";
        for (int i = 0; i < split.Length; i++)
        {
-           id += split[i];
+           id = username + " " + split[i];
        }
-        Debug.Log("ID: " + id);
-       return id;
+        return id;
     }
    
 
     public void OnClick()
     {
         username = GetComponent<InputField>().text;
-        Debug.Log("" + username);
+        username = GetUniqueID(username);
         HighscoreUI.SetActive(true);
         UserInputUI.SetActive(false);
         Highscores.AddNewHighscore(username, (int)score);

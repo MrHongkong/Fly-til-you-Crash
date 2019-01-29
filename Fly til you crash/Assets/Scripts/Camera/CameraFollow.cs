@@ -25,6 +25,5 @@ public class CameraFollow : MonoBehaviour {
         }
         transform.position = target.TransformPoint(offsetPosition);
         Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 3f * Time.deltaTime);
-        //Camera.main.transform.LookAt(target.transform, target.up);
     }
 }

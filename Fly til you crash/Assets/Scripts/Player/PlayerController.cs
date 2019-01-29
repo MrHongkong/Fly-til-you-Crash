@@ -92,8 +92,8 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
-        turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 100f, 3f);
-        turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 100f, 3f);
+        turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f, 3f);
+        turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 3f);
         turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f, 3f);
 
         movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime, 0f, 0f);
@@ -115,11 +115,11 @@ public class PlayerController : MonoBehaviour
         if (exhaust)
         {
             if (IsSlowMotion())
-                rate.constantMax = rb.velocity.magnitude * 5000f;
+                rate.constantMax = rb.velocity.magnitude * 0;
             else if (IsFastMotion())
                 rate.constantMax = rb.velocity.magnitude * 50f;
             else
-                rate.constantMax = rb.velocity.magnitude * 0.75f;
+                rate.constantMax = rb.velocity.magnitude * 0f;
         }
         else
             rate.constantMax = 0f;
