@@ -807,6 +807,21 @@ PrefabInstance:
       propertyPath: m_CharacterLimit
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8481422791050521048, guid: 7bd1c6e8a341347499768f2d79e0d598,
+        type: 3}
+      propertyPath: m_ContentType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481422791050521048, guid: 7bd1c6e8a341347499768f2d79e0d598,
+        type: 3}
+      propertyPath: m_KeyboardType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481422791050521048, guid: 7bd1c6e8a341347499768f2d79e0d598,
+        type: 3}
+      propertyPath: m_CharacterValidation
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7220137089646376567, guid: 7bd1c6e8a341347499768f2d79e0d598,
         type: 3}
       propertyPath: m_Name
