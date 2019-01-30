@@ -56,15 +56,16 @@ public class PlayerController : MonoBehaviour
         else
             rb.angularDrag = dragOffHold;
 
-        if (slowmotion ^ Input.GetKey(KeyCode.Joystick1Button0))
+        if (fastmotion ^ Input.GetButton("TimeWarp"))
         {
-            slowmotion = Input.GetKey(KeyCode.Joystick1Button0);
+            fastmotion = Input.GetButton("TimeWarp");
         }
 
-        if (fastmotion ^ Input.GetKey(KeyCode.Joystick1Button1))
+        if (slowmotion ^ Input.GetButton("TimeStop"))
         {
-            fastmotion = Input.GetKey(KeyCode.Joystick1Button1);
+            slowmotion = Input.GetButton("TimeStop");
         }
+
 
         if ((slowmotion && slowmotionTimer > 0f) || (fastmotion && fastmotionTimer > 0f))
         {
