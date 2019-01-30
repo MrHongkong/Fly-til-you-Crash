@@ -5,13 +5,13 @@ public class Highscores : MonoBehaviour {
 
     //Made by Philip Åkerblom GP18 Yrgo
     //Code from Sebastian Lague
+    
     const string privateCode = "gP34t5uH1kWaGuTw8kx51gOmQ-8rdCakyNOmII9cX8rg";
 	const string publicCode = "5c4ac7d4b6397e0c24a5d87c";
 	const string webURL = "http://dreamlo.com/lb/";
 
 	DisplayHighscores highscoreDisplay;
 	public Highscore[] highscoresList;
-    //public Usernames[] usernameList;
     static Highscores instance;
 	
 	void Awake() {
@@ -50,7 +50,6 @@ public class Highscores : MonoBehaviour {
 		
 		if (string.IsNullOrEmpty (www.error)) {
 			FormatHighscores (www.text);
-            //FormatUsernames(www.text);
             highscoreDisplay.OnHighscoresDownloaded(highscoresList);
 		}
 		else {
@@ -69,21 +68,6 @@ public class Highscores : MonoBehaviour {
 			highscoresList[i] = new Highscore(username,score);
 		}
 	}
-
-    //void FormatUsernames(string textStream)
-    //{
-    //    string[] entries = textStream.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
-    //    usernameList = new Usernames[entries.Length];
-
-    //    for (int i = 0; i < entries.Length; i++)
-    //    {
-    //        string[] entryInfo = entries[i].Split(new char[] { '|' });
-    //        string username = entryInfo[0];
-    //        int score = int.Parse(entryInfo[1]);
-    //        usernameList[i] = new Usernames(username, score);
-    //    }
-    //}
-
 }
 
 public struct Highscore {
@@ -98,14 +82,3 @@ public struct Highscore {
 
 }
 
-//public struct Usernames
-//{
-//    public string username;
-//    public int score;
-
-//    public Usernames(string _username, int _score)
-//    {
-//        username = _username;
-//        score = _score;
-//    }
-//}
