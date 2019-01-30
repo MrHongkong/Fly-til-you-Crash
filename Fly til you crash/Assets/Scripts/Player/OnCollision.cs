@@ -24,6 +24,8 @@ public class OnCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Object" && isDead != true)
         {
+            Time.timeScale = 0;                     
+            
             if (hasStartedCoroutine == false)
             {
                 StartCoroutine(WaitForDeath());
@@ -53,9 +55,7 @@ public class OnCollision : MonoBehaviour
 
             if (isDead == true)
             {
-
-                Time.timeScale = 0;
-
+                
                 if (user == null)
                 {
                     Debug.LogError("ERROR: user is null");
