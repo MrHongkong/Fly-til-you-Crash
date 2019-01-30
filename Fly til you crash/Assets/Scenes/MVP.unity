@@ -872,6 +872,12 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4616901063817885625, guid: 7bd1c6e8a341347499768f2d79e0d598,
+        type: 3}
+      propertyPath: m_Text
+      value: If you feel like your score was not good enough for the leaderboards
+        press the button below.
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8119988812507732349, guid: 7bd1c6e8a341347499768f2d79e0d598, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bd1c6e8a341347499768f2d79e0d598, type: 3}
