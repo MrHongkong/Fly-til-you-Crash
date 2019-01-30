@@ -4,19 +4,19 @@ using UnityEngine;
 
 /// <summary>
 /// 
-/// Script creator:     Oscar Oders - Last Updated: 2019-01-29
+/// Script creator:     Oscar Oders - Last Updated: 2019-01-30
 /// Adjustments:  
 /// 
-/// Known problems: 
+/// Known problems:     
 /// 
 /// </summary>
 
 [RequireComponent(typeof(TunnelGenarator))]
-public class BoxGridGenerator : MonoBehaviour
-{
+public class BoxGridGenerator : MonoBehaviour {
+
     private TunnelGenarator tunnelGenarator;
     private int[] gridArraySizeForRemovingBoxGridsFromList;
-    private int previousGeneratorIndex;
+    private int generatorIndex, previousGeneratorIndex;
 
     private void Awake() {
 
@@ -25,25 +25,25 @@ public class BoxGridGenerator : MonoBehaviour
     }
 
     //Checks if there are any mid points set up in the object and calles generateBoxGrid.
-    internal void SetUpBoxGrid(TunnelPieces currentObject, int index, ref List<BoxGrid> boxGrid) {
+    internal void SetUpBoxGrid(TunnelPieces currentObject, ref List<BoxGrid> boxGrid) {
 
         List<Transform> midPoints = GetChildrenWithTag(currentObject.transform, "midPoint");
 
         if (midPoints.Count != 0) {
 
-            GenerateBoxGrid(currentObject.startPoint, midPoints[0], index, ref boxGrid);
+            GenerateBoxGrid(currentObject.startPoint, midPoints[0], ref boxGrid);
 
             for (int i = 0; i < midPoints.Count; i++) {
                 if (i != midPoints.Count - 1) {
 
-                    GenerateBoxGrid(midPoints[i], midPoints[i + 1], index, ref boxGrid);
+                    GenerateBoxGrid(midPoints[i], midPoints[i + 1], ref boxGrid);
                 }
             }
 
-            GenerateBoxGrid(midPoints[midPoints.Count - 1], currentObject.endPoint, index, ref boxGrid);
+            GenerateBoxGrid(midPoints[midPoints.Count - 1], currentObject.endPoint, ref boxGrid);
         } else {
 
-            GenerateBoxGrid(currentObject.startPoint, currentObject.endPoint, index, ref boxGrid);
+            GenerateBoxGrid(currentObject.startPoint, currentObject.endPoint, ref boxGrid);
         }
     }
 
@@ -65,9 +65,9 @@ public class BoxGridGenerator : MonoBehaviour
     }
 
     // Generates a boxgrid 
-    private void GenerateBoxGrid(Transform startPoint, Transform endPoint, int index, ref List<BoxGrid> boxGrid) {
+    private void GenerateBoxGrid(Transform startPoint, Transform endPoint, ref List<BoxGrid> boxGrid) {
 
-        int generatorIndex = index + 1;
+        generatorIndex++;
 
         int numberOfXGrid = (int)NumberOfGrids(startPoint, endPoint, 'x');
         int numberOfYGrid = (int)NumberOfGrids(startPoint, endPoint, 'y');

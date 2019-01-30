@@ -39,7 +39,7 @@ public class TunnelGenarator : MonoBehaviour {
 
         tunnelPieces[arrayIndex] = Instantiate(startTunnelPrefab, startOrigin, startTunnelPrefab.transform.rotation);
         currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
-        boxGridGenerator.SetUpBoxGrid(currentObject, arrayIndex, ref boxGrid);
+        boxGridGenerator.SetUpBoxGrid(currentObject, ref boxGrid);
 
         SpawnOnTrigger.generator = GetComponent<TunnelGenarator>();
         for (int i = 1; i < numberOfTunnelObjects; i++) {
@@ -48,13 +48,13 @@ public class TunnelGenarator : MonoBehaviour {
         }
     }
 
-    //private void Update() {
-        
-    //    if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
+    private void Update() {
 
-    //        GenerateNewTunnelPiece(arrayIndex, true);
-    //    }
-    //}
+        if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
+
+            GenerateNewTunnelPiece(arrayIndex, true);
+        }
+    }
 
     //Increments the arrayIndex variable by 1. If last object in array arrayIndex sets to 0;
     private void IncrementArrayIndex(int arrayLength) {
@@ -86,7 +86,7 @@ public class TunnelGenarator : MonoBehaviour {
             wayIsClear = (boxGrid.Count == 0) ? true : wayIsClear;
         } while (!wayIsClear);
 
-        boxGridGenerator.SetUpBoxGrid(currentObject, arrayIndex, ref boxGrid);
+        boxGridGenerator.SetUpBoxGrid(currentObject, ref boxGrid);
 
         if (isStartTunnelSetup) {
             IncrementArrayIndex(numberOfTunnelObjects);
@@ -140,18 +140,18 @@ public class TunnelGenarator : MonoBehaviour {
         return arrayIndex;
     }
 
-    ////Displays boxgrid as red cubes in sceneview
-    //private void OnDrawGizmos() {
+    //Displays boxgrid as red cubes in sceneview
+    private void OnDrawGizmos() {
 
-    //    if (boxGrid != null) {
+        if (boxGrid != null) {
 
-    //        foreach (BoxGrid cell in boxGrid) {
+            foreach (BoxGrid cell in boxGrid) {
 
-    //            Gizmos.color = new Color(1, 0, 0, 0.5f);
-    //            Gizmos.DrawCube(cell.cellCenter, new Vector3(BoxGrid.gridSize, BoxGrid.gridSize, BoxGrid.gridSize));
-    //        }
-    //    }
-    //}
+                Gizmos.color = new Color(1, 0, 0, 0.5f);
+                Gizmos.DrawCube(cell.cellCenter, new Vector3(BoxGrid.gridSize, BoxGrid.gridSize, BoxGrid.gridSize));
+            }
+        }
+    }
 }
 
 public class Line {

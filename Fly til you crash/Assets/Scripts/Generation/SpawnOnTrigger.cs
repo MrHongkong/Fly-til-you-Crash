@@ -12,8 +12,8 @@ using UnityEngine;
 /// 
 /// </summary>
 
-public class SpawnOnTrigger : MonoBehaviour
-{
+public class SpawnOnTrigger : MonoBehaviour {
+
     internal static TunnelGenarator generator;
 
     private void OnTriggerEnter(Collider other)
