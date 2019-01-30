@@ -19,7 +19,7 @@ public class Username : MonoBehaviour
     void Start()
     {
         HighscoreUI.SetActive(false);
-        //UserInputUI.SetActive(true);
+        UserInputUI.SetActive(true);
         timer = FindObjectOfType<Timer>();
         collision = FindObjectOfType<OnCollision>();
 

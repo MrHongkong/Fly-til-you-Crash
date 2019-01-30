@@ -11,12 +11,15 @@ public class PlayerController : MonoBehaviour
     public float dragOnHold;
     public float dragOffHold;
 
-    public ParticleSystem exhaustFire;
+    public List<ParticleSystem> exhaustFire;
+
+    public List<ParticleSystem> leftHoverEngines;
+    public List<ParticleSystem> rightHoverEngines;
 
     float enginePower = 1f;
     public Transform movable;
     Rigidbody rb;
-
+    
     Vector3 turnAcceleration = Vector3.zero;
     Vector3 angles;
     float shipAngle = 0f;
@@ -92,38 +95,70 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
-        turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f, 3f);
-        turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 3f);
-        turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f, 3f);
+        turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f, 2f);
+        turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 2f);
+        turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f, 2f);
 
         movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime, 0f, 0f);
         movable.localRotation *= Quaternion.Euler(0f, turnAcceleration.y * Time.deltaTime, 0f);
         movable.localRotation *= Quaternion.Euler(0f, 0f, -turnAcceleration.z * Time.deltaTime);
 
-        
-       //angles.x += turnAcceleration.x * Time.deltaTime;
-       //angles.y += turnAcceleration.y * Time.deltaTime;
-       //movable.localEulerAngles = angles;
+        float emissionRateHoverEnginesRight;
 
-       shipAngle = Mathf.Lerp(shipAngle, Input.GetAxisRaw("Horizontal") * 45f, 0.02f);
+        if (turnAcceleration.z < -1f) {
+            emissionRateHoverEnginesRight = 0.5f + Mathf.Abs(turnAcceleration.z) / 100 * 0.4f;
+        }
+        else {
+            emissionRateHoverEnginesRight = 0.5f;
+        }
+
+        foreach (ParticleSystem ps in rightHoverEngines) {
+            ps.startLifetime = emissionRateHoverEnginesRight;
+        }
+
+        float emissionRateHoverEnginesLeft;
+
+        if (turnAcceleration.z > 1f)
+        {
+            emissionRateHoverEnginesLeft = 0.5f + Mathf.Abs(turnAcceleration.z) / 100 * 0.4f;
+        }
+        else
+        {
+            emissionRateHoverEnginesLeft = 0.5f;
+        }
+
+        foreach (ParticleSystem ps in leftHoverEngines)
+        {
+            ps.startLifetime = emissionRateHoverEnginesLeft;
+        }
+
+        //angles.x += turnAcceleration.x * Time.deltaTime;
+        //angles.y += turnAcceleration.y * Time.deltaTime;
+        //movable.localEulerAngles = angles;
+
+        shipAngle = Mathf.Lerp(shipAngle, Input.GetAxisRaw("Horizontal") * 45f, 0.02f);
 
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, -shipAngle);
 
-        var emission = exhaustFire.emission;
-        var rate = emission.rateOverTime;
 
-        if (exhaust)
-        {
+        float emissionRate;
+        if (exhaust) {
             if (IsSlowMotion())
-                rate.constantMax = rb.velocity.magnitude * 0;
+                emissionRate = rb.velocity.magnitude * 10000f;
             else if (IsFastMotion())
-                rate.constantMax = rb.velocity.magnitude * 50f;
+                emissionRate = rb.velocity.magnitude * 50f;
             else
-                rate.constantMax = rb.velocity.magnitude * 0f;
+                emissionRate = rb.velocity.magnitude * 0f;
         }
         else
-            rate.constantMax = 0f;
-        emission.rateOverTime = rate;
+            emissionRate = 0f;
+
+        foreach(ParticleSystem ps in exhaustFire) {
+            var emission = ps.emission;
+            var rate = emission.rateOverTime;
+            rate.constantMax = emissionRate;
+            emission.rateOverTime = rate;
+        }
     }
 
     public void EnableExhaust() { exhaust = true; }
