@@ -48,13 +48,13 @@ public class TunnelGenarator : MonoBehaviour {
         }
     }
 
-    private void Update() {
+    //private void Update() {
 
-        if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
+    //    if (Input.GetKey(KeyCode.O) || Input.GetKeyDown(KeyCode.N)) {
 
-            GenerateNewTunnelPiece(arrayIndex, true);
-        }
-    }
+    //        GenerateNewTunnelPiece(arrayIndex, true);
+    //    }
+    //}
 
     //Increments the arrayIndex variable by 1. If last object in array arrayIndex sets to 0;
     private void IncrementArrayIndex(int arrayLength) {
@@ -140,18 +140,18 @@ public class TunnelGenarator : MonoBehaviour {
         return arrayIndex;
     }
 
-    //Displays boxgrid as red cubes in sceneview
-    private void OnDrawGizmos() {
+    ////Displays boxgrid as red cubes in sceneview
+    //private void OnDrawGizmos() {
 
-        if (boxGrid != null) {
+    //    if (boxGrid != null) {
 
-            foreach (BoxGrid cell in boxGrid) {
+    //        foreach (BoxGrid cell in boxGrid) {
 
-                Gizmos.color = new Color(1, 0, 0, 0.5f);
-                Gizmos.DrawCube(cell.cellCenter, new Vector3(BoxGrid.gridSize, BoxGrid.gridSize, BoxGrid.gridSize));
-            }
-        }
-    }
+    //            Gizmos.color = new Color(1, 0, 0, 0.5f);
+    //            Gizmos.DrawCube(cell.cellCenter, new Vector3(BoxGrid.gridSize, BoxGrid.gridSize, BoxGrid.gridSize));
+    //        }
+    //    }
+    //}
 }
 
 public class Line {
