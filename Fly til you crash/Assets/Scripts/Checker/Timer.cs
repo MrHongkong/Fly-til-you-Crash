@@ -14,27 +14,34 @@ public class Timer : MonoBehaviour
     public float theTime;
     public float scoreMultiplier;
     public float timePlayed;
+    float currentScore;
     public Text timeCount;
     public Text scoreCount;
     private Acceleration accelerationSpeed;
     public float score;
+    private OnCollision onCollision;
 
     // Start is called before the first frame update
     void Start()
     {
-        //timeCount = GetComponent<Text>();
-        //speedCount = GetComponent<Text>();
         timePassed = currentTime;
         accelerationSpeed = FindObjectOfType<Acceleration>();
+        onCollision = FindObjectOfType<OnCollision>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime * speed;
+        if (!onCollision.hasStartedCoroutine)
+        {
+            currentTime += Time.deltaTime * speed;
+            UpdateScoreCount(20);
+        }
+
         UpdateTime();
-        UpdateScoreCount(20);
+        
+        
     }
 
     void UpdateTime()
@@ -43,8 +50,6 @@ public class Timer : MonoBehaviour
         string minutes = Mathf.Floor((currentTime % 3600)/60).ToString("00");
         string seconds = (currentTime % 60).ToString("00");
         timeCount.text = "Time: " + minutes + ":" + seconds;
-        //timeCount.text = "Time: " + currentTime.ToString("f1");
-        //Debug.Log("Time: " + currentTime);
 
 
     }
@@ -53,6 +58,7 @@ public class Timer : MonoBehaviour
     {
         timePlayed = Time.timeSinceLevelLoad;
         score = timePlayed * scoreMultiplier;
+        currentScore = score;
         scoreCount.text = "Score: " + score.ToString("f0");
     }
 }
