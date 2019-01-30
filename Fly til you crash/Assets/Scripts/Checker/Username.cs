@@ -12,6 +12,7 @@ public class Username : MonoBehaviour
     public float score;
     public GameObject HighscoreUI;
     public GameObject UserInputUI;
+    public Button submit;
     Timer timer;
     OnCollision collision;
 
@@ -27,6 +28,14 @@ public class Username : MonoBehaviour
     void Update()
     {
         score = timer.score;
+        if (GetComponent<InputField>().text == "")
+        {
+            submit.interactable = false;
+        }
+        else
+        {
+            submit.interactable = true;
+        }
     }
 
     String GetUniqueID(String username)
