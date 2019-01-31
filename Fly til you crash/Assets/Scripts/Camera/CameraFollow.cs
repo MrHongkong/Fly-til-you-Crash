@@ -2,22 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour { 
+public class CameraFollow : MonoBehaviour
+{
     [SerializeField]
     private Transform target;
 
-    public Transform target2;
-
-    [SerializeField]
     private Vector3 offsetPosition;
 
+    public float offsetPositionZ;
 
-    private void LateUpdate()
-    {
-        Refresh();
-    }
-
-    public void Refresh()
+    private void Start()
     {
         if (target == null)
         {
@@ -25,34 +19,40 @@ public class CameraFollow : MonoBehaviour {
 
             return;
         }
-        transform.position = target.TransformPoint(offsetPosition);
-
-        if (target2 == null)
-            Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 3f * Time.deltaTime);
-        else
-        
-        {
-            Vector3 tmp = Vector3.Lerp(target.position, target2.position, 0.5f);
-            Camera.main.transform.LookAt(tmp, target.up);
-            if (Vector3.Distance(target2.position, transform.position) < offsetPosition.magnitude)
-            {
-                target2 = null;
-            }
-
-        }
-
+        offsetPositionZ = -8;
+        offsetPosition = new Vector3(0, 2, offsetPositionZ);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void LateUpdate()
     {
-        if (other.gameObject.CompareTag("Object"))
-        {
-            if (other.gameObject.name == "End")
-            {
-                target2 = other.gameObject.transform;
-            }
-        }
+        TimeWarp();
+        Refresh();
     }
 
+    public void Refresh()
+    {
+        transform.position = target.TransformPoint(offsetPosition = new Vector3(0, 2, offsetPositionZ));
+        Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 3f * Time.deltaTime);
+    }
 
+    public void TimeWarp()
+    {
+        if (Input.GetButton("TimeWarp"))
+        {
+            offsetPositionZ -= 0.1f;
+            if (offsetPositionZ <= -12)
+            {
+                offsetPositionZ = -12;
+            }
+        }
+        else
+        {
+            if (offsetPositionZ < -8)
+            {
+                offsetPositionZ += 0.2f;
+            }
+            else offsetPositionZ = -8f;
+        }
+        
+    }
 }
