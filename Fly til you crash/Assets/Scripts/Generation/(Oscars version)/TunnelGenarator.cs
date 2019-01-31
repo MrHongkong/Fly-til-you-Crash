@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// 
-/// Script creator:   Oscar Oders - Last Updated: 2019-01-29
+/// Script creator:   Oscar Oders - Last Updated: 2019-01-31
 /// Adjustments:      Sebastian Nilsson 2019-01-24
 ///
 /// Known problems:   
@@ -25,7 +25,7 @@ public class TunnelGenarator : MonoBehaviour {
     private List<BoxGrid> boxGrid;
     private TunnelPieces currentObject, previousObject;
     private Vector3 startOrigin = new Vector3(0, 0, 0);
-    private int numberOfTunnelObjects = 10;
+    private int numberOfTunnelObjects = 6;
     private int arrayIndex, previousRandomNumber;
 
     private void Awake() {
@@ -74,7 +74,7 @@ public class TunnelGenarator : MonoBehaviour {
 
             for (int i = 0; i < boxGrid.Count; i++) {
 
-                if (boxGrid[i].BoxGridIntersection(currentObject, new Line(TunnelsDirection(currentObject)))) {
+                if (boxGrid[i].Intersects(new Line(TunnelsDirection(currentObject), currentObject.endPoint.position))) {
 
                     TunnelPieceInstatiation(arrayIndex);
                     break;
@@ -147,20 +147,33 @@ public class TunnelGenarator : MonoBehaviour {
 
     //        foreach (BoxGrid cell in boxGrid) {
 
-    //            Gizmos.color = new Color(1, 0, 0, 0.5f);
+    //            Gizmos.color = new Color(1, 0, 0, 0.1f);
     //            Gizmos.DrawCube(cell.cellCenter, new Vector3(BoxGrid.gridSize, BoxGrid.gridSize, BoxGrid.gridSize));
+    //        }
+    //    }
+    //    if (tunnelPieces != null) {
+    //        for (int i = 0; i < numberOfTunnelObjects; i++) {
+    //            Gizmos.color = Color.blue;
+    //            Gizmos.DrawLine(tunnelPieces[i].GetComponent<TunnelPieces>().endPoint.position, tunnelPieces[i].GetComponent<TunnelPieces>().endPoint.position + TunnelsDirection(tunnelPieces[i].GetComponent<TunnelPieces>()) * 500);
+    //        }
+    //    }
+    //    if(tunnelPiecesDebug != null) {
+    //        foreach (GameObject tunnel in tunnelPiecesDebug) {
+    //            Gizmos.color = Color.green;
+    //            Gizmos.DrawLine(tunnel.GetComponent<TunnelPieces>().endPoint.position, tunnel.GetComponent<TunnelPieces>().endPoint.position + TunnelsDirection(tunnel.GetComponent<TunnelPieces>()) * 500);
     //        }
     //    }
     //}
 }
 
-public class Line {
+internal class Line {
 
-    internal Vector3 direction, inverseDirection;
+    internal Vector3 direction, origo, inverseDirection;
 
-    public Line(Vector3 _direction) {
+    public Line(Vector3 _direction, Vector3 _origo) {
 
         direction = _direction;
+        origo = _origo;
         inverseDirection = new Vector3(1 / _direction.x, 1 / _direction.y, 1 / _direction.z);
     }
 }
