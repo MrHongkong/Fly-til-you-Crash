@@ -600,6 +600,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: frontHoverEngines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: backHoverEngines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: rightHoverEngines.Array.data[0]
+      value: 
+      objectReference: {fileID: 1126103031}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: rightHoverEngines.Array.data[1]
+      value: 
+      objectReference: {fileID: 1126103030}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: leftHoverEngines.Array.data[0]
+      value: 
+      objectReference: {fileID: 1126103029}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: leftHoverEngines.Array.data[1]
+      value: 
+      objectReference: {fileID: 1126103028}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: frontHoverEngines.Array.data[0]
+      value: 
+      objectReference: {fileID: 1126103030}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: frontHoverEngines.Array.data[1]
+      value: 
+      objectReference: {fileID: 1126103029}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: backHoverEngines.Array.data[0]
+      value: 
+      objectReference: {fileID: 1126103031}
+    - target: {fileID: 1264467314001229427, guid: bb371aba0041c31418e9a628d17d5af0,
+        type: 3}
+      propertyPath: backHoverEngines.Array.data[1]
+      value: 
+      objectReference: {fileID: 1126103028}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb371aba0041c31418e9a628d17d5af0, type: 3}
 --- !u!1 &1126103024 stripped
