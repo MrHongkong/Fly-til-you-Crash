@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour
 
     public List<ParticleSystem> exhaustFire;
 
-    public List<ParticleSystem> leftHoverEngines;
-    public List<ParticleSystem> rightHoverEngines;
+    public List<HoverEngineController> leftHoverEngines;
+    public List<HoverEngineController> rightHoverEngines;
+    public List<HoverEngineController> frontHoverEngines;
+    public List<HoverEngineController> backHoverEngines;
 
     float enginePower = 1f;
     public Transform movable;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
     bool fastmotion = false;
     float fastmotionTimer = 40f;
     public float fastTimeScale;
-
+    
     public static PlayerController playerController;
 
     // Start is called before the first frame update
@@ -106,33 +108,38 @@ public class PlayerController : MonoBehaviour
 
         float emissionRateHoverEnginesRight;
 
-        if (turnAcceleration.z < -1f) {
-            emissionRateHoverEnginesRight = 0.5f + Mathf.Abs(turnAcceleration.z) / 100 * 0.4f;
-        }
-        else {
-            emissionRateHoverEnginesRight = 0.5f;
-        }
-
-        foreach (ParticleSystem ps in rightHoverEngines) {
-            ps.startLifetime = emissionRateHoverEnginesRight;
+        if(turnAcceleration.z < 0) {
+            foreach(HoverEngineController hec in rightHoverEngines) {
+                hec.SetNextEnginePower(-turnAcceleration.z / 100);
+            }
         }
 
-        float emissionRateHoverEnginesLeft;
+        else if(turnAcceleration.z > 0) {
+            foreach (HoverEngineController hec in leftHoverEngines) {
+                hec.SetNextEnginePower(turnAcceleration.z / 100);
+            }
+        }
 
-        if (turnAcceleration.z > 1f)
+        if (turnAcceleration.x < 0)
         {
-            emissionRateHoverEnginesLeft = 0.5f + Mathf.Abs(turnAcceleration.z) / 100 * 0.4f;
-        }
-        else
-        {
-            emissionRateHoverEnginesLeft = 0.5f;
-        }
-
-        foreach (ParticleSystem ps in leftHoverEngines)
-        {
-            ps.startLifetime = emissionRateHoverEnginesLeft;
+            foreach (HoverEngineController hec in frontHoverEngines)
+            {
+                hec.SetNextEnginePower(-turnAcceleration.x / 50);
+            }
         }
 
+        else if (turnAcceleration.x > 0)
+        {
+            foreach (HoverEngineController hec in backHoverEngines)
+            {
+                hec.SetNextEnginePower(turnAcceleration.x / 50);
+            }
+        }
+
+        foreach (HoverEngineController hec in rightHoverEngines)
+            hec.UpdatePower();
+        foreach (HoverEngineController hec in leftHoverEngines)
+            hec.UpdatePower();
         //angles.x += turnAcceleration.x * Time.deltaTime;
         //angles.y += turnAcceleration.y * Time.deltaTime;
         //movable.localEulerAngles = angles;
@@ -140,12 +147,12 @@ public class PlayerController : MonoBehaviour
         shipAngle = Mathf.Lerp(shipAngle, Input.GetAxisRaw("Horizontal") * 45f, 0.02f);
 
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, -shipAngle);
-
-
+        
         float emissionRate;
-        if (exhaust) {
+        if (exhaust)
+        {
             if (IsSlowMotion())
-                emissionRate = rb.velocity.magnitude * 10000f;
+                emissionRate = rb.velocity.magnitude * 10f;
             else if (IsFastMotion())
                 emissionRate = rb.velocity.magnitude * 50f;
             else

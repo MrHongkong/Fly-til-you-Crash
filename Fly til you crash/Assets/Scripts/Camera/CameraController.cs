@@ -34,29 +34,36 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        Vector3 cameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
+
+        Vector3 rayDirection = cameraLocation - player.position;
+        
+        RaycastHit raycastHit = new RaycastHit();
+        float reduction = 2f;
+        while(Physics.Raycast(player.position, rayDirection, out raycastHit, rayDirection.magnitude)) {
+            reduction -= 0.1f;
+            if ((reduction - 1f) > 0.4f)
+                cameraLocation = player.position + -1f * distanceBehindPlayer * reduction * player.forward + distanceAbovePlayer * (reduction - 1f) * player.up;
+            else
+                cameraLocation = player.position + -1f * (distanceBehindPlayer * (reduction / 2f) * player.forward + (distanceAbovePlayer * 0.2f * (reduction - 1f) * player.up));
+            rayDirection = cameraLocation - player.position;
+        }
+
         if (PlayerController.playerController.IsSlowMotion())
         { 
-            Vector3 CameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
-            Camera.main.transform.position = (Camera.main.transform.position * cameraBiasSlowmo) + (CameraLocation * (1f - cameraBiasSlowmo));
-
+            Camera.main.transform.position = (Camera.main.transform.position * cameraBiasSlowmo) + (cameraLocation * (1f - cameraBiasSlowmo));
             attention = (attention * cameraAttentionBiasSlowmo) + ((player.position + distanceInfrontOfPlayer * player.forward) * (1f - cameraAttentionBiasSlowmo));
-            Camera.main.transform.LookAt(attention, player.up);
         }
         else if(PlayerController.playerController.IsFastMotion())
         {
-            Vector3 CameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
-            Camera.main.transform.position = (Camera.main.transform.position * cameraBiasFastmo) + (CameraLocation * (1f - cameraBiasFastmo));
-
+            Camera.main.transform.position = (Camera.main.transform.position * cameraBiasFastmo) + (cameraLocation * (1f - cameraBiasFastmo));
             attention = (attention * cameraAttentionBiasFastmo) + ((player.position + distanceInfrontOfPlayer * player.forward) * (1f - cameraAttentionBiasFastmo));
-            Camera.main.transform.LookAt(attention, player.up);
         }
         else
         {
-            Vector3 CameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
-            Camera.main.transform.position = (Camera.main.transform.position * cameraBias) + (CameraLocation * (1f - cameraBias));
-
+            Camera.main.transform.position = (Camera.main.transform.position * cameraBias) + (cameraLocation * (1f - cameraBias));
             attention = (attention * cameraAttentionBias) + ((player.position + distanceInfrontOfPlayer * player.forward) * (1f - cameraAttentionBias));
-            Camera.main.transform.LookAt(attention, player.up);
         }
+        Camera.main.transform.LookAt(attention, player.up);
     }
 }
