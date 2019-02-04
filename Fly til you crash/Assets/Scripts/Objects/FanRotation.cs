@@ -14,7 +14,7 @@ public class FanRotation : MonoBehaviour
         rotationZ = new Vector3(0, 0, incZ);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         incZ += 0.0006f;
         rotationZ.z = incZ;
