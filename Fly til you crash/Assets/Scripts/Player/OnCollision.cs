@@ -24,8 +24,9 @@ public class OnCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Object" && isDead != true)
         {
-            Time.timeScale = 0;                     
-            
+            FindObjectOfType<AudioManager>().Play("PlayerDeath");
+            Time.timeScale = 0;
+
             if (hasStartedCoroutine == false)
             {
                 StartCoroutine(WaitForDeath());

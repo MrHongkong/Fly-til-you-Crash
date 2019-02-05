@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("CarSound");
         rb = movable.GetComponent<Rigidbody>();
         angles = movable.localEulerAngles;
 
@@ -53,18 +54,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+     
         if (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).magnitude < 0.2f)
+        {           
             rb.angularDrag = dragOnHold;
+        }
         else
+        {
             rb.angularDrag = dragOffHold;
-
+        }
+       
         if (fastmotion ^ Input.GetButton("TimeWarp"))
         {
+            FindObjectOfType<AudioManager>().Play("BoostSound");
             fastmotion = Input.GetButton("TimeWarp");
         }
 
         if (slowmotion ^ Input.GetButton("TimeStop"))
         {
+            FindObjectOfType<AudioManager>().Play("SlowMotionSound");
             slowmotion = Input.GetButton("TimeStop");
         }
 
@@ -73,7 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             if (slowmotion && slowmotionTimer > 0f)
             {
-                slowmotionTimer -= Time.deltaTime * 10f * slowTimeScale;
+                slowmotionTimer -= Time.deltaTime * 10f * slowTimeScale;              
                 Time.timeScale = slowTimeScale;
             }
             else

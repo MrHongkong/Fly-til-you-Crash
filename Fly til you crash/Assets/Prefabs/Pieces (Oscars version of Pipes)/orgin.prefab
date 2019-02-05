@@ -47,10 +47,9 @@ MonoBehaviour:
   startTunnelPrefab: {fileID: 4019975653026349171, guid: 516bd3a29f7dfca40943b113a2ee34c3,
     type: 3}
   tunnelPrefabs:
-  - {fileID: 687968912203331612, guid: c5e6e8decfeecb14fa08b233aecb729e, type: 3}
-  - {fileID: 6849440160933717280, guid: 3e0fe51a1c6752b47906031b82e387a1, type: 3}
-  - {fileID: 8780951418629932476, guid: 5dbed078c8d3de744bf98178b2366dc6, type: 3}
-  - {fileID: 7995207328356551317, guid: 358b129fad31c5046a7e74f90d92cdfa, type: 3}
+  - {fileID: 7427533315130886163, guid: 7d37c2b5e646d30459feda07732b74ac, type: 3}
+  - {fileID: 3834646701527467385, guid: fde3aac20e92f064a97667f396ef273d, type: 3}
+  - {fileID: 4187996416400033401, guid: 9694c61fe6c98fe4f9cbe984a10e28ef, type: 3}
 --- !u!114 &5829838105386230859
 MonoBehaviour:
   m_ObjectHideFlags: 0
