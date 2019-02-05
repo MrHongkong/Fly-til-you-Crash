@@ -19,7 +19,7 @@ public class FanRotation : MonoBehaviour
         incZ += 0.0006f;
         rotationZ.z = incZ;
         timer = Time.timeSinceLevelLoad + 0.5f;
-        transform.eulerAngles = transform.eulerAngles + rotationZ;
+        transform.eulerAngles = transform.eulerAngles + rotationZ * 1 / Time.timeScale;
 
         if (incZ > 360) incZ = 0;
     }

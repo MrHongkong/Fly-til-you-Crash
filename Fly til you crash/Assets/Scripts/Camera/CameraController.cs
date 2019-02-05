@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
     {
         Vector3 cameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
 
-        Vector3 rayDirection = cameraLocation - player.position;
+        Vector3 rayDirection = -distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
         
         RaycastHit raycastHit = new RaycastHit();
         float reduction = 2f;
@@ -61,8 +61,8 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            Camera.main.transform.position = (Camera.main.transform.position * cameraBias) + (cameraLocation * (1f - cameraBias));
-            attention = (attention * cameraAttentionBias) + ((player.position + distanceInfrontOfPlayer * player.forward) * (1f - cameraAttentionBias));
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, cameraLocation, 0.1f);
+            attention = Vector3.Lerp(attention, (player.position + distanceInfrontOfPlayer * player.forward), 0.1f);
         }
         Camera.main.transform.LookAt(attention, player.up);
     }

@@ -162,9 +162,9 @@ public class PlayerController : MonoBehaviour
             if (IsSlowMotion())
                 emissionRate = rb.velocity.magnitude * 10f;
             else if (IsFastMotion())
-                emissionRate = rb.velocity.magnitude * 50f;
+                emissionRate = 100f;
             else
-                emissionRate = rb.velocity.magnitude * 0f;
+                emissionRate = 0f;
         }
         else
             emissionRate = 0f;
