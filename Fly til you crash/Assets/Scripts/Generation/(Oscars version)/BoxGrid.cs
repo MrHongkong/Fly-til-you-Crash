@@ -25,6 +25,7 @@ public class BoxGrid {
         boxFace = new BoxFace(cellCenter, gridSize);
     }
 
+    //Checks if line intersects with this box.
     internal bool Intersects(Line line) {
 
         Vector3 B1 = FindSmallest();
@@ -39,8 +40,9 @@ public class BoxGrid {
         }
 
         return false;
-    }
+    } 
 
+    //Returns a Vector consiting of the smalles x, y, z from the box faces.
     private Vector3 FindSmallest() {
 
         float x = 0, y = 0, z = 0;
@@ -58,6 +60,7 @@ public class BoxGrid {
         return new Vector3(x, y, z);
     }
 
+    //Returns a Vector consiting of the largest x, y, z from the box faces.
     private Vector3 FindLargest() {
 
         float x = 0, y = 0, z = 0;
@@ -75,6 +78,7 @@ public class BoxGrid {
         return new Vector3(x, y, z);
     }
 
+    //Returns true if line intersects this box.
     private bool CheckLineBox(Vector3 B1, Vector3 B2, Vector3 L1, Vector3 L2, ref Vector3 Hit) {
 
         if (L2.x < B1.x && L1.x < B1.x)
@@ -112,6 +116,7 @@ public class BoxGrid {
         return false;
     }
 
+    //Returns true and sets Hit vector to intersection point
     private bool GetIntersection(float fDst1, float fDst2, Vector3 P1, Vector3 P2, ref Vector3 Hit) {
 
         if ((fDst1 * fDst2) >= 0.0f)
@@ -124,6 +129,7 @@ public class BoxGrid {
         return true;
     }
 
+    //Returns true if line acctually intersects box
     private bool InBox(Vector3 Hit, Vector3 B1, Vector3 B2, int Axis) {
 
         if (Axis == 1 && Hit.z > B1.z && Hit.z < B2.z && Hit.y > B1.y && Hit.y < B2.y)
