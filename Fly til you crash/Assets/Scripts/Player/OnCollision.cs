@@ -11,6 +11,8 @@ public class OnCollision : MonoBehaviour
     public bool hasStartedCoroutine = false;
     public float waitForDestruction = 2.0f;
     public bool reloadScene = false;
+    bool alreadyPlayed = false;
+    bool carSound = false;
     Username user;
 
     public void Start()
@@ -24,7 +26,17 @@ public class OnCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Object" && isDead != true)
         {
-            FindObjectOfType<AudioManager>().Play("PlayerDeath");
+            if (!carSound)
+            {
+                FindObjectOfType<AudioManager>().Mute("CarSound");
+                carSound = true;
+            }
+
+            if (!alreadyPlayed)
+            {
+                FindObjectOfType<AudioManager>().Play("PlayerDeath");
+                alreadyPlayed = true;
+            }
             Time.timeScale = 0;
 
             if (hasStartedCoroutine == false)
