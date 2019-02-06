@@ -5,7 +5,6 @@ using UnityEngine;
 public class FanRotation : MonoBehaviour
 {
     Vector3 rotationZ;
-    float timer;
     float incZ;
 
     private void Start()
@@ -17,9 +16,8 @@ public class FanRotation : MonoBehaviour
     private void FixedUpdate()
     {
         incZ += 0.0006f;
-        rotationZ.z = incZ;
-        timer = Time.timeSinceLevelLoad + 0.5f;
-        transform.eulerAngles = transform.eulerAngles + rotationZ * 1 / Time.timeScale;
+        rotationZ.z = incZ / Time.timeScale;
+        transform.eulerAngles = transform.eulerAngles + rotationZ;
 
         if (incZ > 360) incZ = 0;
     }
