@@ -8,6 +8,7 @@ public class MenuVideoController : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public RawImage rawImage;
+
     void Start()
     {
         StartCoroutine(PlayVideo());
