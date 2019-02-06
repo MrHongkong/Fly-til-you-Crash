@@ -9949,17 +9949,10 @@ MonoBehaviour:
     mute: 0
     source: {fileID: 0}
   - name: CarSound
-    clip: {fileID: 8300000, guid: 324917eec6202d248a68b64fc70a11d0, type: 3}
+    clip: {fileID: 8300000, guid: 58c68a2355fa4344a9675872c22311b5, type: 3}
     volume: 1
     pitch: 0.5
     loop: 1
-    mute: 0
-    source: {fileID: 0}
-  - name: CrashSound
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 0.5
-    loop: 0
     mute: 0
     source: {fileID: 0}
   - name: BoostSound
@@ -10387,7 +10380,7 @@ PrefabInstance:
     - target: {fileID: 5992554654620087237, guid: 7bd1c6e8a341347499768f2d79e0d598,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1436688525743290139, guid: 7bd1c6e8a341347499768f2d79e0d598,
         type: 3}
@@ -15964,6 +15957,7 @@ MonoBehaviour:
   hasStartedCoroutine: 0
   waitForDestruction: 2
   reloadScene: 0
+  alreadyPlayed: 0
 --- !u!64 &1264467315093422491
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16015,6 +16009,14 @@ MonoBehaviour:
   movable: {fileID: 4023204613229485075}
   slowTimeScale: 0.2
   fastTimeScale: 3
+  s:
+    name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
 --- !u!114 &1264467315093422493
 MonoBehaviour:
   m_ObjectHideFlags: 0

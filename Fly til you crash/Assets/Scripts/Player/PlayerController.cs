@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     bool fastmotion = false;
     float fastmotionTimer = 40f;
     public float fastTimeScale;
+    public Sound s;
     
     public static PlayerController playerController;
 
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("CarSound");
+        s.loop = true;
         rb = movable.GetComponent<Rigidbody>();
         angles = movable.localEulerAngles;
 
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        
         if (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).magnitude < 0.2f)
         {           
             rb.angularDrag = dragOnHold;
