@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class FanRotation : MonoBehaviour
 {
-    Vector3 rotationZ;
-    float incZ;
-
+    Vector3 rotation;
+    float speed;
     bool movingFan;
 
     private void Start()
     {
-        incZ = 0;
-        rotationZ = new Vector3(0, 0, incZ);
+        speed = 0;
+        rotation = new Vector3(0, 0, speed);
 
         if (Random.Range(0, 1f) < 0.5f)
             movingFan = true;
@@ -24,12 +23,10 @@ public class FanRotation : MonoBehaviour
     {
         if(movingFan)
         {
-            incZ += 0.0006f;
-            rotationZ.z = incZ;
-            timer = Time.timeSinceLevelLoad + 0.5f;
-            transform.eulerAngles = transform.eulerAngles + rotationZ * 1 / Time.timeScale;
-
-            if (incZ > 360) incZ = 0;
+            speed += 0.0006f;
+            rotation.z = speed;
+            transform.eulerAngles = transform.eulerAngles + rotation * 1 / Time.timeScale;
+            if (speed > 360) speed = 0;
         }
     }
 }
