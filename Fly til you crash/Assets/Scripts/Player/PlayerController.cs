@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     float shipAngle = 0f;
 
     bool exhaust = true;
+    bool alreadyPlayed = false;
 
     bool slowmotion = false;
     float slowmotionTimer = 2f;
@@ -35,7 +36,6 @@ public class PlayerController : MonoBehaviour
     bool fastmotion = false;
     float fastmotionTimer = 40f;
     public float fastTimeScale;
-    public Sound s;
     
     public static PlayerController playerController;
 
@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("CarSound");
-        s.loop = true;
         rb = movable.GetComponent<Rigidbody>();
         angles = movable.localEulerAngles;
 
@@ -68,7 +67,15 @@ public class PlayerController : MonoBehaviour
        
         if (fastmotion ^ Input.GetButton("TimeWarp"))
         {
-            FindObjectOfType<AudioManager>().Play("BoostSound");
+            if (!alreadyPlayed)
+            {
+                FindObjectOfType<AudioManager>().Play("BoostSound");
+                alreadyPlayed = true;
+            }
+            else
+            {
+                alreadyPlayed = false;
+            }
             fastmotion = Input.GetButton("TimeWarp");
         }
 

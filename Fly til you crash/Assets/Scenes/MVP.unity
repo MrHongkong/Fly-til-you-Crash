@@ -9956,7 +9956,7 @@ MonoBehaviour:
     mute: 0
     source: {fileID: 0}
   - name: BoostSound
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4aca785ed33f1ab4ab9b84143d46a527, type: 3}
     volume: 1
     pitch: 0.5
     loop: 0
