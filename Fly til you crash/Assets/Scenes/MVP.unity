@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 242052672}
   - component: {fileID: 242052671}
   - component: {fileID: 242052670}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnergyExplosion (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,9 +1557,9 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.55999994, g: 0, b: 1, a: 0.12941177}
-        key1: {r: 0, g: 0.29982653, b: 0.3301887, a: 0.20703873}
-        key2: {r: 0.29223037, g: 0.29495755, b: 0.31132078, a: 0.003921569}
-        key3: {r: 0.2726837, g: 0, b: 0.49056602, a: 0.32156864}
+        key1: {r: 0, g: 0.25606468, b: 0.2830189, a: 0.20703873}
+        key2: {r: 0.29223037, g: 0.29495755, b: 0.31132078, a: 0}
+        key3: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key4: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key5: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key6: {r: 0, g: 0.16433334, b: 0.74595106, a: 0}
@@ -1573,16 +1573,16 @@ ParticleSystem:
         ctime6: 17926
         ctime7: 24287
         atime0: 0
-        atime1: 11758
-        atime2: 20624
-        atime3: 29105
+        atime1: 7517
+        atime2: 41634
+        atime3: 65535
         atime4: 65535
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 5
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 328315841}
   - component: {fileID: 328315840}
   - component: {fileID: 328315839}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnergyExplosion (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6356,9 +6356,9 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.55999994, g: 0, b: 1, a: 0.12941177}
-        key1: {r: 0, g: 0.29982653, b: 0.3301887, a: 0.20703873}
-        key2: {r: 0.29223037, g: 0.29495755, b: 0.31132078, a: 0.003921569}
-        key3: {r: 0.2726837, g: 0, b: 0.49056602, a: 0.32156864}
+        key1: {r: 0, g: 0.25606468, b: 0.2830189, a: 0.20703873}
+        key2: {r: 0.29223037, g: 0.29495755, b: 0.31132078, a: 0}
+        key3: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key4: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key5: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key6: {r: 0, g: 0.16433334, b: 0.74595106, a: 0}
@@ -6372,16 +6372,16 @@ ParticleSystem:
         ctime6: 17926
         ctime7: 24287
         atime0: 0
-        atime1: 11758
-        atime2: 20624
-        atime3: 29105
+        atime1: 7517
+        atime2: 41634
+        atime3: 65535
         atime4: 65535
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 5
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9949,21 +9949,14 @@ MonoBehaviour:
     mute: 0
     source: {fileID: 0}
   - name: CarSound
-    clip: {fileID: 8300000, guid: 324917eec6202d248a68b64fc70a11d0, type: 3}
+    clip: {fileID: 8300000, guid: 58c68a2355fa4344a9675872c22311b5, type: 3}
     volume: 1
     pitch: 0.5
     loop: 1
     mute: 0
     source: {fileID: 0}
-  - name: CrashSound
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 0.5
-    loop: 0
-    mute: 0
-    source: {fileID: 0}
   - name: BoostSound
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4aca785ed33f1ab4ab9b84143d46a527, type: 3}
     volume: 1
     pitch: 0.5
     loop: 0
@@ -10961,7 +10954,7 @@ GameObject:
   - component: {fileID: 2035064172}
   - component: {fileID: 2035064171}
   - component: {fileID: 2035064170}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnergyExplosion (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12378,9 +12371,9 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.55999994, g: 0, b: 1, a: 0.12941177}
-        key1: {r: 0, g: 0.29982653, b: 0.3301887, a: 0.20703873}
-        key2: {r: 0.29223037, g: 0.29495755, b: 0.31132078, a: 0.003921569}
-        key3: {r: 0.2726837, g: 0, b: 0.49056602, a: 0.32156864}
+        key1: {r: 0, g: 0.25606468, b: 0.2830189, a: 0.20703873}
+        key2: {r: 0.29223037, g: 0.29495755, b: 0.31132078, a: 0}
+        key3: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key4: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key5: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key6: {r: 0, g: 0.16433334, b: 0.74595106, a: 0}
@@ -12394,16 +12387,16 @@ ParticleSystem:
         ctime6: 17926
         ctime7: 24287
         atime0: 0
-        atime1: 11758
-        atime2: 20624
-        atime3: 29105
+        atime1: 7517
+        atime2: 41634
+        atime3: 65535
         atime4: 65535
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 5
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15753,37 +15746,37 @@ PrefabInstance:
     - target: {fileID: 3743981960364822973, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7626314
+      value: -0.97867584
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822973, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.4944315
+      value: -1.3376985
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822973, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.234021
+      value: 7.30855
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822973, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.35293415
+      value: -0.17657994
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822973, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.40422744
+      value: 0.084670156
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822973, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.17272598
+      value: 0.015250355
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822973, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8259561
+      value: 0.98051924
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822973, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -15849,6 +15842,21 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraAttentionBiasFastmo
       value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
+        type: 3}
+      propertyPath: cameraLerp
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
+        type: 3}
+      propertyPath: cameraLerpSlowmo
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
+        type: 3}
+      propertyPath: cameraLerpFastmo
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822972, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -15941,7 +15949,7 @@ GameObject:
   - component: {fileID: 1264467315093422490}
   - component: {fileID: 1264467315093422492}
   - component: {fileID: 1264467315093422491}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Flying Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15964,6 +15972,7 @@ MonoBehaviour:
   hasStartedCoroutine: 0
   waitForDestruction: 2
   reloadScene: 0
+  alreadyPlayed: 0
 --- !u!64 &1264467315093422491
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16015,6 +16024,14 @@ MonoBehaviour:
   movable: {fileID: 4023204613229485075}
   slowTimeScale: 0.2
   fastTimeScale: 3
+  s:
+    name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
 --- !u!114 &1264467315093422493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16138,7 +16155,7 @@ GameObject:
   - component: {fileID: 4023204613229485075}
   - component: {fileID: 4023204613229485072}
   - component: {fileID: 4023204613229485073}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Car Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16171,7 +16188,7 @@ GameObject:
   - component: {fileID: 4977381525506731722}
   - component: {fileID: 5170137057858540900}
   - component: {fileID: 5172335354046683622}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnergyExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17540,9 +17557,9 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.55999994, g: 0, b: 1, a: 0.12941177}
-        key1: {r: 0, g: 0.29982653, b: 0.3301887, a: 0.20703873}
-        key2: {r: 0.29223037, g: 0.29495755, b: 0.31132078, a: 0.003921569}
-        key3: {r: 0.2726837, g: 0, b: 0.49056602, a: 0.32156864}
+        key1: {r: 0, g: 0.25606468, b: 0.2830189, a: 0.20703873}
+        key2: {r: 0.29223037, g: 0.29495755, b: 0.31132078, a: 0}
+        key3: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key4: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key5: {r: 0.2726837, g: 0, b: 0.49056602, a: 0}
         key6: {r: 0, g: 0.16433334, b: 0.74595106, a: 0}
@@ -17556,16 +17573,16 @@ ParticleSystem:
         ctime6: 17926
         ctime7: 24287
         atime0: 0
-        atime1: 11758
-        atime2: 20624
-        atime3: 29105
+        atime1: 7517
+        atime2: 41634
+        atime3: 65535
         atime4: 65535
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 5
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -20955,7 +20972,7 @@ GameObject:
   - component: {fileID: 5643252937927566516}
   - component: {fileID: 5643252937927566517}
   - component: {fileID: 1101717729}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25654,7 +25671,7 @@ GameObject:
   - component: {fileID: 5643252938131719732}
   - component: {fileID: 5643252938131719733}
   - component: {fileID: 45009666}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30415,7 +30432,7 @@ GameObject:
   - component: {fileID: 5643252938182431915}
   - component: {fileID: 5643252938182431912}
   - component: {fileID: 1326099724}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39670,7 +39687,7 @@ GameObject:
   - component: {fileID: 8696483815262159980}
   - component: {fileID: 8696483815262159983}
   - component: {fileID: 296580091}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

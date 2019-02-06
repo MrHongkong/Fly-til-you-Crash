@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class OnCollision : MonoBehaviour
@@ -11,8 +10,7 @@ public class OnCollision : MonoBehaviour
     public bool hasStartedCoroutine = false;
     public float waitForDestruction = 2.0f;
     public bool reloadScene = false;
-    bool alreadyPlayed = false;
-    bool carSound = false;
+    public bool alreadyPlayed = false;
     Username user;
 
     public void Start()
@@ -26,27 +24,25 @@ public class OnCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Object" && isDead != true)
         {
-            if (!carSound)
-            {
-                FindObjectOfType<AudioManager>().Mute("CarSound");
-                carSound = true;
-            }
-
             if (!alreadyPlayed)
             {
+
+                FindObjectOfType<AudioManager>().Stop("CarSound");
+
                 FindObjectOfType<AudioManager>().Play("PlayerDeath");
                 alreadyPlayed = true;
             }
+
             Time.timeScale = 0;
 
             if (hasStartedCoroutine == false)
             {
                 StartCoroutine(WaitForDeath());
-                hasStartedCoroutine = true;    
+                hasStartedCoroutine = true;
             }
             else
             {
-                
+
             }
 
         }
@@ -55,7 +51,7 @@ public class OnCollision : MonoBehaviour
 
     public IEnumerator WaitForDeath()
     {
-        while(waitForDestruction > 0.0f)
+        while (waitForDestruction > 0.0f)
         {
             waitForDestruction -= Time.deltaTime;
             StartCoroutine(FindObjectOfType<CameraShake>().Shake(.1f, .1f));
@@ -68,7 +64,7 @@ public class OnCollision : MonoBehaviour
 
             if (isDead == true)
             {
-                
+
                 if (user == null)
                 {
                     Debug.LogError("ERROR: user is null");

@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     float shipAngle = 0f;
 
     bool exhaust = true;
+    bool alreadyPlayed = false;
 
     bool slowmotion = false;
     float slowmotionTimer = 2f;
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        
         if (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).magnitude < 0.2f)
         {           
             rb.angularDrag = dragOnHold;
@@ -66,7 +67,15 @@ public class PlayerController : MonoBehaviour
        
         if (fastmotion ^ Input.GetButton("TimeWarp"))
         {
-            FindObjectOfType<AudioManager>().Play("BoostSound");
+            if (!alreadyPlayed)
+            {
+                FindObjectOfType<AudioManager>().Play("BoostSound");
+                alreadyPlayed = true;
+            }
+            else
+            {
+                alreadyPlayed = false;
+            }
             fastmotion = Input.GetButton("TimeWarp");
         }
 
@@ -110,9 +119,9 @@ public class PlayerController : MonoBehaviour
         turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 2f);
         turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f, 2f);
 
-        movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime, 0f, 0f);
-        movable.localRotation *= Quaternion.Euler(0f, turnAcceleration.y * Time.deltaTime, 0f);
-        movable.localRotation *= Quaternion.Euler(0f, 0f, -turnAcceleration.z * Time.deltaTime);
+        movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime * (1f / Time.timeScale), 0f, 0f);
+        movable.localRotation *= Quaternion.Euler(0f, turnAcceleration.y * Time.deltaTime * (1f / Time.timeScale), 0f);
+        movable.localRotation *= Quaternion.Euler(0f, 0f, -turnAcceleration.z * Time.deltaTime * (1f / Time.timeScale));
 
         float emissionRateHoverEnginesRight;
 

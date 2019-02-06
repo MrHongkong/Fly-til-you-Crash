@@ -12,58 +12,49 @@ public class CameraController : MonoBehaviour
     public float distanceBehindPlayer;
     public float distanceAbovePlayer;
 
-    [Range(0.01f, 0.99f)]
-    public float cameraBias;
-    [Range(0.01f, 0.99f)]
-    public float cameraBiasSlowmo;
-    [Range(0.01f, 0.99f)]
-    public float cameraBiasFastmo;
-
-    [Range(0.01f, 0.99f)]
-    public float cameraAttentionBias;
-    [Range(0.01f, 0.99f)]
-    public float cameraAttentionBiasSlowmo;
-    [Range(0.01f, 0.99f)]
-    public float cameraAttentionBiasFastmo;
+    [Range(0.01f, 3f)]
+    public float cameraLerp;
+    [Range(0.01f, 3f)]
+    public float cameraLerpSlowmo;
+    [Range(0.01f, 3f)]
+    public float cameraLerpFastmo;
+    
     Vector3 attention;
     
-    void Start()
-    {
+    void Start() {
         attention = player.position + distanceInfrontOfPlayer * player.forward;
     }
 
-    void LateUpdate()
-    {
+    void LateUpdate() {
         Vector3 cameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
+        Vector3 rayDirection = distanceBehindPlayer * -player.forward + distanceAbovePlayer * player.up;
 
-        Vector3 rayDirection = -distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
-        
+        Vector3 BackwardsToCamera = Vector3.Project(rayDirection, -player.forward);
+        Vector3 UpwardsToCamera = rayDirection - BackwardsToCamera;
+
+        Debug.DrawLine(player.position, player.position + BackwardsToCamera);
+        Debug.DrawLine(player.position + BackwardsToCamera, player.position + BackwardsToCamera + UpwardsToCamera);
+
         RaycastHit raycastHit = new RaycastHit();
-        float reduction = 2f;
-        while(Physics.Raycast(player.position, rayDirection, out raycastHit, rayDirection.magnitude)) {
-            reduction -= 0.1f;
-            if ((reduction - 1f) > 0.4f)
-                cameraLocation = player.position + -1f * distanceBehindPlayer * reduction * player.forward + distanceAbovePlayer * (reduction - 1f) * player.up;
-            else
-                cameraLocation = player.position + -1f * (distanceBehindPlayer * (reduction / 2f) * player.forward + (distanceAbovePlayer * 0.2f * (reduction - 1f) * player.up));
-            rayDirection = cameraLocation - player.position;
+        bool rayHit = Physics.Raycast(player.position, rayDirection, out raycastHit, rayDirection.magnitude);
+        
+        if(rayHit) {
+            Vector3 RayBackwardsToCamera = Vector3.Project(raycastHit.point - player.position, -player.forward);
+            Vector3 RayUpwardsToCamera = (raycastHit.point - player.position) - RayBackwardsToCamera;
+
+            if (RayUpwardsToCamera.sqrMagnitude < UpwardsToCamera.sqrMagnitude * 0.7) { cameraLocation = player.position + BackwardsToCamera - UpwardsToCamera * (1f - (RayUpwardsToCamera.sqrMagnitude / UpwardsToCamera.sqrMagnitude));}
+            else {cameraLocation = player.position + BackwardsToCamera + RayUpwardsToCamera * 0.9f;}
+
+            Debug.Log("Ray hit: " + raycastHit.collider.name + " " + raycastHit.point.ToString());
         }
 
-        if (PlayerController.playerController.IsSlowMotion())
-        { 
-            Camera.main.transform.position = (Camera.main.transform.position * cameraBiasSlowmo) + (cameraLocation * (1f - cameraBiasSlowmo));
-            attention = (attention * cameraAttentionBiasSlowmo) + ((player.position + distanceInfrontOfPlayer * player.forward) * (1f - cameraAttentionBiasSlowmo));
-        }
-        else if(PlayerController.playerController.IsFastMotion())
-        {
-            Camera.main.transform.position = (Camera.main.transform.position * cameraBiasFastmo) + (cameraLocation * (1f - cameraBiasFastmo));
-            attention = (attention * cameraAttentionBiasFastmo) + ((player.position + distanceInfrontOfPlayer * player.forward) * (1f - cameraAttentionBiasFastmo));
-        }
-        else
-        {
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, cameraLocation, 0.1f);
-            attention = Vector3.Lerp(attention, (player.position + distanceInfrontOfPlayer * player.forward), 0.1f);
-        }
-        Camera.main.transform.LookAt(attention, player.up);
+        float t;
+        if (PlayerController.playerController.IsSlowMotion()) {t = cameraLerpFastmo; }
+        else if(PlayerController.playerController.IsFastMotion()) {t = cameraLerpSlowmo; }
+        else {t = cameraLerp; }
+
+        transform.position = Vector3.Lerp(transform.position, cameraLocation, t);
+        attention = Vector3.Lerp(attention, (player.position + distanceInfrontOfPlayer * player.forward), t);
+        transform.LookAt(attention, player.up);
     }
 }
