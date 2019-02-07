@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
         attention = player.position + distanceInfrontOfPlayer * player.forward;
     }
 
-    void LateUpdate() {
+    void FixedUpdate() {
         Vector3 cameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
         Vector3 rayDirection = distanceBehindPlayer * -player.forward + distanceAbovePlayer * player.up;
 

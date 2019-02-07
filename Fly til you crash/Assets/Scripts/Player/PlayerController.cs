@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public List<HoverEngineController> frontHoverEngines;
     public List<HoverEngineController> backHoverEngines;
 
+    public List<ExhaustEngineController> exhaustEngines;
+
     float enginePower = 1f;
     public Transform movable;
     Rigidbody rb;
@@ -34,7 +36,6 @@ public class PlayerController : MonoBehaviour
     public float slowTimeScale;
 
     bool fastmotion = false;
-    float fastmotionTimer = 40f;
     public float fastTimeScale;
     
     public static PlayerController playerController;
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if ((slowmotion && slowmotionTimer > 0f) || (fastmotion && fastmotionTimer > 0f))
+        if ((slowmotion && slowmotionTimer > 0f) || fastmotion)
         {
             if (slowmotion && slowmotionTimer > 0f)
             {
@@ -95,7 +96,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                fastmotionTimer -= Time.deltaTime;
                 Time.timeScale = fastTimeScale;
             }
         }
@@ -103,8 +103,6 @@ public class PlayerController : MonoBehaviour
         {
             if (slowmotionTimer < 2f)
                 slowmotionTimer += Time.deltaTime * slowTimeScale;
-            if (fastmotionTimer < 40f)
-                fastmotionTimer += Time.deltaTime;
             Time.timeScale = 1f;
         }
 
@@ -171,14 +169,37 @@ public class PlayerController : MonoBehaviour
             if (IsSlowMotion())
                 emissionRate = rb.velocity.magnitude * 10f;
             else if (IsFastMotion())
+            {
+                foreach (ExhaustEngineController eec in exhaustEngines)
+                {
+                    eec.SetNextEnginePower(1f);
+                }
                 emissionRate = 100f;
+            }
             else
+            {
+                foreach (ExhaustEngineController eec in exhaustEngines)
+                {
+                    eec.power *= 0.9f;
+                }
                 emissionRate = 0f;
+            }
         }
         else
+        {
             emissionRate = 0f;
+            foreach (ExhaustEngineController eec in exhaustEngines)
+            {
+                eec.power *= 0.9f;
+            }
+        }
+        
+        foreach (ExhaustEngineController eec in exhaustEngines)
+        {
+            eec.UpdatePower();
+        }
 
-        foreach(ParticleSystem ps in exhaustFire) {
+        foreach (ParticleSystem ps in exhaustFire) {
             var emission = ps.emission;
             var rate = emission.rateOverTime;
             rate.constantMax = emissionRate;
@@ -190,6 +211,6 @@ public class PlayerController : MonoBehaviour
     public void DisableExhaust() { exhaust = false; }
 
     public bool IsSlowMotion() { return slowmotion && slowmotionTimer > 0f; }
-    public bool IsFastMotion() { return fastmotion && fastmotionTimer > 0f; }
+    public bool IsFastMotion() { return fastmotion; }
 
 }
