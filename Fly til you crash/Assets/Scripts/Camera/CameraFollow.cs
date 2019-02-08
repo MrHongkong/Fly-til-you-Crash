@@ -32,7 +32,7 @@ public class CameraFollow : MonoBehaviour
     public void Refresh()
     {
         transform.position = target.TransformPoint(offsetPosition = new Vector3(0, 2, offsetPositionZ));
-        Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 3f * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target.transform.rotation, 3f * Time.deltaTime);
     }
 
     public void TimeWarp()
