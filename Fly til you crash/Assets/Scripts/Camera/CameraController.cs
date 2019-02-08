@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
         attention = player.position + distanceInfrontOfPlayer * player.forward;
     }
 
-    void FixedUpdate() {
+    void LateUpdate() {
         Vector3 cameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
         Vector3 rayDirection = distanceBehindPlayer * -player.forward + distanceAbovePlayer * player.up;
 
@@ -42,10 +42,10 @@ public class CameraController : MonoBehaviour
             Vector3 RayBackwardsToCamera = Vector3.Project(raycastHit.point - player.position, -player.forward);
             Vector3 RayUpwardsToCamera = (raycastHit.point - player.position) - RayBackwardsToCamera;
 
-            if (RayUpwardsToCamera.sqrMagnitude < UpwardsToCamera.sqrMagnitude * 0.7) { cameraLocation = player.position + BackwardsToCamera - UpwardsToCamera * (1f - (RayUpwardsToCamera.sqrMagnitude / UpwardsToCamera.sqrMagnitude));}
-            else {cameraLocation = player.position + BackwardsToCamera + RayUpwardsToCamera * 0.9f;}
-
-            Debug.Log("Ray hit: " + raycastHit.collider.name + " " + raycastHit.point.ToString());
+            if (RayUpwardsToCamera.sqrMagnitude < UpwardsToCamera.sqrMagnitude * 0.7)
+                {cameraLocation = player.position + BackwardsToCamera - UpwardsToCamera * 0.2f * (1f - (RayUpwardsToCamera.sqrMagnitude / UpwardsToCamera.sqrMagnitude));}
+            else
+                {cameraLocation = player.position + BackwardsToCamera + RayUpwardsToCamera * 0.9f;}
         }
 
         float t;
