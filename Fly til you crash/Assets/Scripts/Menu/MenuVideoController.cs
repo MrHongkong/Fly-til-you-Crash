@@ -8,10 +8,11 @@ public class MenuVideoController : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public RawImage rawImage;
-
+    public GameObject buttons;
+    public bool isPlaying;
     void Start()
     {
-        StartCoroutine(PlayVideo());
+       StartCoroutine(PlayVideo());
     }
 
     IEnumerator PlayVideo()
@@ -25,6 +26,12 @@ public class MenuVideoController : MonoBehaviour
         }
         rawImage.texture = videoPlayer.texture;
         videoPlayer.Play();
+        isPlaying = true;
+    }
+
+    private void Update()
+    {
+        if(isPlaying) buttons.SetActive(true);
     }
 
 }
