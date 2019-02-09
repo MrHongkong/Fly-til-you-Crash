@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Made by Jocke
 public class ButtonController : MonoBehaviour
 {
     public GameObject[] buttonList;
@@ -26,13 +26,13 @@ public class ButtonController : MonoBehaviour
         {
             if (i == 0)
             {
-                buttonList[buttonList.Length - 1].SetActive(true);
+                buttonList[length - 1].SetActive(true);
                 buttonList[i].SetActive(false);
                 break;
             }
             else
             {
-                buttonList[(i - 1) % (buttonList.Length)].SetActive(true);
+                buttonList[(i - 1) % length].SetActive(true);
                 buttonList[i].SetActive(false);
                 break;
             }
@@ -40,7 +40,7 @@ public class ButtonController : MonoBehaviour
 
             if (buttonList[i].activeInHierarchy && swap > 0)
             {
-                buttonList[(i + 1) % buttonList.Length].SetActive(true);
+                buttonList[(i + 1) % length].SetActive(true);
                 buttonList[i].SetActive(false);
                 break;
             }

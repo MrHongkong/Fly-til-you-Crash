@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Made by Jocke and Adam
 public class FanRotation : MonoBehaviour
 {
     Vector3 rotation;
