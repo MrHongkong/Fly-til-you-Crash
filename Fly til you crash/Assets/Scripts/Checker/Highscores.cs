@@ -9,13 +9,12 @@ public class Highscores : MonoBehaviour {
     const string privateCode = "gP34t5uH1kWaGuTw8kx51gOmQ-8rdCakyNOmII9cX8rg";
 	const string publicCode = "5c4ac7d4b6397e0c24a5d87c";
 	const string webURL = "http://dreamlo.com/lb/";
-
-	DisplayHighscores highscoreDisplay;
+    DisplayHighscores highscoreDisplay;
 	public Highscore[] highscoresList;
     static Highscores instance;
 	
 	void Awake() {
-		highscoreDisplay = GetComponent<DisplayHighscores> ();
+        highscoreDisplay = GetComponent<DisplayHighscores>();
 		instance = this;
 	}
 

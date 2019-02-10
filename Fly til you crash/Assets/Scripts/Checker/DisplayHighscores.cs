@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class DisplayHighscores : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class DisplayHighscores : MonoBehaviour {
 
 	void Start() {
 		for (int i = 0; i < highscoreFields.Length; i ++) {
-			highscoreFields[i].text = i+1 + ". Fetching...";
+			highscoreFields[i].text = i + 1 + ". Fetching...";
 		}
 
         highscoresManager = GetComponent<Highscores>();
@@ -21,7 +22,7 @@ public class DisplayHighscores : MonoBehaviour {
 	}
 	
 	public void OnHighscoresDownloaded(Highscore[] highscoreList) {
-		for (int i =0; i < highscoreFields.Length; i ++) {
+		for (int i = 0; i < highscoreFields.Length; i ++) {
 			highscoreFields[i].text = i+1 + ". ";
 			if (i < highscoreList.Length) {
                 string[] test =  highscoreList[i].username.Split('+');
