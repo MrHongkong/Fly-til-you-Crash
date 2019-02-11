@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!alreadyPlayed)
             {
-                FindObjectOfType<AudioManager>().Play("BoostSound");
+                //FindObjectOfType<AudioManager>().Play("BoostSound");
                 alreadyPlayed = true;
             }
             else
