@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
 
             return;
         }
-        offsetPositionZ = -8;
+        offsetPositionZ = -4;
         offsetPosition = new Vector3(0, 2, offsetPositionZ);
     }
 
@@ -31,7 +31,9 @@ public class CameraFollow : MonoBehaviour
 
     public void Refresh()
     {
-        transform.position = target.TransformPoint(offsetPosition = new Vector3(0, 2, offsetPositionZ));
+        offsetPosition = new Vector3(0, 2, offsetPositionZ);
+        Vector3 wantedPosition = target.TransformPoint(offsetPosition);
+        transform.position = Vector3.Lerp(transform.position, wantedPosition, 3f * Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, target.transform.rotation, 3f * Time.deltaTime);
     }
 
@@ -40,18 +42,18 @@ public class CameraFollow : MonoBehaviour
         if (Input.GetButton("TimeWarp"))
         {
             offsetPositionZ -= 0.1f;
-            if (offsetPositionZ <= -12)
+            if (offsetPositionZ <= -8)
             {
-                offsetPositionZ = -12;
+                offsetPositionZ = -8;
             }
         }
         else
         {
-            if (offsetPositionZ < -8)
+            if (offsetPositionZ < -4)
             {
                 offsetPositionZ += 0.2f;
             }
-            else offsetPositionZ = -8f;
+            else offsetPositionZ = -4f;
         }
         
     }
