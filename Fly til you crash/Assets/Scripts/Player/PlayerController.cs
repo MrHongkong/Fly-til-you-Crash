@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     public float dragOnHold;
     public float dragOffHold;
 
-    public List<ParticleSystem> exhaustFire;
-
     public List<HoverEngineController> leftHoverEngines;
     public List<HoverEngineController> rightHoverEngines;
     public List<HoverEngineController> frontHoverEngines;
@@ -78,6 +76,10 @@ public class PlayerController : MonoBehaviour
                 alreadyPlayed = false;
             }
             fastmotion = Input.GetButton("TimeWarp");
+
+            if (fastmotion)
+                foreach (ExhaustEngineController eec in exhaustEngines)
+                    eec.Boost();
         }
 
         if (slowmotion ^ Input.GetButton("TimeStop"))
@@ -162,49 +164,6 @@ public class PlayerController : MonoBehaviour
         shipAngle = Mathf.Lerp(shipAngle, Input.GetAxisRaw("Horizontal") * 45f, 0.02f);
 
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, -shipAngle);
-        
-        float emissionRate;
-        if (exhaust)
-        {
-            if (IsSlowMotion())
-                emissionRate = rb.velocity.magnitude * 10f;
-            else if (IsFastMotion())
-            {
-                foreach (ExhaustEngineController eec in exhaustEngines)
-                {
-                    eec.SetNextEnginePower(1f);
-                }
-                emissionRate = 100f;
-            }
-            else
-            {
-                foreach (ExhaustEngineController eec in exhaustEngines)
-                {
-                    eec.power *= 0.9f;
-                }
-                emissionRate = 0f;
-            }
-        }
-        else
-        {
-            emissionRate = 0f;
-            foreach (ExhaustEngineController eec in exhaustEngines)
-            {
-                eec.power *= 0.9f;
-            }
-        }
-        
-        foreach (ExhaustEngineController eec in exhaustEngines)
-        {
-            eec.UpdatePower();
-        }
-
-        foreach (ParticleSystem ps in exhaustFire) {
-            var emission = ps.emission;
-            var rate = emission.rateOverTime;
-            rate.constantMax = emissionRate;
-            emission.rateOverTime = rate;
-        }
     }
 
     public void EnableExhaust() { exhaust = true; }
