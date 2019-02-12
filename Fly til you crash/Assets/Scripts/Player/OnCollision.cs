@@ -9,15 +9,14 @@ public class OnCollision : MonoBehaviour
     public bool isDead = false;
     public bool hasStartedCoroutine = false;
     public float waitForDestruction = 2.0f;
-    public bool reloadScene = false;
     public bool alreadyPlayed = false;
-    Username user;
+    UIController uiController;
+    public static bool dead;
 
-    public void Start()
+    private void Start()
     {
-        user = FindObjectOfType<Username>();
-        user.transform.parent.gameObject.SetActive(false);
-
+        uiController = FindObjectOfType<UIController>();
+        dead = false;
     }
 
     public void CollisionEnter(Collision other)
@@ -39,14 +38,9 @@ public class OnCollision : MonoBehaviour
             {
                 StartCoroutine(WaitForDeath());
                 hasStartedCoroutine = true;
+                dead = true;
             }
-            else
-            {
-
-            }
-
         }
-
     }
 
     public IEnumerator WaitForDeath()
@@ -61,45 +55,17 @@ public class OnCollision : MonoBehaviour
         if (waitForDestruction <= 0.0f)
         {
             isDead = true;
-
-            if (isDead == true)
-            {
-
-                if (user == null)
-                {
-                    Debug.LogError("ERROR: user is null");
-                }
-                else if (user.UserInputUI == null)
-                {
-                    Debug.LogError("ERROR: user.UserInputUI is null");
-                }
-                else
-                {
-                    user.UserInputUI.SetActive(true);
-                }
-                reloadScene = true;
-            }
-            else
-            {
-
-                Debug.Log("CountDown: " + waitForDestruction);
-                Debug.Log("Dead? " + isDead);
-                reloadScene = false;
-                isDead = false;
-                waitForDestruction = 2.0f;
-            }
-
+            uiController.backgroundImage.enabled = true;
+            uiController.buttons.SetActive(true);
+            uiController.userInputUI.SetActive(true);
+            uiController.scoreUI.SetActive(false);
+            uiController.inputeScoreText.text = "Score: " + UIController.score.ToString();
         }
-
-    }
-
-    public void ReloadGame()
-    {
-        if (reloadScene == true)
+        else
         {
-
-            SceneManager.LoadScene("MVP");
+            isDead = false;
+            waitForDestruction = 1.0f;
         }
     }
-
 }
+

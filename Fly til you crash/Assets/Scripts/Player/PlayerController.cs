@@ -118,13 +118,17 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
-        turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f, 2f);
-        turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 2f);
-        turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f, 2f);
+        if (!OnCollision.dead)
+        {
+            turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f, 2f);
+            turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 2f);
+            turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f, 2f);
 
-        movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime * (1f / Time.timeScale) * yAxis, 0f, 0f);
-        movable.localRotation *= Quaternion.Euler(0f, turnAcceleration.y * Time.deltaTime * (1f / Time.timeScale), 0f);
-        movable.localRotation *= Quaternion.Euler(0f, 0f, -turnAcceleration.z * Time.deltaTime * (1f / Time.timeScale));
+            movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime * (1f / Time.timeScale) * yAxis, 0f, 0f);
+            movable.localRotation *= Quaternion.Euler(0f, turnAcceleration.y * Time.deltaTime * (1f / Time.timeScale), 0f);
+            movable.localRotation *= Quaternion.Euler(0f, 0f, -turnAcceleration.z * Time.deltaTime * (1f / Time.timeScale));
+        }
+        
 
         float emissionRateHoverEnginesRight;
 

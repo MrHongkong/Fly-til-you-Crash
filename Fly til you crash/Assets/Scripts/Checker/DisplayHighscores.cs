@@ -9,7 +9,7 @@ public class DisplayHighscores : MonoBehaviour {
     //Made by Philip Åkerblom GP18 Yrgo
     //Code from Sebastian Lague
 
-	public Text[] highscoreFields;
+	public TextMeshProUGUI[] highscoreFields;
 	Highscores highscoresManager;
 
 	void Start() {

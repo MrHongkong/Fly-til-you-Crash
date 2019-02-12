@@ -61,7 +61,7 @@ public class Username : MonoBehaviour
 
     public void OnClickRestart()
     {
-        collision.ReloadGame();
+        //collision.ReloadGame();
         HighscoreUI.SetActive(false);
         UserInputUI.SetActive(false);
         Time.timeScale = 1;
