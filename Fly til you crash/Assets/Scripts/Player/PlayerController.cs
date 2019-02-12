@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static bool yAxisIsOn;
     public float yAxis;
     public float bankingTorqueAmp;
     public float pitchingTorqueAmp;
@@ -109,6 +110,8 @@ public class PlayerController : MonoBehaviour
         //Pitch controls, turning the nose up and down
 
         rb.velocity *= 0.6f;
+        if (yAxisIsOn) yAxis = -1;
+        else yAxis = 1;
     }
     
     void FixedUpdate()
