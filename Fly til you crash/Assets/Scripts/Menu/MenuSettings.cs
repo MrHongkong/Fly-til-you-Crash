@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuSettings : MonoBehaviour
 {
-    public void UpdatePlayerController(bool update)
+    public static bool isOn;
+    public MenuSettings menuSetting;
+    private void Awake()
     {
-        PlayerController.yAxisIsOn = update;
+        DontDestroyOnLoad(menuSetting);
+    }
+    
+    public void UpdateIsOn(bool update)
+    {
+        isOn = update;
     }
 }

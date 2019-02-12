@@ -10,7 +10,7 @@ public class InvertedControls : MonoBehaviour
     public MenuSettings menuSettings;
     public void OnClick()
     {
-        if (toggle.isOn) menuSettings.UpdatePlayerController(false);
-        else menuSettings.UpdatePlayerController(true);
+        if (toggle.isOn) menuSettings.UpdateIsOn(false);
+        else menuSettings.UpdateIsOn(true);
     }
 }
