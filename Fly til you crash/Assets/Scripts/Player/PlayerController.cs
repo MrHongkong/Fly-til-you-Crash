@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     bool alreadyPlayed = false;
 
     bool slowmotion = false;
+    float maxSlowmotionTimer = 2f;
     float slowmotionTimer = 2f;
     public float slowTimeScale;
 
@@ -39,8 +40,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController playerController;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         FindObjectOfType<AudioManager>().Play("CarSound");
         rb = movable.GetComponent<Rigidbody>();
         angles = movable.localEulerAngles;
@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
             playerController = this;
         else
             Destroy(this);
+    }
+
+    public float GetPercentageBoost(){
+        return slowmotionTimer / maxSlowmotionTimer;
     }
 
     // Update is called once per frame
@@ -118,7 +122,7 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (!OnCollision.dead)
+        if(Time.timeScale != 0f)
         {
             turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f, 2f);
             turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 2f);
@@ -126,9 +130,8 @@ public class PlayerController : MonoBehaviour
 
             movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime * (1f / Time.timeScale) * yAxis, 0f, 0f);
             movable.localRotation *= Quaternion.Euler(0f, turnAcceleration.y * Time.deltaTime * (1f / Time.timeScale), 0f);
-            movable.localRotation *= Quaternion.Euler(0f, 0f, -turnAcceleration.z * Time.deltaTime * (1f / Time.timeScale));
+            movable.localRotation *= Quaternion.Euler(0f, 0f, -turnAcceleration.z * Time.deltaTime * (1f / Time.timeScale))
         }
-        
 
         float emissionRateHoverEnginesRight;
 

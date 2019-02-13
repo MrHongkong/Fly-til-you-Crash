@@ -107,12 +107,8 @@ public class ExhaustEngineController : MonoBehaviour
 
             //If it's at the peak and the player is boosting, it won't progress further.
             if ((lifetimeBoost.Evaluate(counter) > lifetimeCalc && !PlayerController.playerController.IsFastMotion()) ||
-                (lifetimeBoost.Evaluate(counter) < lifetimeCalc && PlayerController.playerController.IsFastMotion())){
+                (lifetimeBoost.Evaluate(counter) < lifetimeCalc && PlayerController.playerController.IsFastMotion()))
                 counter += Time.deltaTime;
-                Debug.Log("if");
-            }
-            else
-                Debug.Log("else");
 
             ps.startLifetime = startLifetime * lifetimeCalc;
             ps.startSize = startSize * sizeCalc;
