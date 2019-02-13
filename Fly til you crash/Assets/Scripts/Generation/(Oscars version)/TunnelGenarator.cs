@@ -111,6 +111,7 @@ public class TunnelGenarator : MonoBehaviour {
         temp.transform.rotation = RotationOfTunnel(previousObject);
         temp.SetActive(true);
         currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
+        currentObject.midPoint.gameObject.SetActive(true);
     }
 
     //Returns a random value between 0 and the passed in length. 
