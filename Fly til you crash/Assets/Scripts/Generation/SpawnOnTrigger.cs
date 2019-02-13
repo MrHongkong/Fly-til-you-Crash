@@ -19,6 +19,6 @@ public class SpawnOnTrigger : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         generator.GenerateNewTunnelPiece(generator.GetArrayIndex(), true);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

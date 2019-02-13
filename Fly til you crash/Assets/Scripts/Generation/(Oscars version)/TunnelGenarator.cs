@@ -18,7 +18,7 @@ public class TunnelGenarator : MonoBehaviour {
     [SerializeField] private GameObject startTunnelPrefab;
     [Space]
 
-    [SerializeField] private GameObject[] tunnelPrefabs;
+    //[SerializeField] private GameObject[] tunnelPrefabs;
 
     private BoxGridGenerator boxGridGenerator;
     private GameObject[] tunnelPieces;
@@ -27,6 +27,7 @@ public class TunnelGenarator : MonoBehaviour {
     private Vector3 startOrigin = new Vector3(0, 0, 0);
     private int numberOfTunnelObjects = 6;
     private int arrayIndex, previousRandomNumber;
+    private TunnelPooling tunnelPool;
 
     private void Awake() {
 
@@ -36,6 +37,7 @@ public class TunnelGenarator : MonoBehaviour {
     }
 
     private void Start() {
+        tunnelPool = GetComponent<TunnelPooling>();
 
         tunnelPieces[arrayIndex] = Instantiate(startTunnelPrefab, startOrigin, startTunnelPrefab.transform.rotation);
         currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
@@ -96,12 +98,18 @@ public class TunnelGenarator : MonoBehaviour {
     //Instantiate new tunnelPices
     private void TunnelPieceInstatiation(int arrayIndex) {
 
-        int randomNumber = Randomizer(tunnelPrefabs.Length);
-
-        Destroy(tunnelPieces[arrayIndex]);
+        //int randomNumber = Randomizer(tunnelPrefabs.Length);
+        GameObject temp = tunnelPool.GetNextObject(tunnelPieces);
+        //Destroy(tunnelPieces[arrayIndex]);
+        if(tunnelPieces[arrayIndex] != null)tunnelPieces[arrayIndex].gameObject.SetActive(false);
+        tunnelPieces[arrayIndex] = null;
 
         previousObject = (arrayIndex != 0) ? previousObject : tunnelPieces[numberOfTunnelObjects - 1].GetComponent<TunnelPieces>();
-        tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[randomNumber], previousObject.endPoint.position, RotationOfTunnel(previousObject));
+        //tunnelPieces[arrayIndex] = Instantiate(tunnelPrefabs[randomNumber], previousObject.endPoint.position, RotationOfTunnel(previousObject));
+        tunnelPieces[arrayIndex] = temp;
+        temp.transform.position = previousObject.endPoint.position;
+        temp.transform.rotation = RotationOfTunnel(previousObject);
+        temp.SetActive(true);
         currentObject = tunnelPieces[arrayIndex].GetComponent<TunnelPieces>();
     }
 
