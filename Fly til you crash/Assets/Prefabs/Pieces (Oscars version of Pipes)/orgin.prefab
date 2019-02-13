@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9031107842601325036}
   - component: {fileID: 9031107842601325037}
   - component: {fileID: 5829838105386230859}
+  - component: {fileID: 7544859258112855760}
   m_Layer: 0
   m_Name: orgin
   m_TagString: Untagged
@@ -46,10 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTunnelPrefab: {fileID: 4019975653026349171, guid: 516bd3a29f7dfca40943b113a2ee34c3,
     type: 3}
-  tunnelPrefabs:
-  - {fileID: 7427533315130886163, guid: 7d37c2b5e646d30459feda07732b74ac, type: 3}
-  - {fileID: 3834646701527467385, guid: fde3aac20e92f064a97667f396ef273d, type: 3}
-  - {fileID: 4187996416400033401, guid: 9694c61fe6c98fe4f9cbe984a10e28ef, type: 3}
 --- !u!114 &5829838105386230859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,3 +59,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a4a72167d45844ea7b09e172f01a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7544859258112855760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031107842601325038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92f49d9266feab41b6c3732aa88085d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabObjects:
+  - {fileID: 2660133780546561960, guid: aa996f0ecada5074da0bc2354bb131a6, type: 3}
+  - {fileID: 4132104783800026417, guid: bec3b3bfea22b504ba450c9f4afc7c54, type: 3}
+  - {fileID: 7232706208486322967, guid: 6fccd42bad54b6b499dba1d64fc2b627, type: 3}
+  - {fileID: 6701283769645965634, guid: 84cec2b27517e2f448251e7ceacf465b, type: 3}
+  numberOfDuplicates: 3

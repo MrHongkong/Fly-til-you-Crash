@@ -5,10 +5,11 @@ using UnityEngine;
 public class TunnelPooling : MonoBehaviour
 {
     [SerializeField] private GameObject[] prefabObjects;
-    [SerializeField] private GameObject[] pooledGameObjects;
+    [SerializeField] private int numberOfDuplicates;
+    private GameObject[] pooledGameObjects;
     private void Awake()
     {
-        pooledGameObjects = new GameObject[prefabObjects.Length * 3];
+        pooledGameObjects = new GameObject[prefabObjects.Length * numberOfDuplicates];
         int index = 0;
         for(int i = 0; i < prefabObjects.Length; i++)
         {
