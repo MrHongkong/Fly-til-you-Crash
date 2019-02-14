@@ -13,7 +13,7 @@ public class TunnelPooling : MonoBehaviour
         int index = 0;
         for(int i = 0; i < prefabObjects.Length; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < numberOfDuplicates; j++)
             {
                 pooledGameObjects[index] = Instantiate(prefabObjects[i]);
                 pooledGameObjects[index].SetActive(false);
