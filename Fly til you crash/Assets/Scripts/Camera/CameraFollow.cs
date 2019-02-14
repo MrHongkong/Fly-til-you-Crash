@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
 
             return;
         }
-        offsetPositionZ = -4;
+        offsetPositionZ = -6;
         offsetPosition = new Vector3(0, 2, offsetPositionZ);
     }
 
@@ -42,18 +42,18 @@ public class CameraFollow : MonoBehaviour
         if (Input.GetButton("TimeWarp"))
         {
             offsetPositionZ -= 0.1f;
-            if (offsetPositionZ <= -8)
+            if (offsetPositionZ <= -10)
             {
-                offsetPositionZ = -8;
+                offsetPositionZ = -10;
             }
         }
         else
         {
-            if (offsetPositionZ < -4)
+            if (offsetPositionZ < -6)
             {
                 offsetPositionZ += 0.2f;
             }
-            else offsetPositionZ = -4f;
+            else offsetPositionZ = -6f;
         }
         
     }
