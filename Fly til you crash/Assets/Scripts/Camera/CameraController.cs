@@ -49,8 +49,8 @@ public class CameraController : MonoBehaviour
         }
 
         float t;
-        if (PlayerController.playerController.IsSlowMotion()) {t = cameraLerpFastmo; }
-        else if(PlayerController.playerController.IsFastMotion()) {t = cameraLerpSlowmo; }
+        if (PlayerController.playerController.IsSlowMotion()) {t = cameraLerpSlowmo; }
+        else if(PlayerController.playerController.IsFastMotion()) {t = cameraLerpFastmo; }
         else {t = cameraLerp; }
 
         transform.position = Vector3.Lerp(transform.position, cameraLocation, t);

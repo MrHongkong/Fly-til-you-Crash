@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 6355995140208396685}
   - component: {fileID: 6355995140207299405}
   - component: {fileID: 5320821624530821832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PipeStraightMesh
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -1420,7 +1420,7 @@ GameObject:
   - component: {fileID: 5312210378499672608}
   - component: {fileID: 6873067864704716581}
   m_Layer: 0
-  m_Name: Pipe Straight Copy
+  m_Name: Pipe Straight Copy_orange_light
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

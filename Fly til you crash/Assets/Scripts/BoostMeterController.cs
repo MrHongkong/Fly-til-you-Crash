@@ -9,16 +9,14 @@ public class BoostMeterController : MonoBehaviour
     float maxScale;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         maxScale = boostMeterCube.localScale.x;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
         Vector3 scales = boostMeterCube.localScale;
-        scales.x = Mathf.Lerp(scales.x, PlayerController.playerController.GetPercentageBoost() * maxScale < 0.05f ? 0f : PlayerController.playerController.GetPercentageBoost() * maxScale, 0.2f);
-        boostMeterCube.localScale = scales; 
+        scales.x = Mathf.Lerp(scales.x, PlayerController.playerController.GetPercentageBoost() * maxScale < 0.001f ? 0f : PlayerController.playerController.GetPercentageBoost() * maxScale, 0.2f);
+        boostMeterCube.localScale = scales;
     }
 }

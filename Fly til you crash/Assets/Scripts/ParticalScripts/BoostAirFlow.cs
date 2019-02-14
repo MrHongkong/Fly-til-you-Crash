@@ -13,7 +13,7 @@ public class BoostAirFlow : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("TimeWarp"))
+        if (Input.GetButton("Slowmotion"))
         {
            BoostPartical.SetActive(true);
         }

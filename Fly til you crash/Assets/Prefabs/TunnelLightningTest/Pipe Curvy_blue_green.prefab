@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 3816301778585335035}
   - component: {fileID: 3816301778586334779}
   - component: {fileID: 2528535270690912798}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PipeCurvyMesh
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 6384099502460922298}
   - component: {fileID: 8353095120722202337}
   m_Layer: 0
-  m_Name: Pipe Curvy_blue
+  m_Name: Pipe Curvy_blue_green
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

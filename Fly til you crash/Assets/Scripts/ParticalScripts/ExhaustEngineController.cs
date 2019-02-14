@@ -80,7 +80,7 @@ public class ExhaustEngineController : MonoBehaviour
 
     public float counter = float.MaxValue;
     
-    float GetAnimationWidth(AnimationCurve ac){
+    public static float GetAnimationWidth(AnimationCurve ac){
         float[] keyTimes = new float[ac.keys.Length];
 
         for (int i = 0; i < ac.length; i++)

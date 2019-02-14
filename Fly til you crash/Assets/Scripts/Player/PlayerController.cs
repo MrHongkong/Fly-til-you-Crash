@@ -29,18 +29,19 @@ public class PlayerController : MonoBehaviour
     bool exhaust = true;
     bool alreadyPlayed = false;
 
-    bool slowmotion = false;
-    float maxSlowmotionTimer = 2f;
-    float slowmotionTimer = 2f;
-    public float slowTimeScale;
-
-    bool fastmotion = false;
-    public float fastTimeScale;
+    public float slowMotionLeftCounter;
+    float slowMotionMaxCounter;
+    public AnimationCurve slowMotionCurve;
+    public float slowMotionCounter = float.MaxValue;
     
+    public AnimationCurve fastMotionCurve;
+    public float fastMotionCounter = float.MaxValue;
+
     public static PlayerController playerController;
 
     // Start is called before the first frame update
     void Start(){
+        slowMotionMaxCounter = slowMotionLeftCounter;
         FindObjectOfType<AudioManager>().Play("CarSound");
         rb = movable.GetComponent<Rigidbody>();
         angles = movable.localEulerAngles;
@@ -52,44 +53,80 @@ public class PlayerController : MonoBehaviour
     }
 
     public float GetPercentageBoost(){
-        return slowmotionTimer / maxSlowmotionTimer;
+        return slowMotionLeftCounter / slowMotionMaxCounter;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-        if (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).magnitude < 0.2f)
-        {           
-            rb.angularDrag = dragOnHold;
-        }
-        else
-        {
-            rb.angularDrag = dragOffHold;
-        }
+    void Update(){
+        if (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).magnitude < 0.2f){rb.angularDrag = dragOnHold;}
+        else{rb.angularDrag = dragOffHold;}
        
-        if (fastmotion ^ Input.GetButton("TimeWarp"))
-        {
-            if (!alreadyPlayed)
-            {
+        if((!IsFastMotion() && Input.GetButton("Fastmotion")) || (!IsSlowMotion() && Input.GetButton("Slowmotion") && slowMotionLeftCounter > 0f)){
+            if(!IsFastMotion() && Input.GetButton("Fastmotion")){
+                fastMotionCounter = 0f;
+                foreach (ExhaustEngineController eec in exhaustEngines)
+                    eec.Boost();
+            }
+            else if (!IsSlowMotion() && Input.GetButton("Slowmotion") && slowMotionLeftCounter > 0f){
+                slowMotionCounter = 0f;
+            }
+        }
+
+        //Logger.Log(Time.timeScale);
+
+        //Logger.Log(IsSlowMotion());
+
+        //Logger.Log(Time.timeScale);
+
+        //Debug.Log(slowMotionLeftCounter);
+        //Debug.Log(Time.timeScale);
+
+        if (IsSlowMotion()){
+            float slowmotionCalc = slowMotionCurve.Evaluate(slowMotionCounter + Time.deltaTime);
+            if ((slowMotionCurve.Evaluate(slowMotionCounter) < slowmotionCalc && !Input.GetButton("Slowmotion")) ||
+                (slowMotionCurve.Evaluate(slowMotionCounter) >= slowmotionCalc && Input.GetButton("Slowmotion")) ||
+                !Input.GetButton("Slowmotion") ||
+                slowMotionLeftCounter < 0f)
+                slowMotionCounter += Time.deltaTime;
+
+            if (slowMotionLeftCounter > 0f)
+                slowMotionLeftCounter -= Time.deltaTime;
+            Time.timeScale = slowMotionCurve.Evaluate(slowMotionCounter);
+        }
+        else if(IsFastMotion()){
+            float fastMotionCalc = fastMotionCurve.Evaluate(fastMotionCounter + Time.deltaTime);
+            if ((fastMotionCurve.Evaluate(fastMotionCounter) >= fastMotionCalc && !Input.GetButton("Fastmotion")) ||
+                (fastMotionCurve.Evaluate(fastMotionCounter) < fastMotionCalc && Input.GetButton("Fastmotion")) ||
+                !Input.GetButton("Fastmotion"))
+                fastMotionCounter += Time.deltaTime * 1 / Time.timeScale;
+            Time.timeScale = fastMotionCurve.Evaluate(fastMotionCounter);
+        }
+        else if(!Input.GetButton("Slowmotion") && !Input.GetButton("Fastmotion")){
+            if (slowMotionLeftCounter < slowMotionMaxCounter)
+                slowMotionLeftCounter += Time.deltaTime;
+            Time.timeScale = 1f;
+        }
+        
+        /*
+        if (fastmotion ^ Input.GetButton("Fastmotion")){
+            if (!alreadyPlayed){
                 //FindObjectOfType<AudioManager>().Play("BoostSound");
                 alreadyPlayed = true;
             }
-            else
-            {
+            else{
                 alreadyPlayed = false;
             }
-            fastmotion = Input.GetButton("TimeWarp");
+            fastmotion = Input.GetButton("Fastmotion");
 
             if (fastmotion)
                 foreach (ExhaustEngineController eec in exhaustEngines)
                     eec.Boost();
         }
 
-        if (slowmotion ^ Input.GetButton("TimeStop"))
+        if (slowmotion ^ Input.GetButton("Slowmotion"))
         {
             FindObjectOfType<AudioManager>().Play("SlowMotionSound");
-            slowmotion = Input.GetButton("TimeStop");
+            slowmotion = Input.GetButton("Slowmotion");
         }
 
 
@@ -110,7 +147,7 @@ public class PlayerController : MonoBehaviour
             if (slowmotionTimer < 2f)
                 slowmotionTimer += Time.deltaTime * slowTimeScale;
             Time.timeScale = 1f;
-        }
+        }*/
 
         //Pitch controls, turning the nose up and down
 
@@ -119,10 +156,10 @@ public class PlayerController : MonoBehaviour
         if (MenuSettings.isOn) yAxis = -1;
         else yAxis = 1;
     }
-    
+
     void FixedUpdate()
     {
-        if(Time.timeScale != 0f)
+        if (Time.timeScale != 0f)
         {
             turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f, 2f);
             turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 2f);
@@ -135,14 +172,18 @@ public class PlayerController : MonoBehaviour
 
         float emissionRateHoverEnginesRight;
 
-        if(turnAcceleration.z < 0) {
-            foreach(HoverEngineController hec in rightHoverEngines) {
+        if (turnAcceleration.z < 0)
+        {
+            foreach (HoverEngineController hec in rightHoverEngines)
+            {
                 hec.SetNextEnginePower(-turnAcceleration.z / 100);
             }
         }
 
-        else if(turnAcceleration.z > 0) {
-            foreach (HoverEngineController hec in leftHoverEngines) {
+        else if (turnAcceleration.z > 0)
+        {
+            foreach (HoverEngineController hec in leftHoverEngines)
+            {
                 hec.SetNextEnginePower(turnAcceleration.z / 100);
             }
         }
@@ -176,10 +217,7 @@ public class PlayerController : MonoBehaviour
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, -shipAngle);
     }
 
-    public void EnableExhaust() { exhaust = true; }
-    public void DisableExhaust() { exhaust = false; }
-
-    public bool IsSlowMotion() { return slowmotion && slowmotionTimer > 0f; }
-    public bool IsFastMotion() { return fastmotion; }
+    public bool IsSlowMotion() { return slowMotionCounter < ExhaustEngineController.GetAnimationWidth(slowMotionCurve); }
+    public bool IsFastMotion() { return fastMotionCounter < ExhaustEngineController.GetAnimationWidth(fastMotionCurve); }
 
 }
