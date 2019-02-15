@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         slowMotionMaxCounter = slowMotionLeftCounter;
-        FindObjectOfType<AudioManager>().Play("CarSound");
+        AudioManager.instance.Play("CarSound");
         rb = movable.GetComponent<Rigidbody>();
         angles = movable.localEulerAngles;
 

@@ -14,14 +14,14 @@ public class Playlist : MonoBehaviour
 
         if (sceneName == "Game")
         {
-            FindObjectOfType<AudioManager>().Stop("MenuMusic");
-            FindObjectOfType<AudioManager>().Play("GameMusic");
+            AudioManager.instance.Stop("MenuMusic");
+            AudioManager.instance.Play("GameMusic");
         }
 
         if (sceneName == "ScoreScreen")
         {
-            FindObjectOfType<AudioManager>().Play("MenuMusic");
-            FindObjectOfType<AudioManager>().Stop("GameMusic");
+            AudioManager.instance.Play("MenuMusic");
+            AudioManager.instance.Stop("GameMusic");
         }
     }
 
