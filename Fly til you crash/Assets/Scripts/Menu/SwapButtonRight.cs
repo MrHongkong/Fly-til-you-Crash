@@ -5,6 +5,7 @@ using UnityEngine.UI;
 //Made by Jocke
 public class SwapButtonRight : MonoBehaviour
 {
+    public MenuVideoController menuVideoController;
     ButtonController buttonController;
     public GameObject target;
     private float time;
@@ -31,6 +32,7 @@ public class SwapButtonRight : MonoBehaviour
         {
             time = Time.timeSinceLevelLoad + addSecondsToNextClick;
             buttonController.SwapButton(swap);
+            menuVideoController.SetVideoClip();
             iTween.PunchScale(target, new Vector3(2, 2, 2), 0.4f);
         }
     }
