@@ -27,10 +27,10 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate() {
         Vector3 cameraLocation = player.position + -1f * 
-            distanceBehindPlayer.Evaluate(Time.timeSinceLevelLoad * 30) * player.forward + 
-            distanceAbovePlayer.Evaluate(Time.timeSinceLevelLoad * 30) * player.up;
-        Vector3 rayDirection = distanceBehindPlayer.Evaluate(Time.timeSinceLevelLoad * 30) * -player.forward + 
-            distanceAbovePlayer.Evaluate(Time.timeSinceLevelLoad * 30) * player.up;
+            distanceBehindPlayer.Evaluate(Time.timeSinceLevelLoad) * player.forward + 
+            distanceAbovePlayer.Evaluate(Time.timeSinceLevelLoad) * player.up;
+        Vector3 rayDirection = distanceBehindPlayer.Evaluate(Time.timeSinceLevelLoad) * -player.forward + 
+            distanceAbovePlayer.Evaluate(Time.timeSinceLevelLoad) * player.up;
 
         Vector3 BackwardsToCamera = Vector3.Project(rayDirection, -player.forward);
         Vector3 UpwardsToCamera = rayDirection - BackwardsToCamera;
@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour
         else {t = cameraLerp; }
 
         transform.position = Vector3.Lerp(transform.position, cameraLocation, t);
-        attention = Vector3.Lerp(attention, (player.position + distanceInfrontOfPlayer.Evaluate(Time.timeSinceLevelLoad * 30) * player.forward), t);
+        attention = Vector3.Lerp(attention, (player.position + distanceInfrontOfPlayer.Evaluate(Time.timeSinceLevelLoad) * player.forward), t);
         transform.LookAt(attention, player.up);
     }
 }
