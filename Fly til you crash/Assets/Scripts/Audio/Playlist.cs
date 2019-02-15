@@ -12,7 +12,7 @@ public class Playlist : MonoBehaviour
         string sceneName = currentScene.name;
 
 
-        if (sceneName == "MVP")
+        if (sceneName == "Game")
         {
             FindObjectOfType<AudioManager>().Stop("MenuMusic");
             FindObjectOfType<AudioManager>().Play("GameMusic");
