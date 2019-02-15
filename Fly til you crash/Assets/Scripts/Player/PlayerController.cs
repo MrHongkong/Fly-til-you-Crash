@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         /*
         if (fastmotion ^ Input.GetButton("Fastmotion")){
             if (!alreadyPlayed){
-                //FindObjectOfType<AudioManager>().Play("BoostSound");
+                //AudioManager.instance.Play("BoostSound");
                 alreadyPlayed = true;
             }
             else{
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
         if (slowmotion ^ Input.GetButton("Slowmotion"))
         {
-            FindObjectOfType<AudioManager>().Play("SlowMotionSound");
+            AudioManager.instance.Play("SlowMotionSound");
             slowmotion = Input.GetButton("Slowmotion");
         }
 

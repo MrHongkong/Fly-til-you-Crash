@@ -26,8 +26,8 @@ public class OnCollision : MonoBehaviour
         {
             if (!alreadyPlayed)
             {
-                FindObjectOfType<AudioManager>().Stop("CarSound");
-                FindObjectOfType<AudioManager>().Play("PlayerDeath");
+                AudioManager.instance.Stop("CarSound");
+                AudioManager.instance.Play("PlayerDeath");
                 alreadyPlayed = true;
             }
 
