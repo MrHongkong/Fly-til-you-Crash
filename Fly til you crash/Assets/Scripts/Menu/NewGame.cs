@@ -20,7 +20,7 @@ public class NewGame : MonoBehaviour
 
     IEnumerator Delay()
     {
-        SceneManager.LoadScene("MVP");
+        SceneManager.LoadScene("Game");
         iTween.PunchScale(newGame, new Vector3(2,2,2), 0.4f);
         yield return new WaitForSeconds(1);
     }

@@ -36,7 +36,7 @@ public class UIController : MonoBehaviour
 
     public void OnClickRetry()
     {
-        SceneManager.LoadScene("MVP");
+        SceneManager.LoadScene("Game");
     }
 
     public void OnClickMenu()
