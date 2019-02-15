@@ -5,30 +5,24 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
+//Made by Jocke
 public class UIController : MonoBehaviour
 {
     public GameObject highscoreUI;
     public GameObject userInputUI;
-    public GameObject scoreUI;
-    public GameObject buttons;
     public Button submit;
     public Button retry;
     public Button menu;
-    public RawImage backgroundImage;
     public TMP_InputField inputField;
-    public TextMeshProUGUI inputeScoreText;
-    public static int score;
+    public TextMeshProUGUI ScoreText;
     private string username;
 
 
     private void Start()
     {
-        scoreUI.SetActive(true);
         highscoreUI.SetActive(false);
-        userInputUI.SetActive(false);
-        buttons.SetActive(false);
-        backgroundImage.enabled = false;
+        userInputUI.SetActive(true);
+        ScoreText.text = "Score: " + (int)Score.finalScore;
     }
 
     public void OnClickSubmit()
@@ -36,9 +30,8 @@ public class UIController : MonoBehaviour
         username = inputField.text;
         UniqID.GetUniqueID(username);
         highscoreUI.SetActive(true);
-        buttons.SetActive(true);
         userInputUI.SetActive(false);
-        Highscores.AddNewHighscore(username, score);
+        Highscores.AddNewHighscore(username, (int)Score.finalScore);
     }
 
     public void OnClickRetry()
