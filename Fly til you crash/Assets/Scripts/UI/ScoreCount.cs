@@ -40,7 +40,8 @@ public class ScoreCount : MonoBehaviour
     {
         float timeScore = Time.timeSinceLevelLoad * scoreMultiplier;
         score = timeScore + extraScore;
-        if (score % 1000f <= 0.5f) iTween.PunchScale(scoreCountObject, new Vector3(2.5f,2.5f,2.5f), 5);
+        if ((int) score % 1000 == 0 && (int) score != 0)
+            iTween.PunchScale(scoreCountObject, new Vector3(2.5f,2.5f,2.5f), 2f);
     }
 
     public void ExtraScore(float bonusScore)

@@ -8,9 +8,9 @@ public class CameraController : MonoBehaviour
     public Transform player;
     public float fov;
     
-    public float distanceInfrontOfPlayer;
-    public float distanceBehindPlayer;
-    public float distanceAbovePlayer;
+    public AnimationCurve distanceInfrontOfPlayer;
+    public AnimationCurve distanceBehindPlayer;
+    public AnimationCurve distanceAbovePlayer;
 
     [Range(0.01f, 3f)]
     public float cameraLerp;
@@ -22,12 +22,15 @@ public class CameraController : MonoBehaviour
     Vector3 attention;
     
     void Start() {
-        attention = player.position + distanceInfrontOfPlayer * player.forward;
+        attention = player.position + distanceInfrontOfPlayer.Evaluate(0f) * player.forward;
     }
 
     void LateUpdate() {
-        Vector3 cameraLocation = player.position + -1f * distanceBehindPlayer * player.forward + distanceAbovePlayer * player.up;
-        Vector3 rayDirection = distanceBehindPlayer * -player.forward + distanceAbovePlayer * player.up;
+        Vector3 cameraLocation = player.position + -1f * 
+            distanceBehindPlayer.Evaluate(Time.timeSinceLevelLoad * 30) * player.forward + 
+            distanceAbovePlayer.Evaluate(Time.timeSinceLevelLoad * 30) * player.up;
+        Vector3 rayDirection = distanceBehindPlayer.Evaluate(Time.timeSinceLevelLoad * 30) * -player.forward + 
+            distanceAbovePlayer.Evaluate(Time.timeSinceLevelLoad * 30) * player.up;
 
         Vector3 BackwardsToCamera = Vector3.Project(rayDirection, -player.forward);
         Vector3 UpwardsToCamera = rayDirection - BackwardsToCamera;
@@ -54,7 +57,7 @@ public class CameraController : MonoBehaviour
         else {t = cameraLerp; }
 
         transform.position = Vector3.Lerp(transform.position, cameraLocation, t);
-        attention = Vector3.Lerp(attention, (player.position + distanceInfrontOfPlayer * player.forward), t);
+        attention = Vector3.Lerp(attention, (player.position + distanceInfrontOfPlayer.Evaluate(Time.timeSinceLevelLoad * 30) * player.forward), t);
         transform.LookAt(attention, player.up);
     }
 }
