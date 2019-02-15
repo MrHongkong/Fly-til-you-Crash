@@ -39,7 +39,7 @@ public class CameraFollow : MonoBehaviour
 
     public void TimeWarp()
     {
-        if (Input.GetButton("TimeWarp"))
+        if (Input.GetButton("Fastmotion"))
         {
             offsetPositionZ -= 0.1f;
             if (offsetPositionZ <= -10)
