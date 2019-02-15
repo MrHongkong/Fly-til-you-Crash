@@ -862,6 +862,31 @@ PrefabInstance:
     - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
         type: 3}
       propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -365.8321
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
+        type: 3}
+      propertyPath: m_text
+      value: 'Score: 9999999999999999'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
