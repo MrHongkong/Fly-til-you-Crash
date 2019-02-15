@@ -398,7 +398,7 @@ PrefabInstance:
     - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
         type: 3}
       propertyPath: prefabObjects.Array.size
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
         type: 3}
@@ -454,6 +454,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7232706208486322967, guid: 6fccd42bad54b6b499dba1d64fc2b627,
         type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: numberOfDuplicates
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738f81cfb14d5b14e97aad030ef5f4fa, type: 3}
 --- !u!1001 &436696226
@@ -1208,7 +1213,7 @@ PrefabInstance:
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: cameraLerpFastmo
-      value: 0.05
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -1233,7 +1238,7 @@ PrefabInstance:
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceInfrontOfPlayer.m_Curve.Array.data[1].value
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -1258,17 +1263,17 @@ PrefabInstance:
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceInfrontOfPlayer.m_Curve.Array.data[1].inSlope
-      value: -0.04412403
+      value: -0.030267576
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceInfrontOfPlayer.m_Curve.Array.data[1].outSlope
-      value: -0.04412403
+      value: -0.030267576
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceInfrontOfPlayer.m_Curve.Array.data[1].inWeight
-      value: 0.0264342
+      value: 0.02137235
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -1288,7 +1293,7 @@ PrefabInstance:
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceBehindPlayer.m_Curve.Array.data[1].value
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -1313,17 +1318,17 @@ PrefabInstance:
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceBehindPlayer.m_Curve.Array.data[1].inSlope
-      value: -0.06239534
+      value: -0.03831517
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceBehindPlayer.m_Curve.Array.data[1].outSlope
-      value: -0.06239534
+      value: -0.03831517
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceBehindPlayer.m_Curve.Array.data[1].inWeight
-      value: 0.019684907
+      value: 0.026996493
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -1338,12 +1343,12 @@ PrefabInstance:
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceAbovePlayer.m_Curve.Array.data[1].time
-      value: 240.20044
+      value: 240.01636
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceAbovePlayer.m_Curve.Array.data[1].value
-      value: 3
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -1353,32 +1358,32 @@ PrefabInstance:
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceAbovePlayer.m_Curve.Array.data[0].inSlope
-      value: -0.0006236596
+      value: -0.00003410196
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceAbovePlayer.m_Curve.Array.data[0].outSlope
-      value: -0.0006236596
+      value: -0.00003410196
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceAbovePlayer.m_Curve.Array.data[0].outWeight
-      value: 0.14800224
+      value: 0.046632018
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceAbovePlayer.m_Curve.Array.data[1].inSlope
-      value: -0.0154025
+      value: -0.008353893
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceAbovePlayer.m_Curve.Array.data[1].outSlope
-      value: -0.0154025
+      value: -0.008353893
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
       propertyPath: distanceAbovePlayer.m_Curve.Array.data[1].inWeight
-      value: 0.03236962
+      value: 0.03477143
       objectReference: {fileID: 0}
     - target: {fileID: 3743981960364822877, guid: f7cfae0b0001c4e439fe6e6e974de4ea,
         type: 3}
@@ -1509,6 +1514,36 @@ PrefabInstance:
         type: 3}
       propertyPath: fovCurve.m_Curve.Array.data[0].time
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515738991604535634, guid: 1c321dc71576e454785d6e834f456b62,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0822
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515738991604535634, guid: 1c321dc71576e454785d6e834f456b62,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3772
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515738991604535634, guid: 1c321dc71576e454785d6e834f456b62,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515738991128295684, guid: 1c321dc71576e454785d6e834f456b62,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515738991128295684, guid: 1c321dc71576e454785d6e834f456b62,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.382
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515738991128295684, guid: 1c321dc71576e454785d6e834f456b62,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c321dc71576e454785d6e834f456b62, type: 3}

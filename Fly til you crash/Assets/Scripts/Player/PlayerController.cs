@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
         if (MenuSettings.isOn) yAxis = -1;
         else yAxis = 1;
 
-        Camera.main.fieldOfView = 90f + fovCurve.Evaluate(Time.timeSinceLevelLoad * 30);
+        Camera.main.fieldOfView = 90f + fovCurve.Evaluate(Time.timeSinceLevelLoad);
     }
 
     void FixedUpdate()
