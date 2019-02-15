@@ -1747,7 +1747,7 @@ PrefabInstance:
     - target: {fileID: 7703740292152524792, guid: 1c321dc71576e454785d6e834f456b62,
         type: 3}
       propertyPath: fovCurve.m_Curve.Array.data[1].value
-      value: 30.110703
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7703740292152524792, guid: 1c321dc71576e454785d6e834f456b62,
         type: 3}
