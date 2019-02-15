@@ -37,8 +37,10 @@ public class PlayerController : MonoBehaviour
     public AnimationCurve fastMotionCurve;
     public float fastMotionCounter = float.MaxValue;
 
-    public static PlayerController playerController;
+    public AnimationCurve fovCurve;
 
+    public static PlayerController playerController;
+    
     // Start is called before the first frame update
     void Start(){
         slowMotionMaxCounter = slowMotionLeftCounter;
@@ -155,6 +157,8 @@ public class PlayerController : MonoBehaviour
 
         if (MenuSettings.isOn) yAxis = -1;
         else yAxis = 1;
+
+        Camera.main.fieldOfView = 90f + fovCurve.Evaluate(Time.timeSinceLevelLoad * 30);
     }
 
     void FixedUpdate()
