@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        Play("MainTheme");
+        Play("MenuMusic");
     }
     
 
