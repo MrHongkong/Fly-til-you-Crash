@@ -7,14 +7,13 @@ public class ScoreCount : MonoBehaviour
 {
     public GameObject scoreCountObject;
     public TextMeshProUGUI scoreCount;
-    private OnCollision onCollision;
     private float score;
     private float extraScore;
     private float scoreMultiplier;
 
+    //Made by Jocke
     void Start()
     {
-        onCollision = FindObjectOfType<OnCollision>();
         ScoreMultiplier(20);
         extraScore = 0;
     }
@@ -23,12 +22,13 @@ public class ScoreCount : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) ExtraScore(1000);
-        if (!onCollision.hasStartedCoroutine)
+        if (!OnCollision.isDead)
         {
+            ResetScores();
             CalculateScore();
             UpdateScore();
         }
-        else UIController.score = (int)score;
+        else Score.finalScore = score;
     }
 
     private void UpdateScore()
@@ -57,5 +57,16 @@ public class ScoreCount : MonoBehaviour
     public float GetScore()
     {
         return score;
+    }
+    
+    
+    public void ResetScores()
+    {
+        if(Time.timeSinceLevelLoad <= 0.5f)
+        {
+            score = 0;
+            extraScore = 0;
+        }
+        
     }
 }

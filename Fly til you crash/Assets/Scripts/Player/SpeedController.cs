@@ -7,21 +7,14 @@ public class SpeedController : MonoBehaviour
     [SerializeField]
     AnimationCurve speedCurve;
     public Rigidbody rb;
-    public OnCollision onCollision;
-
-    void Start()
-    {
-        //rb = GetComponent<Rigidbody>();
-    }
 
     void FixedUpdate()
     {
-        if (!onCollision.isDead)
+        if (!OnCollision.isDead)
         {
             float float_velocity = speedCurve.Evaluate(Time.timeSinceLevelLoad);
             rb.velocity = float_velocity * transform.forward;
         }
-        
     }
 
     public void SetSpeed(Vector3 speed)

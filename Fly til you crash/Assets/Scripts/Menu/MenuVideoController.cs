@@ -9,10 +9,12 @@ public class MenuVideoController : MonoBehaviour
     public VideoPlayer videoPlayer;
     public RawImage rawImage;
     public GameObject buttons;
-    public bool isPlaying;
+    public GameObject car;
+    public static bool isPlaying;
     void Start()
     {
-       StartCoroutine(PlayVideo());
+        StartCoroutine(PlayVideo());
+        car.SetActive(true);
     }
 
     IEnumerator PlayVideo()
@@ -31,7 +33,11 @@ public class MenuVideoController : MonoBehaviour
 
     private void Update()
     {
-        if(isPlaying) buttons.SetActive(true);
+        if (isPlaying)
+        {
+            car.SetActive(false);
+            buttons.SetActive(true);
+        }
     }
 
 }
