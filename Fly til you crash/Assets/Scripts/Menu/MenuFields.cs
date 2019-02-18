@@ -28,10 +28,17 @@ public class MenuFields : MonoBehaviour
                     if (button.name != field.name)
                     {
                         field.SetActive(false);
+                        MonoBehaviour[] components = field.GetComponents<MonoBehaviour>();
+                        foreach (MonoBehaviour c in components)
+                            c.enabled = false;
                     }
-                    else if (MenuVideoController.isPause && button.name == field.name)
+                    else if (button.name == field.name && MenuVideoController.isPlause)
                     {
                         field.SetActive(true);
+
+                        MonoBehaviour[] components = field.GetComponents<MonoBehaviour>();
+                        foreach (MonoBehaviour c in components)
+                            c.enabled = true;
                     }
                 }
             }

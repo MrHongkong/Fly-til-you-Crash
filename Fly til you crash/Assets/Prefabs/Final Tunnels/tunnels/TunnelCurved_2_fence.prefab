@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 6701283769647906690}
   - component: {fileID: 8626183912094313132}
   - component: {fileID: 5685711874066272562}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TunnelCurved_2_fence
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6701283769645965634}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -810,6 +810,7 @@ Transform:
   - {fileID: 8860853852427602630}
   - {fileID: 4435529512760358527}
   - {fileID: 3134072882717308926}
+  - {fileID: 2970814093643028756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1102,3 +1103,88 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &6589585355181414340
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6701283769645612386}
+    m_Modifications:
+    - target: {fileID: 8235002730333425364, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_Name
+      value: Neon Rod (Golden)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 90.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7126887
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70148045
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.908005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 34.324146
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425361, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: min
+      value: 0.294
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 474806072030c644485a717924fdd48b, type: 3}
+--- !u!4 &2970814093643028756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6589585355181414340}
+  m_PrefabAsset: {fileID: 0}

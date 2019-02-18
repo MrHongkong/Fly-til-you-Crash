@@ -1,83 +1,114 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 
 public class Highscores : MonoBehaviour {
 
-    //Made by Philip Åkerblom GP18 Yrgo
     //Code from Sebastian Lague
     
     const string privateCode = "gP34t5uH1kWaGuTw8kx51gOmQ-8rdCakyNOmII9cX8rg";
 	const string publicCode = "5c4ac7d4b6397e0c24a5d87c";
 	const string webURL = "http://dreamlo.com/lb/";
-    DisplayHighscores highscoreDisplay;
-	public Highscore[] highscoresList;
-    static Highscores instance;
-	
-	void Awake() {
-        highscoreDisplay = GetComponent<DisplayHighscores>();
-		instance = this;
-	}
 
-	public static void AddNewHighscore(string username, int score) {
-		instance.StartCoroutine(instance.UploadNewHighscore(username,score));
-	}
+    public List<Highscore> highscoresList;
+    public static Highscores instance;
 
-	IEnumerator UploadNewHighscore(string username, int score) {
-#pragma warning disable CS0618 // Type or member is obsolete
+    const int highscoreTextHolders = 10;
+
+    void Start(){
+        if (instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+    }
+    
+    IEnumerator UploadNewHighscore(string username, int score, int tries) {
+        if (tries == 0){
+            Debug.LogError("Failed to upload score after 3 attempts.");
+            yield break;
+        }
+        
         WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
-#pragma warning restore CS0618 // Type or member is obsolete
         yield return www;
 
-		if (string.IsNullOrEmpty(www.error)) {
-			print ("Upload Successful");
-			DownloadHighscores();
-		}
-		else {
-			print ("Error uploading: " + www.error);
-		}
-	}
+        if (string.IsNullOrEmpty(www.error)){
+            if (highscoresList.Count < highscoreTextHolders)
+            {
+                highscoresList.Add(new Highscore(username, score));
+            }
+            else
+            {
+                foreach (Highscore hs in highscoresList)
+                {
+                    if (score > hs.score)
+                    {
+                        highscoresList.Remove(hs);
+                        highscoresList.Add(new Highscore(username, score));
+                        break;
+                    }
+                }
+            }
 
-	public void DownloadHighscores() {
-		StartCoroutine("DownloadHighscoresFromDatabase");
-	}
+            highscoresList.Sort((x, y) => x.score.CompareTo(y.score));
+            yield break;
+        }
 
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(UploadNewHighscore(username, score, tries - 1));
+    }
+    
 	IEnumerator DownloadHighscoresFromDatabase() {
-#pragma warning disable CS0618 // Type or member is obsolete
         WWW www = new WWW(webURL + publicCode + "/pipe/");
-#pragma warning restore CS0618 // Type or member is obsolete
         yield return www;
 		
 		if (string.IsNullOrEmpty (www.error)) {
-			FormatHighscores (www.text);
-            highscoreDisplay.OnHighscoresDownloaded(highscoresList);
-		}
+            string[] entries = www.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+            highscoresList = new List<Highscore>();
+
+            for (int i = 0; i < entries.Length; i++){
+                string[] entryInfo = entries[i].Split(new char[] { '|' });
+                highscoresList.Add(new Highscore(entryInfo[0], int.Parse(entryInfo[1])));
+            }
+        }
 		else {
 			print ("Error Downloading: " + www.error);
 		}
 	}
 
-	void FormatHighscores(string textStream) {
-		string[] entries = textStream.Split(new char[] {'\n'}, System.StringSplitOptions.RemoveEmptyEntries);
-		highscoresList = new Highscore[entries.Length];
+    IEnumerator _DownloadHighscoresToTMPro(TextMeshProUGUI[] highscoreFields){
+        yield return DownloadHighscoresFromDatabase();
 
-		for (int i = 0; i <entries.Length; i ++) {
-			string[] entryInfo = entries[i].Split(new char[] {'|'});
-			string username = entryInfo[0];
-			int score = int.Parse(entryInfo[1]);
-			highscoresList[i] = new Highscore(username,score);
-		}
-	}
+        for (int i = 0; i < highscoresList.Count; i++)
+        {
+            if (i >= highscoreFields.Length)
+                break;
+
+            highscoreFields[i].text = i + 1 + ". ";
+            if (i < highscoresList.Count){
+                string[] test = highscoresList[i].username.Split('+');
+                highscoreFields[i].text += test[0] + " - " + highscoresList[i].score;
+            }
+        }
+    }
+
+    public static void AddNewHighscore(string username, int score){
+        instance.StartCoroutine(instance.UploadNewHighscore(username, score, 3));
+    }
+
+    public static void DownloadHighscoresToTMPro(TextMeshProUGUI[] highscoreFields){
+        instance.StartCoroutine(instance._DownloadHighscoresToTMPro(highscoreFields));
+    }
 }
 
 public struct Highscore {
 	public string username;
 	public int score;
 
-	public Highscore(string _username, int _score) {
-		username = _username;
-		score = _score;
-	}
-
-
+    public Highscore(string username, int score){
+        this.username = username;
+        this.score = score;
+    }
 }
 
