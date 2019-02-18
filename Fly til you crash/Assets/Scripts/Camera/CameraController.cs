@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform player;
-    public float fov;
+    public AnimationCurve fovCurve;
     
     public AnimationCurve distanceInfrontOfPlayer;
     public AnimationCurve distanceBehindPlayer;
@@ -23,6 +23,10 @@ public class CameraController : MonoBehaviour
     
     void Start() {
         attention = player.position + distanceInfrontOfPlayer.Evaluate(0f) * player.forward;
+    }
+
+    void Update(){
+        Camera.main.fieldOfView = 90f + fovCurve.Evaluate(Time.timeSinceLevelLoad);
     }
 
     void LateUpdate() {
