@@ -12,7 +12,7 @@ public class MinMaxDifficulty : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         if (DifficultyController.DifficultyProgress() < min || DifficultyController.DifficultyProgress() > max){
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             if (DifficultyController.DifficultyProgress() < min)
                 Debug.Log("Current difficulty too low, despawning!");
             else
