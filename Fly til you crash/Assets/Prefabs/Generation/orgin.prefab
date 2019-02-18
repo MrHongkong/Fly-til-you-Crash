@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd078fce48ba36439488b1c8b3133fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTunnelPrefab: {fileID: 4019975653026349171, guid: 516bd3a29f7dfca40943b113a2ee34c3,
+  startTunnelPrefab: {fileID: 4132104783800026417, guid: e5e79b433c151724f8680ab34683fcca,
     type: 3}
 --- !u!114 &5829838105386230859
 MonoBehaviour:

@@ -11,7 +11,7 @@ public class BoostAirFlow : MonoBehaviour
 {
     
     public GameObject BoostPartical;
-    private ParticleSystem part;
+    [SerializeField] private ParticleSystem part;
     float trump = 6;
 
     void Start()
