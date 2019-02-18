@@ -419,8 +419,8 @@ GameObject:
   - component: {fileID: 6701283769647906690}
   - component: {fileID: 8626183912094313132}
   - component: {fileID: 5685711874066272562}
-  m_Layer: 0
-  m_Name: PrefabTunnelCurved_5
+  m_Layer: 9
+  m_Name: TunnelCurved_5_fan_
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +433,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6701283769645965634}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -812,6 +812,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6701283769645612386}
     m_Modifications:
+    - target: {fileID: 7836862849316516349, guid: 3120a235b23cd7d43b274db2040050a1,
+        type: 3}
+      propertyPath: m_Name
+      value: Fan (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3354835186553527135, guid: 3120a235b23cd7d43b274db2040050a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -881,11 +886,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0683076
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836862849316516349, guid: 3120a235b23cd7d43b274db2040050a1,
-        type: 3}
-      propertyPath: m_Name
-      value: Fan (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5035253173569026336, guid: 3120a235b23cd7d43b274db2040050a1,
         type: 3}
