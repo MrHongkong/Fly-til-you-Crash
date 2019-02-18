@@ -6,84 +6,154 @@ using UnityEngine.Video;
 //Made by Jocke
 public class MenuVideoController : MonoBehaviour
 {
-    public VideoClip menuVideoClip;
-    public VideoClip screenVideoClip;
-    public VideoPlayer videoPlayer;
-    public RawImage rawImage;
+    public VideoPlayer videoPlayer1;
+    public VideoPlayer videoPlayer2;
+    public VideoPlayer videoPlayer3;
+    public VideoPlayer videoPlayer4;
+    public VideoPlayer videoPlayer5;
+    public RawImage main;
+    public RawImage highScore;
+    public RawImage quit;
+    public RawImage quitStatic;
+    public RawImage highScoreReversed;
     public GameObject buttons;
-    public GameObject fields;
     public static bool isPlaying;
-    public static bool isPlause;
+    public static bool isPause;
 
     private ButtonController buttonController;
 
     void Start()
     {
+        quit.enabled = false;
+        quitStatic.enabled = false;
+        highScore.enabled = false;
+        highScoreReversed.enabled = false;
         isPlaying = false;
-        videoPlayer.clip = menuVideoClip;
+        isPause = false;
         StartCoroutine(PlayVideo());
         buttonController = buttons.GetComponentInChildren<ButtonController>();
     }
 
+    private void Update()
+    {
+        if (videoPlayer2.time >= 3f)
+        {
+            isPause = true;
+            buttons.SetActive(true);
+            videoPlayer2.Pause();
+        }
+
+        if (videoPlayer3.time >= 3.5f)
+        {
+            quit.enabled = false;
+            quitStatic.enabled = true;
+            videoPlayer4.Play();
+            videoPlayer3.time = 0.1f;
+            videoPlayer3.Pause();
+        }
+    }
+
+
     IEnumerator PlayVideo()
     {
-        videoPlayer.Prepare();
+        videoPlayer1.Prepare();
+        videoPlayer2.Prepare();
+        videoPlayer3.Prepare();
+        videoPlayer4.Prepare();
+        videoPlayer5.Prepare();
         WaitForSeconds waitForSeconds = new WaitForSeconds(3);
-        while (!videoPlayer.isPrepared)
+        while (!videoPlayer1.isPrepared && !videoPlayer2.isPrepared && !videoPlayer3.isPrepared && !videoPlayer4.isPrepared)
         {
             yield return waitForSeconds;
             break;
         }
-        rawImage.texture = videoPlayer.texture;
-        videoPlayer.Play();
-        isPlaying = true;
-    }
 
-    IEnumerator InGamePlayVideo()
-    {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+        main.texture = videoPlayer1.texture;
+        highScore.texture = videoPlayer2.texture;
+        quit.texture = videoPlayer3.texture;
+        quitStatic.texture = videoPlayer4.texture;
+        highScoreReversed.texture = videoPlayer5.texture;
+        videoPlayer1.Play();
+        videoPlayer2.Play();
+        videoPlayer2.Pause();
+        videoPlayer3.Play();
+        videoPlayer3.Pause();
+        videoPlayer4.Play();
+        videoPlayer5.Play();
+        videoPlayer5.Pause();
         
-        while (!videoPlayer.isPrepared)
-        {
-            isPlaying = false;
-            yield return waitForSeconds;
-            break;
-        }
-        rawImage.texture = videoPlayer.texture;
-        videoPlayer.Play();
         isPlaying = true;
-    }
-
-    private void LateUpdate()
-    {
-        if (isPlaying && videoPlayer.clip.name == "Car_interior_meny_v02") buttons.SetActive(true);
-        else if (isPlause && videoPlayer.clip.name == "Car_menu_highscore_v01") buttons.SetActive(true);
-        else buttons.SetActive(false);
-
-        if (videoPlayer.clip.name == "Car_menu_highscore_v01" && videoPlayer.time == 3f)
-        {
-            videoPlayer.Pause();
-            isPlause = true;
-        }
+        buttons.SetActive(true);
     }
 
     public void SetVideoClip()
     {
         foreach (GameObject button in buttonController.buttonList)
         {
+
             if (button.activeInHierarchy && button.name == "Highscore" || button.activeInHierarchy && button.name == "Options")
             {
-                videoPlayer.clip = screenVideoClip;
-                videoPlayer.Prepare();
-                StartCoroutine(InGamePlayVideo());
+                videoPlayer5.time = 0.1f;
+                videoPlayer3.time = 0.1f;
+                videoPlayer3.Pause();
+                main.enabled = false;
+                quit.enabled = false;
+                quitStatic.enabled = false;
+                highScoreReversed.enabled = false;
+                buttons.SetActive(false);
+                highScore.enabled = true;
+                videoPlayer2.Play();
             }
-            if (button.activeInHierarchy && button.name == "New game" || button.activeInHierarchy && button.name == "Quit")
+
+            if (button.activeInHierarchy && button.name == "New game")
             {
-                videoPlayer.clip = menuVideoClip;
-                videoPlayer.Prepare();
-                isPlause = false;
-                StartCoroutine(InGamePlayVideo());
+                Debug.Log("isPause state " + isPause);
+                if (isPause)
+                {
+                    StartCoroutine(PlayReveredVideo());
+                }
+                else NewGame();
+            }
+
+            if (button.activeInHierarchy && button.name == "Quit")
+            {
+                Debug.Log("Quit");
+                buttons.SetActive(true);
+                videoPlayer2.time = 0.1f;
+                videoPlayer2.Pause();
+                highScore.enabled = false;
+                quitStatic.enabled = false;
+                isPause = false;
+                Debug.Log("Quit isPause sets to " + isPause);
+                main.enabled = false;
+                quit.enabled = true;
+                highScoreReversed.enabled = false;
+                videoPlayer3.Play();
             }
         }
+    }
+
+    IEnumerator PlayReveredVideo()
+    {
+        videoPlayer5.Play();
+        buttons.SetActive(false);
+        highScore.enabled = false;
+        highScoreReversed.enabled = true;
+        yield return new WaitForSeconds(3f);
+        NewGame();
+    }
+
+    void NewGame()
+    {
+        buttons.SetActive(true);
+        videoPlayer2.time = 0.1f;
+        videoPlayer3.time = 0.1f;
+        videoPlayer2.Pause();
+        highScore.enabled = false;
+        quit.enabled = false;
+        quitStatic.enabled = false;
+        highScoreReversed.enabled = false;
+        isPause = false;
+        main.enabled = true;
     }
 }

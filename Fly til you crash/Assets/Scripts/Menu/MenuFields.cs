@@ -17,8 +17,8 @@ public class MenuFields : MonoBehaviour
         }
     }
 
-    private void Update()
-    { 
+    public void Update()
+    {
         foreach (GameObject field in fields)
         {
             foreach(GameObject button in buttons)
@@ -29,9 +29,12 @@ public class MenuFields : MonoBehaviour
                     {
                         field.SetActive(false);
                     }
-                    else if (button.name == field.name && MenuVideoController.isPlause) field.SetActive(true);
+                    else if (MenuVideoController.isPause && button.name == field.name)
+                    {
+                        field.SetActive(true);
+                    }
                 }
             }
-        }
+        }    
     }
 }
