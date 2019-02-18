@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 /* Script made by Adam */
 public class CameraController : MonoBehaviour
@@ -23,6 +24,7 @@ public class CameraController : MonoBehaviour
     
     void Start() {
         attention = player.position + distanceInfrontOfPlayer.Evaluate(0f) * player.forward;
+        CameraShaker.Instance.StartShake(2f, 10f, 400f);
     }
 
     void LateUpdate() {
