@@ -538,6 +538,16 @@ PrefabInstance:
       propertyPath: fovCurve.m_Curve.Array.data[1].tangentMode
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 7705592772781858556, guid: 1c321dc71576e454785d6e834f456b62,
+        type: 3}
+      propertyPath: m_Name
+      value: bil3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919492198242413034, guid: 1c321dc71576e454785d6e834f456b62,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4210869801735263144, guid: 1c321dc71576e454785d6e834f456b62,
         type: 3}
       propertyPath: m_Name
