@@ -32,6 +32,10 @@ public class UIController : MonoBehaviour
         highscoreUI.SetActive(true);
         userInputUI.SetActive(false);
         Highscores.AddNewHighscore(username, (int)Score.finalScore);
+
+        MonoBehaviour[] components = highscoreUI.GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour c in components)
+            c.enabled = true;
     }
 
     public void OnClickRetry()
