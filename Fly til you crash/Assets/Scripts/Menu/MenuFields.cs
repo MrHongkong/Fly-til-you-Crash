@@ -32,7 +32,7 @@ public class MenuFields : MonoBehaviour
                         foreach (MonoBehaviour c in components)
                             c.enabled = false;
                     }
-                    else if (button.name == field.name && MenuVideoController.isPlause)
+                    else if (button.name == field.name && MenuVideoController.isPause)
                     {
                         field.SetActive(true);
 
