@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Difficulty : MonoBehaviour
+public class DifficultyController : MonoBehaviour
 {
     public AnimationCurve difficultyCurve;
-
-    public static Difficulty difficulty;
+    public float currentDifficulty = 0f;
+    public static DifficultyController difficulty;
 
     // Start is called before the first frame update
     void Start(){
@@ -16,10 +16,11 @@ public class Difficulty : MonoBehaviour
             Destroy(this);
     }
 
-    public static float difficultyProgress(){return difficulty.difficultyCurve.Evaluate(Time.timeSinceLevelLoad);}
+    public static float DifficultyProgress(){return difficulty.difficultyCurve.Evaluate(Time.timeSinceLevelLoad);}
 
     public void Update()
     {
+        currentDifficulty = DifficultyProgress();
         //Logger.Log(Difficulty.difficultyProgress());
         //Debug.Log(Difficulty.difficultyProgress());
     }
