@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -185,6 +185,65 @@ PrefabInstance:
       propertyPath: startTunnelPrefab
       value: 
       objectReference: {fileID: 9127818919018047524, guid: 51ced038edb10eb43aaa663eeb6a7081,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 2660133780546561960, guid: aa996f0ecada5074da0bc2354bb131a6,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 7232706208486322967, guid: 6fccd42bad54b6b499dba1d64fc2b627,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 980246101113502504, guid: e001d5c259235c64baeb427145050097,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[7]
+      value: 
+      objectReference: {fileID: 980246101113502504, guid: a24de6cb13da6b746a9da8e61ca21180,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[8]
+      value: 
+      objectReference: {fileID: 980246101113502504, guid: af3435ea11dec6a48ac97609a87606ce,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[9]
+      value: 
+      objectReference: {fileID: 6701283769645965634, guid: 84cec2b27517e2f448251e7ceacf465b,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[10]
+      value: 
+      objectReference: {fileID: 6701283769645965634, guid: a6b627cda61ce174ead4fca697b1d508,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[11]
+      value: 
+      objectReference: {fileID: 6701283769645965634, guid: 84deb0f786796ef4599c1038eb7b0432,
+        type: 3}
+    - target: {fileID: 7544859258112855760, guid: 738f81cfb14d5b14e97aad030ef5f4fa,
+        type: 3}
+      propertyPath: prefabObjects.Array.data[12]
+      value: 
+      objectReference: {fileID: 6701283769645965634, guid: 7ee2dc63ca50b1741aa7bb83a11e2263,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738f81cfb14d5b14e97aad030ef5f4fa, type: 3}
