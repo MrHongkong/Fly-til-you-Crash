@@ -1,32 +1,15 @@
 fileFormatVersion: 2
-guid: a3ca7260228faa644a1f63b365d9cec5
+guid: 1124616a16f483f42b026cfbdf04eb2f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: blinn2_outer4
-    2100002: blinn1_inner4
-    2100004: blinn3_edge
+    2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Lowpoly-tunnel_straight_2_double
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blinn1_inner4
-    second: {fileID: 2100000, guid: fa4b6474b7a67864d91251996f131b32, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blinn2_outer4
-    second: {fileID: 2100000, guid: e88c6071b16928b4292d7985236cca26, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blinn3_edge
-    second: {fileID: 2100000, guid: 16f8b46b89878344a993762aba3c6101, type: 2}
+    4300000: pTorus1
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
