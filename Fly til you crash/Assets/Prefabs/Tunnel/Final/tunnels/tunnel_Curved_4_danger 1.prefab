@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 2660133780544305512}
   - component: {fileID: 5695822430983720625}
   - component: {fileID: 157360828285054669}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tunnel_Curved_4_danger 1
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2660133780546561960}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
