@@ -84,8 +84,8 @@ public class MenuVideoController : MonoBehaviour
         {
 
             if (button.activeInHierarchy && button.name == "Highscore" || button.activeInHierarchy && button.name == "Options")
-            {
-                HighscoreAndOptions();
+            {   
+                if(!isPause) HighscoreAndOptions();
             }
 
             if (button.activeInHierarchy && button.name == "New game")
