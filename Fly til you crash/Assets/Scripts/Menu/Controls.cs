@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class Controls : MonoBehaviour
 {
     public Toggle invertedSwitch;

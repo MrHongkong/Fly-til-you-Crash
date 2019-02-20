@@ -11,6 +11,7 @@ public class MenuSettings : MonoBehaviour
     public static MenuSettings instance;
 
     void Start() {
+        Time.timeScale = 1f;
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
