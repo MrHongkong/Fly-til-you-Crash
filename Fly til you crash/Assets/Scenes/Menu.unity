@@ -577,11 +577,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -203.66016
       objectReference: {fileID: 0}
-    - target: {fileID: 1415550447477731184, guid: 61f394720657ad34c853e721473312cc,
-        type: 3}
-      propertyPath: fields
-      value: 
-      objectReference: {fileID: 317173191}
     - target: {fileID: 1415550447906834355, guid: 61f394720657ad34c853e721473312cc,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -744,6 +739,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415550447477731184, guid: 61f394720657ad34c853e721473312cc,
+        type: 3}
+      propertyPath: fields
+      value: 
+      objectReference: {fileID: 317173191}
+    - target: {fileID: 1415550448289558060, guid: 61f394720657ad34c853e721473312cc,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Whenchanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415550446524415708, guid: 61f394720657ad34c853e721473312cc,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415550446524415708, guid: 61f394720657ad34c853e721473312cc,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415550446524415708, guid: 61f394720657ad34c853e721473312cc,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61f394720657ad34c853e721473312cc, type: 3}

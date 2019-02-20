@@ -810,6 +810,8 @@ Transform:
   - {fileID: 8860853852427602630}
   - {fileID: 4435529512760358527}
   - {fileID: 3134072882717308926}
+  - {fileID: 5436792579840327480}
+  - {fileID: 3125852102623928588}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1102,3 +1104,178 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &4124106839618613736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6701283769645612386}
+    m_Modifications:
+    - target: {fileID: 8235002730333425364, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_Name
+      value: Neon Rod (Golden)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 89.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.038983203
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.07602303
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6731902
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.73451734
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -2.584
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 9.459001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 84.797005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 31.124409
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425361, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: min
+      value: 0.622
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 474806072030c644485a717924fdd48b, type: 3}
+--- !u!4 &5436792579840327480 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4124106839618613736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6424906823818276828
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6701283769645612386}
+    m_Modifications:
+    - target: {fileID: 8235002730333425364, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_Name
+      value: Neon Rod (Golden) (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 89.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.027467407
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.015055091
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.009387607
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9994652
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -3.164
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 1.6980001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.029
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 37.663643
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235002730333425361, guid: 474806072030c644485a717924fdd48b,
+        type: 3}
+      propertyPath: min
+      value: 0.989
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 474806072030c644485a717924fdd48b, type: 3}
+--- !u!4 &3125852102623928588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8235002730333425360, guid: 474806072030c644485a717924fdd48b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6424906823818276828}
+  m_PrefabAsset: {fileID: 0}

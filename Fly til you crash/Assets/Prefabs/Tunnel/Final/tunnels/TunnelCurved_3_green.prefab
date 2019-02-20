@@ -433,6 +433,9 @@ Transform:
   - {fileID: 7104330467211786053}
   - {fileID: 10503669884148400}
   - {fileID: 8860853852427602630}
+  - {fileID: 7147133021954019769}
+  - {fileID: 114788799135253590}
+  - {fileID: 4807858306629117468}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -795,3 +798,263 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &2380052754780606141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6701283769645612386}
+    m_Modifications:
+    - target: {fileID: 2346492586254256880, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_Name
+      value: Neon Rod (Red) (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 51.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7933532
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6087617
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.84373057
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 31.24097
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256879, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: min
+      value: 0.708
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0779daf4682c45349bd6718fe74b34d5, type: 3}
+--- !u!4 &114788799135253590 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2380052754780606141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4881863577181182802
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6701283769645612386}
+    m_Modifications:
+    - target: {fileID: 2346492586254256880, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_Name
+      value: Neon Rod (Red)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7933532
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6087617
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256879, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: min
+      value: 0.296
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0779daf4682c45349bd6718fe74b34d5, type: 3}
+--- !u!4 &7147133021954019769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4881863577181182802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7073073892739247351
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6701283769645612386}
+    m_Modifications:
+    - target: {fileID: 2346492586254256880, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_Name
+      value: Neon Rod (Red) (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 112.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7933532
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6087617
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.84373057
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 31.241001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346492586254256879, guid: 0779daf4682c45349bd6718fe74b34d5,
+        type: 3}
+      propertyPath: min
+      value: 0.903
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0779daf4682c45349bd6718fe74b34d5, type: 3}
+--- !u!4 &4807858306629117468 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2346492586254256875, guid: 0779daf4682c45349bd6718fe74b34d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7073073892739247351}
+  m_PrefabAsset: {fileID: 0}
