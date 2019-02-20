@@ -17,6 +17,7 @@ public class MenuVideoController : MonoBehaviour
     public RawImage quitStatic;
     public RawImage highScoreReversed;
     public GameObject buttons;
+    public GameObject fields;
     public static bool isPlaying;
     public static bool isPause;
 
@@ -36,20 +37,12 @@ public class MenuVideoController : MonoBehaviour
 
     private void Update()
     {
-        if (videoPlayer2.time >= 3f)
-        {
-            isPause = true;
-            buttons.SetActive(true);
-            videoPlayer2.Pause();
-        }
-
         if (videoPlayer3.time >= 3.5f)
         {
             quit.enabled = false;
             quitStatic.enabled = true;
             videoPlayer4.Play();
-            videoPlayer3.time = 0.1f;
-            videoPlayer3.Pause();
+            SetVideoPlayerThreeToZeroPointOneAndPause();
         }
     }
 
@@ -75,15 +68,15 @@ public class MenuVideoController : MonoBehaviour
         highScoreReversed.texture = videoPlayer5.texture;
         videoPlayer1.Play();
         videoPlayer2.Play();
-        videoPlayer2.Pause();
+        SetVideoPlayerTwoToZeroPointOneAndPause();
         videoPlayer3.Play();
-        videoPlayer3.Pause();
+        SetVideoPlayerThreeToZeroPointOneAndPause();
         videoPlayer4.Play();
         videoPlayer5.Play();
-        videoPlayer5.Pause();
+        SetVideoPlayerFiveToZeroPointOneAndPause();
         
         isPlaying = true;
-        buttons.SetActive(true);
+        SetButtonsTrue();
     }
 
     public void SetVideoClip()
@@ -92,68 +85,160 @@ public class MenuVideoController : MonoBehaviour
         {
 
             if (button.activeInHierarchy && button.name == "Highscore" || button.activeInHierarchy && button.name == "Options")
-            {
-                videoPlayer5.time = 0.1f;
-                videoPlayer3.time = 0.1f;
-                videoPlayer3.Pause();
-                main.enabled = false;
-                quit.enabled = false;
-                quitStatic.enabled = false;
-                highScoreReversed.enabled = false;
-                buttons.SetActive(false);
-                highScore.enabled = true;
-                videoPlayer2.Play();
+            {   
+                if(!isPause) HighscoreAndOptions();
             }
 
             if (button.activeInHierarchy && button.name == "New game")
             {
-                Debug.Log("isPause state " + isPause);
-                if (isPause)
+                if (!isPause)
                 {
-                    StartCoroutine(PlayReveredVideo());
+                    SetButtonClickToZeroPointSevenSeconds();
+                    NewGame();
                 }
-                else NewGame();
+                else
+                {
+                    fields.SetActive(false);
+                    SetButtonsFalse();
+                    PlayReversed();
+                    SetButtonClickToThreeSeconds();
+                    Invoke("NewGame", 3);
+                }
             }
 
             if (button.activeInHierarchy && button.name == "Quit")
             {
-                Debug.Log("Quit");
-                buttons.SetActive(true);
-                videoPlayer2.time = 0.1f;
-                videoPlayer2.Pause();
-                highScore.enabled = false;
-                quitStatic.enabled = false;
-                isPause = false;
-                Debug.Log("Quit isPause sets to " + isPause);
-                main.enabled = false;
-                quit.enabled = true;
-                highScoreReversed.enabled = false;
-                videoPlayer3.Play();
+                if (!isPause)
+                {
+                    SetButtonClickToZeroPointSevenSeconds();
+                    Quit();
+                }
+                else
+                {
+                    SetButtonsFalse();
+                    PlayReversed();
+                    SetButtonClickToThreeSeconds();
+                    Invoke("Quit", 3);
+                }
             }
         }
     }
 
-    IEnumerator PlayReveredVideo()
-    {
-        videoPlayer5.Play();
-        buttons.SetActive(false);
-        highScore.enabled = false;
-        highScoreReversed.enabled = true;
-        yield return new WaitForSeconds(3f);
-        NewGame();
-    }
-
     void NewGame()
     {
-        buttons.SetActive(true);
-        videoPlayer2.time = 0.1f;
-        videoPlayer3.time = 0.1f;
-        videoPlayer2.Pause();
+        SetVideoPlayerTwoToZeroPointOneAndPause();
+        SetVideoPlayerThreeToZeroPointOneAndPause();
+        SetVideoPlayerFiveToZeroPointOneAndPause();
         highScore.enabled = false;
         quit.enabled = false;
         quitStatic.enabled = false;
         highScoreReversed.enabled = false;
         isPause = false;
         main.enabled = true;
+        SetButtonsTrue();
+    }
+
+    void Quit()
+    {
+        SetVideoPlayerTwoToZeroPointOneAndPause();
+        SetVideoPlayerFiveToZeroPointOneAndPause();
+        isPause = false;
+        highScore.enabled = false;
+        quitStatic.enabled = false;
+        main.enabled = false;
+        highScoreReversed.enabled = false;
+        quit.enabled = true;
+        videoPlayer3.Play();
+        SetButtonsTrue();
+        SetFieldsFalse();
+    }
+
+    void HighscoreAndOptions()
+    {
+        SetVideoPlayerFiveToZeroPointOneAndPause();
+        SetVideoPlayerThreeToZeroPointOneAndPause();
+        isPause = false;
+        main.enabled = false;
+        quit.enabled = false;
+        quitStatic.enabled = false;
+        highScoreReversed.enabled = false;
+        SetButtonsFalse();
+        SetFieldsFalse();
+        highScore.enabled = true;
+        videoPlayer2.Play();
+        SetButtonClickToZeroPointSevenSeconds();
+        Invoke("HighscorePause", 3f);
+    }
+
+    void PlayReversed()
+    {
+        SetVideoPlayerTwoToZeroPointOneAndPause();
+        SetVideoPlayerThreeToZeroPointOneAndPause();
+        isPause = false;
+        highScore.enabled = false;
+        main.enabled = false;
+        quit.enabled = false;
+        quitStatic.enabled = false;
+        SetButtonsFalse();
+        SetFieldsFalse();
+        highScoreReversed.enabled = true;
+        videoPlayer5.Play();
+    }
+
+    void SetButtonsFalse()
+    {
+        buttons.SetActive(false);
+    }
+
+    void SetButtonsTrue()
+    {
+        buttons.SetActive(true);
+    }
+
+    void SetVideoPlayerTwoToZeroPointOneAndPause()
+    {
+        videoPlayer2.time = 0.1f;
+        videoPlayer2.Pause();
+    }
+
+    void SetVideoPlayerThreeToZeroPointOneAndPause()
+    {
+        videoPlayer3.time = 0.1f;
+        videoPlayer3.Pause();
+    }
+    void SetVideoPlayerFiveToZeroPointOneAndPause()
+    {
+        videoPlayer5.time = 0.1f;
+        videoPlayer5.Pause();
+    }
+    
+    void HighscorePause()
+    {
+        isPause = true;
+        SetButtonsTrue();
+        SetFieldsTrue();
+        videoPlayer2.Pause();
+    }
+    
+    void SetButtonClickToThreeSeconds()
+    {
+        SwapButtonRight.addSecondsToNextClick = 3f;
+        SwapButtonLeft.addSecondsToNextClick = 3f;
+    }
+
+    void SetButtonClickToZeroPointSevenSeconds()
+    {
+        SwapButtonRight.addSecondsToNextClick = 0.7f;
+        SwapButtonLeft.addSecondsToNextClick = 0.7f;
+    }
+
+    void SetFieldsTrue()
+    {
+        fields.SetActive(true);
+    }
+
+    void SetFieldsFalse()
+    {
+        fields.SetActive(false);
     }
 }

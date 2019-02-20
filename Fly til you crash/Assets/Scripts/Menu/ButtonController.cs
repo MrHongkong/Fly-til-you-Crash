@@ -47,9 +47,3 @@ public class ButtonController : MonoBehaviour
         }
     }    
 }
-//Philips kod
-/*int next = ((index + ((((index / length) * length) < 0 ? -((index / length) * length) : ((index / length) * length)) + length)) % length < 0) ?
-                                  -((index + ((((index / length) * length) < 0 ? -((index / length) * length) : ((index / length) * length)) + length)) % length) :
-                                   ((index + ((((index / length) * length) < 0 ? -((index / length) * length) : ((index / length) * length)) + length)) % length);
-
-*/
