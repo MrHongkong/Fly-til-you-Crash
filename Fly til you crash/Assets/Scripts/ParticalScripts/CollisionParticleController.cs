@@ -7,18 +7,22 @@ public class CollisionParticleController : MonoBehaviour
     public float cooldown;
     public float counter;
 
-    public ParticleSystem sparks;
+    public List<ParticleSystem> particleSystems;
 
     void Start()
     {
         counter = cooldown * 1.1f;
-        sparks.Pause();
+        foreach (ParticleSystem ps in particleSystems)
+            ps.Pause();
     }
 
     public void CollisionEnter(Collision other){
         if (counter > cooldown){
-            sparks.transform.position = other.GetContact(0).point;
-            sparks.Play();
+            foreach (ParticleSystem ps in particleSystems)
+            {
+                ps.transform.position = other.GetContact(0).point + (Camera.main.transform.position - transform.position) * 0.3f;
+                ps.Play();
+            }
             counter = 0f;
         }
     }
@@ -28,5 +32,8 @@ public class CollisionParticleController : MonoBehaviour
     {
         if (counter <= cooldown)
             counter += Time.deltaTime;
+        else
+            foreach (ParticleSystem ps in particleSystems)
+                ps.Pause();
     }
 }

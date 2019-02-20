@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
             playerController = this;
         else
             Destroy(this);
+
+        yAxis = MenuSettings.getInvertedControls() ? 1f : -1f;
     }
 
     public float GetPercentageBoost(){
@@ -154,9 +156,6 @@ public class PlayerController : MonoBehaviour
         //Pitch controls, turning the nose up and down
 
         rb.velocity *= 0.6f;
-
-        if (MenuSettings.isOn) yAxis = -1;
-        else yAxis = 1;
     }
 
     void FixedUpdate()

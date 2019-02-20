@@ -48,7 +48,7 @@ MonoBehaviour:
   sounds:
   - name: PlayerDeath
     clip: {fileID: 8300000, guid: 98c5bbd252d979a4f97f963afccaea1c, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     mute: 0
@@ -74,17 +74,24 @@ MonoBehaviour:
     loop: 1
     mute: 0
     source: {fileID: 0}
-  - name: BoostSound
-    clip: {fileID: 8300000, guid: 4aca785ed33f1ab4ab9b84143d46a527, type: 3}
+  - name: ProximityWarning
+    clip: {fileID: 8300000, guid: 76f5242d60bb2c949be6b6de2e144e2b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     mute: 0
     source: {fileID: 0}
-  - name: ProximityWarning
-    clip: {fileID: 8300000, guid: 76f5242d60bb2c949be6b6de2e144e2b, type: 3}
-    volume: 0.1
-    pitch: 1
+  - name: Point1
+    clip: {fileID: 8300000, guid: ffc63fd027577e74495b707c56080aa0, type: 3}
+    volume: 0.43
+    pitch: 1.75
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: Point2
+    clip: {fileID: 8300000, guid: 8041338684bb0074bb97dcec5b777d5c, type: 3}
+    volume: 0.65
+    pitch: 1.29
     loop: 0
     mute: 0
     source: {fileID: 0}

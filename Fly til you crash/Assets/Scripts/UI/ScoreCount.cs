@@ -35,17 +35,19 @@ public class ScoreCount : MonoBehaviour
     {
         scoreCount.text = "Score: " + score.ToString("f0");
     }
-    
-    private void CalculateScore()
-    {
+
+    private void CalculateScore() {
         float timeScore = Time.timeSinceLevelLoad * scoreMultiplier;
         score = timeScore + extraScore;
-        if ((int)score % 1000 == 0 && (int)score != 0)
+        if ((int)score % 1000 == 0 && (int)score != 0) { 
             iTween.PunchScale(scoreCountObject, new Vector3(2.5f, 2.5f, 2.5f), 1.5f);
+            AudioManager.instance.Play("Point2");
+        }
         else if ((int)score % 100 == 0 && (int)score != 0)
         {
             iTween.PunchScale(scoreCountObject, Vector3.one, 1f);
             iTween.PunchRotation(scoreCountObject, new Vector3(0f, 0f, 10f), 1f);
+            AudioManager.instance.Play("Point1");
         }
     }
 
