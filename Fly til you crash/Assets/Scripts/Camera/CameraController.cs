@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
     
     void Start() {
         attention = player.position + distanceInfrontOfPlayer.Evaluate(0f) * player.forward;
-        CameraShaker.Instance.StartShake(2f, 10f, 400f);
+        CameraShaker.Instance.StartShake(2f, 10f, 700f);
     }
 
     void Update(){

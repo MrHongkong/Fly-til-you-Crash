@@ -212,7 +212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreCountObject: {fileID: 1894997447}
   scoreCount: {fileID: 2884076112919976803}
-  finalScore: {fileID: 0}
 --- !u!1 &3510028566228037910
 GameObject:
   m_ObjectHideFlags: 0
