@@ -9,7 +9,7 @@ public class SwapButtonLeft : MonoBehaviour
     ButtonController buttonController;
     public GameObject target;
     private float time;
-    public float addSecondsToNextClick;
+    public static float addSecondsToNextClick;
 
     private void Start()
     {
@@ -19,6 +19,7 @@ public class SwapButtonLeft : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A)) Swap(-1);
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) Swap(-1);
     }
 
     public void MouseClick()
