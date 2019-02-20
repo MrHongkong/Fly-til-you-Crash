@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class MenuSettings : MonoBehaviour
 {
-    public static bool isOn;
+    public static bool invertedControls = true;
     public MenuSettings menuSetting;
     private void Awake()
     {
         DontDestroyOnLoad(menuSetting);
     }
     
-    public void UpdateIsOn(bool update)
-    {
-        isOn = update;
-    }
+    //public void UpdateIsOn(bool update)
+    //{
+    //    invertedControls = update;
+    //}
 }
