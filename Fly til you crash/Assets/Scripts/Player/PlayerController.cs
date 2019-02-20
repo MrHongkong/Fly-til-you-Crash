@@ -155,8 +155,8 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity *= 0.6f;
 
-        if (MenuSettings.isOn) yAxis = -1;
-        else yAxis = 1;
+        if (MenuSettings.invertedControls) yAxis = 1;
+        else yAxis = -1;
     }
 
     void FixedUpdate()

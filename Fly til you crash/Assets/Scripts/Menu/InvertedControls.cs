@@ -8,9 +8,17 @@ public class InvertedControls : MonoBehaviour
 {
     public Toggle toggle;
     public MenuSettings menuSettings;
-    public void OnClick()
+
+    private void Start()
     {
-        if (toggle.isOn) menuSettings.UpdateIsOn(false);
-        else menuSettings.UpdateIsOn(true);
+        toggle.isOn = MenuSettings.invertedControls;
+    }
+
+    public void Whenchanged()
+    {
+        //if (toggle.isOn) menuSettings.UpdateIsOn(false);
+        //else menuSettings.UpdateIsOn(true);
+        MenuSettings.invertedControls = toggle.isOn;
+
     }
 }
