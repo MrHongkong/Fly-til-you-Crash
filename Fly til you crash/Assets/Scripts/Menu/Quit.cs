@@ -7,8 +7,10 @@ public class Quit : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return)) Application.Quit();
-        if(Input.GetKeyDown(KeyCode.Joystick1Button0)) Application.Quit();
+        if (Input.GetButtonDown("MenuEnter"))
+        {
+            Application.Quit();
+        }
     }
 
     public void MouseClick()

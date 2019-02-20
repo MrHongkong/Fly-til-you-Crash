@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//Made by Jocke
 public class NewGame : MonoBehaviour
 {
     public GameObject newGame;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return)) StartCoroutine(Delay());
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0)) StartCoroutine(Delay());
+        if (Input.GetButtonDown("MenuEnter"))
+        {
+            iTween.PunchScale(newGame, new Vector3(2, 2, 2), 0.4f);
+            Invoke("Delay", 0.5f);
+        }
     }
     
     public void MouseClick()
     {
-        StartCoroutine(Delay());
+        iTween.PunchScale(newGame, new Vector3(2, 2, 2), 0.4f);
+        Invoke("Delay", 0.5f);
     }
 
-    IEnumerator Delay()
+    void Delay()
     {
         SceneManager.LoadScene("Game");
-        iTween.PunchScale(newGame, new Vector3(2,2,2), 0.4f);
-        yield return new WaitForSeconds(1);
     }
 }

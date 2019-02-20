@@ -213,3 +213,99 @@ InputManager:
     type: 2
     axis: 2
     joyNum: 0
+  - serializedVersion: 3
+    m_Name: MenuLeft
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: a
+    positiveButton: 
+    altNegativeButton: left
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: MenuRight
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: d
+    altNegativeButton: 
+    altPositiveButton: right
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: MenuEnter
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: return
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: MenuEnter
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: a
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: MenLeft
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: left
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: MenuRight
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: right
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 0

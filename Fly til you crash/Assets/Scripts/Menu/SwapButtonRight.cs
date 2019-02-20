@@ -18,8 +18,7 @@ public class SwapButtonRight : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D)) Swap(1);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) Swap(1);
+        if (Input.GetButtonDown("MenuRight")) Swap(1);
     }
 
     public void MouseClick()

@@ -18,8 +18,7 @@ public class SwapButtonLeft : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) Swap(-1);
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) Swap(-1);
+        if (Input.GetButtonDown("MenuLeft")) Swap(-1);
     }
 
     public void MouseClick()
