@@ -67,12 +67,12 @@ public class MenuVideoController : MonoBehaviour
         highScoreReversed.texture = videoPlayer5.texture;
         videoPlayer1.Play();
         videoPlayer2.Play();
-        videoPlayer2.Pause();
+        SetVideoPlayerTwoToZeroPointOneAndPause();
         videoPlayer3.Play();
-        videoPlayer3.Pause();
+        SetVideoPlayerThreeToZeroPointOneAndPause();
         videoPlayer4.Play();
         videoPlayer5.Play();
-        videoPlayer5.Pause();
+        SetVideoPlayerFiveToZeroPointOneAndPause();
         
         isPlaying = true;
         SetButtonsTrue();
