@@ -17,6 +17,7 @@ public class MenuVideoController : MonoBehaviour
     public RawImage quitStatic;
     public RawImage highScoreReversed;
     public GameObject buttons;
+    public GameObject fields;
     public static bool isPlaying;
     public static bool isPause;
 
@@ -97,6 +98,7 @@ public class MenuVideoController : MonoBehaviour
                 }
                 else
                 {
+                    fields.SetActive(false);
                     SetButtonsFalse();
                     PlayReversed();
                     SetButtonClickToThreeSeconds();
@@ -148,6 +150,7 @@ public class MenuVideoController : MonoBehaviour
         quit.enabled = true;
         videoPlayer3.Play();
         SetButtonsTrue();
+        SetFieldsFalse();
     }
 
     void HighscoreAndOptions()
@@ -160,6 +163,7 @@ public class MenuVideoController : MonoBehaviour
         quitStatic.enabled = false;
         highScoreReversed.enabled = false;
         SetButtonsFalse();
+        SetFieldsFalse();
         highScore.enabled = true;
         videoPlayer2.Play();
         SetButtonClickToZeroPointSevenSeconds();
@@ -176,6 +180,7 @@ public class MenuVideoController : MonoBehaviour
         quit.enabled = false;
         quitStatic.enabled = false;
         SetButtonsFalse();
+        SetFieldsFalse();
         highScoreReversed.enabled = true;
         videoPlayer5.Play();
     }
@@ -211,6 +216,7 @@ public class MenuVideoController : MonoBehaviour
     {
         isPause = true;
         SetButtonsTrue();
+        SetFieldsTrue();
         videoPlayer2.Pause();
     }
     
@@ -224,5 +230,15 @@ public class MenuVideoController : MonoBehaviour
     {
         SwapButtonRight.addSecondsToNextClick = 0.7f;
         SwapButtonLeft.addSecondsToNextClick = 0.7f;
+    }
+
+    void SetFieldsTrue()
+    {
+        fields.SetActive(true);
+    }
+
+    void SetFieldsFalse()
+    {
+        fields.SetActive(false);
     }
 }
