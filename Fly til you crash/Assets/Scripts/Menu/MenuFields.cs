@@ -28,7 +28,7 @@ public class MenuFields : MonoBehaviour
                     if (button.name != field.name)
                     {
                         field.SetActive(false);
-                        MonoBehaviour[] components = field.GetComponents<MonoBehaviour>();
+                        MonoBehaviour[] components = field.GetComponentsInChildren<MonoBehaviour>();
                         foreach (MonoBehaviour c in components)
                             c.enabled = false;
                     }
@@ -36,7 +36,7 @@ public class MenuFields : MonoBehaviour
                     {
                         field.SetActive(true);
 
-                        MonoBehaviour[] components = field.GetComponents<MonoBehaviour>();
+                        MonoBehaviour[] components = field.GetComponentsInChildren<MonoBehaviour>();
                         foreach (MonoBehaviour c in components)
                             c.enabled = true;
                     }
