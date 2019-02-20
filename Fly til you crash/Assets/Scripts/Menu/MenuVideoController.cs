@@ -11,6 +11,7 @@ public class MenuVideoController : MonoBehaviour
     public VideoPlayer videoPlayer3;
     public VideoPlayer videoPlayer4;
     public VideoPlayer videoPlayer5;
+
     public RawImage main;
     public RawImage highScore;
     public RawImage quit;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoostMeterController : MonoBehaviour
+public class BoostMeterSportCarController : MonoBehaviour
 {
     public Transform boostMeterCube;
 

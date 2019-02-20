@@ -30,11 +30,13 @@ public class HoverEngineController : MonoBehaviour
     }
     
     public void UpdatePower() {
-        power = (power * bias) + nextEnginePower * (1f - bias);
-        ps.startLifetime = LowPoweredState + (HighPoweredState - LowPoweredState) * power;
+        if (ps != null)
+        {
+            power = (power * bias) + nextEnginePower * (1f - bias);
+            ps.startLifetime = LowPoweredState + (HighPoweredState - LowPoweredState) * power;
 
-        nextEnginePower = 0f;
-
+            nextEnginePower = 0f;
+        }
         //Debug.Log("power = " + power);
     }
 
