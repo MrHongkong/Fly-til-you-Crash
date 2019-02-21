@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     }
 
     void Update(){
-        Camera.main.fieldOfView = 90f + fovCurve.Evaluate(Time.timeSinceLevelLoad);
+        Camera.main.fieldOfView = 80f + fovCurve.Evaluate(Time.timeSinceLevelLoad);
     }
 
     void LateUpdate() {
