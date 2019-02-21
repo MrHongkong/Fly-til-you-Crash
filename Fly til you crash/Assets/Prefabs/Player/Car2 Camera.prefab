@@ -9635,7 +9635,25 @@ MonoBehaviour:
   player: {fileID: 0}
   fovCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -9667,14 +9685,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 240.13501
-      value: 2
-      inSlope: 0.00036361598
-      outSlope: 0.00036361598
-      tangentMode: 0
+      time: 0
+      value: 7
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.056805253
-      outWeight: 0
+      inWeight: 0
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -9692,7 +9710,7 @@ MonoBehaviour:
       outWeight: 0.046632018
     - serializedVersion: 3
       time: 240.01636
-      value: 2.5
+      value: 3
       inSlope: -0.006464277
       outSlope: -0.006464277
       tangentMode: 0
@@ -9702,6 +9720,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  DrawGizmos: 1
   cameraLerp: 0.1
   cameraLerpSlowmo: 0.11
   cameraLerpFastmo: 0.07

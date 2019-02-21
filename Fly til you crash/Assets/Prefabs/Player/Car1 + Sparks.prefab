@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 383099014038793189}
   - component: {fileID: 383099014038793184}
   - component: {fileID: 383099014038793187}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BoostGaugeShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 383099014927146637}
   - component: {fileID: 383099014927146632}
   - component: {fileID: 383099014927146635}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ProximityWarning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 383099015260416315}
   - component: {fileID: 383099015260416260}
   - component: {fileID: 383099015260416261}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BoostGauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 383099015982264198}
   - component: {fileID: 383099015982264196}
   - component: {fileID: 7565170620130246341}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Camera Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24545,7 +24545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4548927270799921610}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Car1 + Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24580,7 +24580,7 @@ GameObject:
   - component: {fileID: 4552924534606063575}
   - component: {fileID: 4440099215109962133}
   - component: {fileID: 4459676564295635163}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ElectricalSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53509,6 +53509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnergyExplosion
       objectReference: {fileID: 0}
+    - target: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4865135451303388, guid: 9bba9cf244c53c5439505dfc96fdd11c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.69
@@ -53584,6 +53588,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Flip.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099298929610492, guid: 9bba9cf244c53c5439505dfc96fdd11c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367458547200666, guid: 9bba9cf244c53c5439505dfc96fdd11c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919173750998442, guid: 9bba9cf244c53c5439505dfc96fdd11c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bba9cf244c53c5439505dfc96fdd11c, type: 3}
