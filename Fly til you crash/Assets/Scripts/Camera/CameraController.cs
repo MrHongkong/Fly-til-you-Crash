@@ -41,16 +41,11 @@ public class CameraController : MonoBehaviour
 
         Vector3 BackwardsToCamera = Vector3.Project(rayDirection, -player.forward);
         Vector3 UpwardsToCamera = rayDirection - BackwardsToCamera;
-
-        Debug.DrawLine(player.position, player.position + BackwardsToCamera);
-        Debug.DrawLine(player.position + BackwardsToCamera, player.position + BackwardsToCamera + UpwardsToCamera);
-
+        
         RaycastHit raycastHit = new RaycastHit();
         bool rayHit = Physics.Raycast(player.position, rayDirection, out raycastHit, rayDirection.magnitude);
 
-        Debug.Log("Before");
-        Debug.Log(cameraLocation);
-        if (rayHit) {
+         if (rayHit) {
             Vector3 RayBackwardsToCamera = Vector3.Project(raycastHit.point - player.position, -player.forward);
             Vector3 RayUpwardsToCamera = (raycastHit.point - player.position) - RayBackwardsToCamera;
 
