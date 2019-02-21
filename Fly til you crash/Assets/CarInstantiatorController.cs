@@ -13,10 +13,18 @@ public class CarInstantiatorController : MonoBehaviour
     public string cameraTargetName;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        if (!MenuSettings.getCarInUse())
-        {
+    void Start() {
+        checkIfMenuSettings();
+    }
+
+    void checkIfMenuSettings() {
+        if (MenuSettings.instance != null)
+            InstansiateGame();
+        Invoke("checkIfMenuSettings", 0.05f);
+    }
+
+    void InstansiateGame() {
+        if (!MenuSettings.getCarInUse()) {
             GameObject car1Instance = Instantiate(car1);
             GameObject car1CameraInstance = Instantiate(car1Camera);
 
@@ -30,8 +38,7 @@ public class CarInstantiatorController : MonoBehaviour
             foreach (MonoBehaviour c in cameracomponents)
                 c.enabled = true;
         }
-        else
-        {
+        else{
             GameObject car2Instance = Instantiate(car2);
             GameObject car2CameraInstance = Instantiate(car2Camera);
 
