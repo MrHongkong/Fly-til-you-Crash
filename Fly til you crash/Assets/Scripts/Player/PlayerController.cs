@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float bankingTorqueAmp;
     public float pitchingTorqueAmp;
 
+    [SerializeField][Range(1f, 2f)] private float controlPrecentage;
+
     public float dragOnHold;
     public float dragOffHold;
 
@@ -161,9 +163,9 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         float t_scale = Mathf.Max(new float[] { 1f, Time.timeScale });
-        turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f, 2f);
-        turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f, 2f);
-        turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f, 2f);
+        turnAcceleration.x = Mathf.Lerp(turnAcceleration.x, Input.GetAxisRaw("Vertical") * 50f * controlPrecentage, 2f);
+        turnAcceleration.y = Mathf.Lerp(turnAcceleration.y, Input.GetAxisRaw("Horizontal") * 50f * controlPrecentage, 2f);
+        turnAcceleration.z = Mathf.Lerp(turnAcceleration.z, Input.GetAxisRaw("Yaw") * 100f * controlPrecentage, 2f);
 
         movable.localRotation *= Quaternion.Euler(turnAcceleration.x * Time.deltaTime * (1f / t_scale) * yAxis, 0f, 0f);
         movable.localRotation *= Quaternion.Euler(0f, turnAcceleration.y * Time.deltaTime * (1f / t_scale), 0f);

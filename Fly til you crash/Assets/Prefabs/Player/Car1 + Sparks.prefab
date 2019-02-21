@@ -465,6 +465,7 @@ MonoBehaviour:
   yAxis: 1
   bankingTorqueAmp: 1
   pitchingTorqueAmp: 0.8
+  controlPrecentage: 1.3
   dragOnHold: 7
   dragOffHold: 5
   leftHoverEngines:
