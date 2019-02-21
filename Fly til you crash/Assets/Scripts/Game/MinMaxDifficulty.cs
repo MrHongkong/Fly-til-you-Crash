@@ -13,10 +13,10 @@ public class MinMaxDifficulty : MonoBehaviour
     void Start(){
         if (DifficultyController.DifficultyProgress() < min || DifficultyController.DifficultyProgress() > max){
             gameObject.SetActive(false);
-            if (DifficultyController.DifficultyProgress() < min)
+            /*if (DifficultyController.DifficultyProgress() < min)
                 Debug.Log("Current difficulty too low, despawning!");
             else
-                Debug.Log("Current difficulty too high, despawning!");
+                Debug.Log("Current difficulty too high, despawning!");*/
         }
     }
 }

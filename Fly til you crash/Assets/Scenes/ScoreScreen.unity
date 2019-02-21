@@ -374,31 +374,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 823705673340601817, guid: ff68110e88ac47341a8bc7a13aff441d,
-        type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 823705673340601817, guid: ff68110e88ac47341a8bc7a13aff441d,
-        type: 3}
-      propertyPath: sounds.Array.data[4].name
-      value: ProximityWarning
-      objectReference: {fileID: 0}
-    - target: {fileID: 823705673340601817, guid: ff68110e88ac47341a8bc7a13aff441d,
-        type: 3}
-      propertyPath: sounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 76f5242d60bb2c949be6b6de2e144e2b, type: 3}
-    - target: {fileID: 823705673340601817, guid: ff68110e88ac47341a8bc7a13aff441d,
-        type: 3}
-      propertyPath: sounds.Array.data[5].name
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 823705673340601817, guid: ff68110e88ac47341a8bc7a13aff441d,
-        type: 3}
-      propertyPath: sounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff68110e88ac47341a8bc7a13aff441d, type: 3}
 --- !u!114 &1432794874 stripped

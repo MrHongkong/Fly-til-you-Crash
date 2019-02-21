@@ -17,12 +17,29 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     private string username;
 
+    private string controllerButton = "Game";
+
 
     private void Start()
     {
         highscoreUI.SetActive(false);
         userInputUI.SetActive(true);
         ScoreText.text = "Score: " + (int)Score.finalScore;
+    }
+    private void Update()
+    {
+        if(Input.GetButtonDown("MenuLeft"))
+        {
+            controllerButton = "Game";
+        }
+        if(Input.GetButtonDown("MenuRight"))
+        {
+            controllerButton = "Menu";
+        }
+        if(Input.GetButtonDown("MenuEnter"))
+        {
+            SceneManager.LoadScene(controllerButton);
+        }
     }
 
     public void OnClickSubmit()

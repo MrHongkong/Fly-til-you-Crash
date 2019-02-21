@@ -266,7 +266,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: a
+    positiveButton: joystick button 0
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -274,15 +274,15 @@ InputManager:
     sensitivity: 1
     snap: 1
     invert: 0
-    type: 2
-    axis: 2
+    type: 0
+    axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: MenLeft
+    m_Name: MenuLeft
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left
+    positiveButton: joystick button 4
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -290,15 +290,15 @@ InputManager:
     sensitivity: 1
     snap: 1
     invert: 0
-    type: 2
-    axis: 2
+    type: 0
+    axis: 0
     joyNum: 0
   - serializedVersion: 3
     m_Name: MenuRight
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: right
+    positiveButton: joystick button 5
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -306,6 +306,6 @@ InputManager:
     sensitivity: 1
     snap: 1
     invert: 0
-    type: 2
-    axis: 2
+    type: 0
+    axis: 0
     joyNum: 0
