@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class BoostMeterOldSchoolCarController : MonoBehaviour
 {
-    Color color = new Color(0f, 200f, 0f);
-    public Material lightingMaterial;
-    public GameObject obj;
+    public Transform boostMeterCube;
 
-    public void Start()
+    float maxScale;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        lightingMaterial = new Material(lightingMaterial);
-        obj.GetComponent<Renderer>().material = lightingMaterial;
+        maxScale = boostMeterCube.localScale.y;
     }
 
     // Update is called once per frame
-    void Update(){
-        lightingMaterial.SetColor("_EmissionColor", color * PlayerController.playerController.GetPercentageBoost() * 0.015f);
+    void Update()
+    {
+        Vector3 scales = boostMeterCube.localScale;
+        scales.y = Mathf.Lerp(scales.y, PlayerController.playerController.GetPercentageBoost() * maxScale < 0.001f ? 0f : PlayerController.playerController.GetPercentageBoost() * maxScale, 0.2f);
+        boostMeterCube.localScale = scales;
     }
 }
