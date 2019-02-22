@@ -76,7 +76,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ProximityWarning
     clip: {fileID: 8300000, guid: 76f5242d60bb2c949be6b6de2e144e2b, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     loop: 0
     mute: 0
