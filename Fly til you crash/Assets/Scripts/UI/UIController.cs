@@ -29,7 +29,16 @@ public class UIController : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetButtonDown("MenuLeft"))
+        if (inputField.text == "")
+        {
+            submit.interactable = false;
+        }
+        else
+        {
+            submit.interactable = true;
+        }
+
+        if (Input.GetButtonDown("MenuLeft"))
         {
             controllerButton = "Game";
         }

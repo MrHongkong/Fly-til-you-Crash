@@ -692,11 +692,6 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 8314598687557996673, guid: f4874e2bbb1a5d7408a049ce6fa5ba1d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8314598687504991825, guid: f4874e2bbb1a5d7408a049ce6fa5ba1d,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -761,6 +756,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314598687557996673, guid: f4874e2bbb1a5d7408a049ce6fa5ba1d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8314598687506223357, guid: f4874e2bbb1a5d7408a049ce6fa5ba1d,
         type: 3}
@@ -1041,6 +1041,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314598688794292096, guid: f4874e2bbb1a5d7408a049ce6fa5ba1d,
+        type: 3}
+      propertyPath: m_ContentType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314598688794292096, guid: f4874e2bbb1a5d7408a049ce6fa5ba1d,
+        type: 3}
+      propertyPath: m_KeyboardType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314598688794292096, guid: f4874e2bbb1a5d7408a049ce6fa5ba1d,
+        type: 3}
+      propertyPath: m_CharacterValidation
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8314598687506223345, guid: f4874e2bbb1a5d7408a049ce6fa5ba1d, type: 3}
