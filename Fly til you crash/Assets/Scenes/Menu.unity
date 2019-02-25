@@ -421,7 +421,7 @@ PrefabInstance:
         type: 3}
       propertyPath: slider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1086352460}
     - target: {fileID: 823705673340601817, guid: ff68110e88ac47341a8bc7a13aff441d,
         type: 3}
       propertyPath: sounds.Array.data[0].source
@@ -460,6 +460,12 @@ PrefabInstance:
     - target: {fileID: 823705673340601817, guid: ff68110e88ac47341a8bc7a13aff441d,
         type: 3}
       propertyPath: sounds.Array.data[1].Group
+      value: 
+      objectReference: {fileID: 24300002, guid: 6c5bea52f7ede04478fe8baf5d2daec5,
+        type: 2}
+    - target: {fileID: 823705673340601817, guid: ff68110e88ac47341a8bc7a13aff441d,
+        type: 3}
+      propertyPath: sounds.Array.data[6].Group
       value: 
       objectReference: {fileID: 24300002, guid: 6c5bea52f7ede04478fe8baf5d2daec5,
         type: 2}
@@ -665,10 +671,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 111340489}
   m_HandleRect: {fileID: 570218150}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1649,6 +1655,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -288
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327946063521931301, guid: 61f394720657ad34c853e721473312cc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61f394720657ad34c853e721473312cc, type: 3}

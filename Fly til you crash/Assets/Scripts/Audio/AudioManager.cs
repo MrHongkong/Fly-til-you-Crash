@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.volume == volume);
 
-        audioMixer.SetFloat("Volume", volume);
+        audioMixer.SetFloat("Volume", Mathf.Log10 (volume) * 20);
         PlayerPrefs.SetFloat("Volume", volume);
     }
 
