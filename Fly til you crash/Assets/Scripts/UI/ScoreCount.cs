@@ -21,7 +21,6 @@ public class ScoreCount : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) ExtraScore(1000);
         if (!OnCollision.isDead)
         {
             ResetScores();
