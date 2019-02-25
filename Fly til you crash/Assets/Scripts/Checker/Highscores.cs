@@ -62,11 +62,11 @@ public class Highscores : MonoBehaviour {
 	IEnumerator DownloadHighscoresFromDatabase() {
         WWW www = new WWW(webURL + publicCode + "/pipe/");
         yield return www;
-		
-		if (string.IsNullOrEmpty (www.error)) {
-            string[] entries = www.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
-            highscoresList = new List<Highscore>();
 
+        highscoresList = new List<Highscore>();
+        if (string.IsNullOrEmpty (www.error)) {
+            string[] entries = www.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+            
             for (int i = 0; i < entries.Length; i++){
                 string[] entryInfo = entries[i].Split(new char[] { '|' });
                 highscoresList.Add(new Highscore(entryInfo[0], int.Parse(entryInfo[1])));
@@ -74,6 +74,7 @@ public class Highscores : MonoBehaviour {
         }
 		else {
 			print ("Error Downloading: " + www.error);
+            
 		}
 	}
 
