@@ -22,7 +22,7 @@ public class Options : MonoBehaviour
 
     public void SetSlider()
     {
-        slider = GameObject.Find("Canvas").GetComponentInChildren<Slider>();
+        slider = GameObject.Find("Menu").GetComponentInChildren<Slider>();
         if (slider != null) slider.value = PlayerPrefs.GetFloat("Volume");
     }
 

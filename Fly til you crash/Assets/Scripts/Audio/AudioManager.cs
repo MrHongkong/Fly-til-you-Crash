@@ -1,11 +1,14 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
+    public Slider slider;
     public Sound[] sounds;
     public static AudioManager instance;
+    public AudioMixer audioMixer;
 
     void Awake()
     {
@@ -27,6 +30,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.mute = s.mute;
+            s.source.outputAudioMixerGroup = s.Group;
         }
     }
 
@@ -34,7 +38,13 @@ public class AudioManager : MonoBehaviour
     {
         Play("MenuMusic");
     }
-    
+    public void Update()
+    {
+        if (slider == null) slider = GetComponentInChildren<Slider>();
+        if (slider != null) slider.value = PlayerPrefs.GetFloat("Volume");
+        GetMasterLevel();
+    }
+
 
     public void Play (string name)
     {
@@ -58,4 +68,33 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
+    public void SetVolume(float volume)
+    {
+        Sound s = Array.Find(sounds, sound => sound.volume == volume);
+
+        audioMixer.SetFloat("Volume", volume);
+        PlayerPrefs.SetFloat("Volume", volume);
+    }
+
+    public void SetSlider()
+    {
+        slider = GameObject.Find("Menu").GetComponentInChildren<Slider>();
+        if (slider != null) slider.value = PlayerPrefs.GetFloat("Volume");
+    }
+
+    public float GetMasterLevel()
+    {
+        float value;
+        bool result = audioMixer.GetFloat("Volume", out value);
+        if (result)
+        {
+            return value;
+
+        }
+        else
+        {
+            return 0f;
+        }
+
+    }
 }
