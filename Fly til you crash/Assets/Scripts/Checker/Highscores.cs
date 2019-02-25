@@ -79,21 +79,32 @@ public class Highscores : MonoBehaviour {
 
     IEnumerator _DownloadHighscoresToTMPro(TextMeshProUGUI[] highscoreFields){
         yield return DownloadHighscoresFromDatabase();
+        writeToTMProFields(highscoreFields);
+    }
 
-        for (int i = 0; i < highscoresList.Count; i++)
-        {
+    public static void writeToTMProFields(TextMeshProUGUI[] highscoreFields) {
+        for (int i = 0; i < instance.highscoresList.Count; i++){
             if (i >= highscoreFields.Length)
                 break;
 
             highscoreFields[i].text = i + 1 + ". ";
-            if (i < highscoresList.Count){
-                string[] test = highscoresList[i].username.Split('+');
-                highscoreFields[i].text += test[0] + " - " + highscoresList[i].score;
+            if (i < instance.highscoresList.Count){
+                string[] test = instance.highscoresList[i].username.Split('+');
+                highscoreFields[i].text += test[0] + " - " + instance.highscoresList[i].score;
             }
         }
     }
 
     public static void AddNewHighscore(string username, int score){
+        if(instance.highscoresList != null)
+            for(int i=0; i < instance.highscoresList.Count; i++)
+                if(instance.highscoresList[i].score < score){
+                    instance.highscoresList.Insert(i, new Highscore(username, score));
+                    while (instance.highscoresList.Count > 10)
+                        instance.highscoresList.Remove(instance.highscoresList[10]);
+                    break;
+                }
+
         instance.StartCoroutine(instance.UploadNewHighscore(username, score, 3));
     }
 

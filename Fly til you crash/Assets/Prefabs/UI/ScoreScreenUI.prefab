@@ -965,7 +965,6 @@ GameObject:
   - component: {fileID: 8314598687506223358}
   - component: {fileID: 8314598687506223346}
   - component: {fileID: 8314598687506223347}
-  - component: {fileID: 8314598687506223344}
   - component: {fileID: 8314598687506223345}
   m_Layer: 5
   m_Name: ScoreScreenUI
@@ -1075,7 +1074,7 @@ MonoBehaviour:
   retry: {fileID: 8314598688070995339}
   menu: {fileID: 8314598688080186462}
   inputField: {fileID: 8314598688794292096}
-  inputeScoreText: {fileID: 8314598687612915617}
+  ScoreText: {fileID: 0}
 --- !u!114 &8314598687506223347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,29 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7745e2a761bb742851c0effc5984ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8314598687506223344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8314598687506223353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bdd3a62b6415e047b51f6160b28703c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highscoreFields:
-  - {fileID: 8314598687774352436}
-  - {fileID: 8314598687681764503}
-  - {fileID: 8314598688319167793}
-  - {fileID: 8314598686982347884}
-  - {fileID: 8314598688786399030}
-  - {fileID: 8314598687952013624}
-  - {fileID: 8314598688884146543}
-  - {fileID: 8314598687505177139}
-  - {fileID: 8314598687280488934}
-  - {fileID: 8314598687504991825}
 --- !u!114 &8314598687506223345
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -263,11 +263,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 9126341245659751523, guid: 045ac96de69f3a04ebab7b0f131435de,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1031947506, guid: 045ac96de69f3a04ebab7b0f131435de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -355,27 +350,12 @@ PrefabInstance:
     - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2884076112919976803, guid: 045ac96de69f3a04ebab7b0f131435de,
-        type: 3}
-      propertyPath: m_enableWordWrapping
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045ac96de69f3a04ebab7b0f131435de, type: 3}

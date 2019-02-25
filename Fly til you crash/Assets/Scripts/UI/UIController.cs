@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
     public Button menu;
     public TMP_InputField inputField;
     public TextMeshProUGUI ScoreText;
+    public DisplayHighscores displayHighscores;
     private string username;
 
     private string controllerButton = "Game";
@@ -49,10 +50,7 @@ public class UIController : MonoBehaviour
         highscoreUI.SetActive(true);
         userInputUI.SetActive(false);
         Highscores.AddNewHighscore(username, (int)Score.finalScore);
-
-        MonoBehaviour[] components = highscoreUI.GetComponents<MonoBehaviour>();
-        foreach (MonoBehaviour c in components)
-            c.enabled = true;
+        Highscores.writeToTMProFields(displayHighscores.highscoreFields);
     }
 
     public void OnClickRetry()
