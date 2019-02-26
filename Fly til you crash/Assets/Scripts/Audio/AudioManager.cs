@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
+    //Made by Philip Åkerblom GP18 YRGO!
+
     public Slider slider;
     public Sound[] sounds;
     public static AudioManager instance;
